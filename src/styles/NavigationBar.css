@@ -1,0 +1,9 @@
+.item {
+    border-style: solid;
+    border-width: 1px;
+    white-space:nowrap;
+}
+
+.ui.pointing.menu {
+    align-self: center;
+}
