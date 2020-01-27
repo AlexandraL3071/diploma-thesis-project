@@ -1,14 +1,14 @@
 import React, {Component} from 'react'
-import {Input, Menu, Segment} from 'semantic-ui-react'
+import {Menu, Segment} from 'semantic-ui-react'
 import {Link} from "react-router-dom";
 import AllCategories from "./categories/AllCategories";
 import Favorites from "./Favorites";
 import {Route, Switch} from "react-router";
 import Cart from "./Cart";
-import Card from "./Card";
 import Bodybuilding_Category from "./categories/Bodybuilding_Category";
 import Athletics_Category from "./categories/Athletics_Category";
 import Swimming_Category from "./categories/Swimming_Category";
+import AllProducts from "./AllProducts";
 
 export default class NavigationBar extends Component {
     state = {activeItem: 'Categorii'}
@@ -44,8 +44,9 @@ export default class NavigationBar extends Component {
                 </Menu>
 
                 <Switch>
-                    <Segment attached='bottom'>
+                    <Segment attached='bottom' inverted>
                         <Route exact path="/categorii"><AllCategories/></Route>
+                        <Route exact path="/produse"><AllProducts/></Route>
                         <Route path="/favorite"><Favorites/></Route>
                         <Route path="/cos-cumparaturi"><Cart/></Route>
                         <Route path="/categorii/culturism"><Bodybuilding_Category/></Route>

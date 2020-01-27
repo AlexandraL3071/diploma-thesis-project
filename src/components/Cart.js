@@ -1,9 +1,10 @@
 import React from 'react'
+import TotalPrice from "./TotalPrice";
 
 class Cart extends React.Component {
     render() {
         return (
-            <h4 className="ui header">Aceasta este pagina pentru cosul de cumparaturi</h4>
+            <TotalPrice/>
         )
     }
 }

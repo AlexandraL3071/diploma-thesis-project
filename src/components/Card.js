@@ -13,7 +13,7 @@ class Card extends React.Component {
 
     render() {
         return (
-            <div className="ui card">
+            <div className="ui inverted card">
                 <div className="content">
                     <div className="image">
                         <img src={this.imageName}/>
