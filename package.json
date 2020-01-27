@@ -2,13 +2,17 @@
   "name": "licenta",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/sportsMAG",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.3.0"
+    "react-router": "^5.1.2",
+    "react-scripts": "3.3.0",
+    "router": "^1.3.4",
+    "history": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -32,6 +36,7 @@
     ]
   },
   "devDependencies": {
+    "react-router-dom": "^5.1.2",
     "semantic-ui-react": "^0.88.2"
   }
 }

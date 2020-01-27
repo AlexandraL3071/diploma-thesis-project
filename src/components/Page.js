@@ -1,15 +1,17 @@
 import React from 'react'
 import NavigationBar from './NavigationBar'
-import SearchBar from "./SearchBar";
+import {Link, Route, Switch} from "react-router-dom";
+import {Input, Segment} from "semantic-ui-react";
+import AllCategories from "./AllCategories";
+import Favorites from "./Favorites";
+import Cart from "./Cart";
 
 class Page extends React.Component {
     render() {
         return (
-            <div>
-                <div className="ui container">
-                    <NavigationBar />
-                </div>
-            </div>
+            <Switch>
+                <NavigationBar/>
+            </Switch>
         )
     }
 }
