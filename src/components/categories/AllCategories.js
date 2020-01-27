@@ -1,10 +1,10 @@
 import React from 'react'
-import Card from "./Card";
+import Card from "../Card";
 import {Route, Switch} from "react-router";
 import {Link} from "react-router-dom";
-import Bodybuilding_Category from "./categories/Bodybuilding_Category";
-import Athletics_Category from "./categories/Athletics_Category";
-import Swimming_Category from "./categories/Swimming_Category";
+import Bodybuilding_Category from "./Bodybuilding_Category";
+import Athletics_Category from "./Athletics_Category";
+import Swimming_Category from "./Swimming_Category";
 
 class AllCategories extends React.Component {
     constructor(props) {
