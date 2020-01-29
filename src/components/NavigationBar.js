@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import AllCategories from "./categories/AllCategories";
 import Favorites from "./Favorites";
 import {Route, Switch} from "react-router";
-import Cart from "./Cart";
+import Cart from "./cart/Cart";
 import Bodybuilding_Category from "./categories/Bodybuilding_Category";
 import Athletics_Category from "./categories/Athletics_Category";
 import Swimming_Category from "./categories/Swimming_Category";
