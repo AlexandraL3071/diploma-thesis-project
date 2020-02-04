@@ -8,7 +8,7 @@ import Cart from "./cart/Cart";
 import Bodybuilding_Category from "./categories/Bodybuilding_Category";
 import Athletics_Category from "./categories/Athletics_Category";
 import Swimming_Category from "./categories/Swimming_Category";
-import AllProducts from "./AllProducts";
+import AllProducts from "./categories/AllProducts";
 
 export default class NavigationBar extends Component {
     state = {activeItem: 'Categorii'}

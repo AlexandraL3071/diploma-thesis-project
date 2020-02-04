@@ -1,10 +1,10 @@
 import React from 'react'
 import {Link} from "react-router-dom";
 
-export default class TotalPrice extends React.Component {
+export default class CartSummary extends React.Component {
     render() {
         return (
-            <div className="ui card">
+            <div className="ui fluid card">
                 <div className="content">
                     <div className="header">Detalii cos</div>
                 </div>

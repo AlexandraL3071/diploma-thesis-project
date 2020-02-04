@@ -1,0 +1,16 @@
+
+.outer {
+    position: relative;
+}
+
+
+#smaller-column {
+    position: relative;
+    max-width: 33%;
+}
+
+#larger-column {
+    position: relative;
+    min-width: 66%;
+    margin-bottom: 10px;
+}
