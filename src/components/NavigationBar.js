@@ -5,9 +5,9 @@ import AllCategories from "./categories/AllCategories";
 import Favorites from "./Favorites";
 import {Route, Switch} from "react-router";
 import Cart from "./cart/Cart";
-import Bodybuilding_Category from "./categories/Bodybuilding_Category";
-import Athletics_Category from "./categories/Athletics_Category";
-import Swimming_Category from "./categories/Swimming_Category";
+import BodybuildingCategory from "./categories/BodybuildingCategory";
+import AthleticsCategory from "./categories/AthleticsCategory";
+import SwimmingCategory from "./categories/SwimmingCategory";
 import AllProducts from "./categories/AllProducts";
 
 export default class NavigationBar extends Component {
@@ -49,9 +49,9 @@ export default class NavigationBar extends Component {
                         <Route exact path="/produse"><AllProducts/></Route>
                         <Route path="/favorite"><Favorites/></Route>
                         <Route path="/cos-cumparaturi"><Cart/></Route>
-                        <Route path="/categorii/culturism"><Bodybuilding_Category/></Route>
-                        <Route path="/categorii/atletism"><Athletics_Category/></Route>
-                        <Route path="/categorii/inot"><Swimming_Category/></Route>
+                        <Route path="/categorii/culturism"><BodybuildingCategory/></Route>
+                        <Route path="/categorii/atletism"><AthleticsCategory/></Route>
+                        <Route path="/categorii/inot"><SwimmingCategory/></Route>
                     </Segment>
                 </Switch>
             </div>

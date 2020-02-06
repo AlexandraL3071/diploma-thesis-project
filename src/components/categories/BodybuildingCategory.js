@@ -2,7 +2,7 @@ import React from 'react'
 import {Button} from "semantic-ui-react";
 import {Link} from "react-router-dom";
 
-export default class Bodybuilding_Category extends React.Component {
+export default class BodybuildingCategory extends React.Component {
     render () {
         return (
             <div>

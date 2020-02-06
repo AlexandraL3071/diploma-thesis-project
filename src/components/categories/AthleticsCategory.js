@@ -2,7 +2,7 @@ import React from 'react'
 import {Button} from "semantic-ui-react";
 import {Link} from "react-router-dom";
 
-export default class Athletics_Category extends React.Component {
+export default class AthleticsCategory extends React.Component {
     render () {
         return (
             <div>

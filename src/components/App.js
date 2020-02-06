@@ -3,7 +3,6 @@ import Header from "./Header";
 import Content from "./Content";
 import {BrowserRouter} from "react-router-dom";
 import history from '../history'
-import {Redirect, Route, Switch} from "react-router";
 
 function App() {
     return (

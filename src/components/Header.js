@@ -2,9 +2,6 @@ import React from 'react'
 import SearchBar from "./SearchBar";
 
 class Header extends React.Component {
-    constructor(props) {
-        super(props)
-    }
     render() {
         return (
             <div>

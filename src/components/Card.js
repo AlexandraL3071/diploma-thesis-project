@@ -15,8 +15,8 @@ class Card extends React.Component {
         return (
             <div className="ui inverted card">
                 <div className="content">
-                    <div className="image">
-                        <img src={this.imageName}/>
+                    <div className="image" >
+                        <img src={this.imageName} alt="Nothing"/>
                     </div>
                 </div>
                 <div className="extra content">
