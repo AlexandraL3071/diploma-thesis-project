@@ -1,12 +1,12 @@
 import React from 'react'
 import '../../styles/Cart.css'
-import ProductCard from "./ProductCard";
+import CartProductCard from "./CartProductCard";
 
 export default class CartProducts extends React.Component {
     render() {
         return (
             this.props.products.map(product => (
-                <ProductCard product={product}/>
+                <CartProductCard product={product}/>
             ))
         )
     }

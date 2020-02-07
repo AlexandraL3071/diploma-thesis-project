@@ -9,6 +9,7 @@ import BodybuildingCategory from "./categories/BodybuildingCategory";
 import AthleticsCategory from "./categories/AthleticsCategory";
 import SwimmingCategory from "./categories/SwimmingCategory";
 import AllProducts from "./categories/AllProducts";
+import FirebaseContext from "./Firebase/Context";
 
 export default class NavigationBar extends Component {
     state = {activeItem: 'Categorii'}
@@ -46,7 +47,16 @@ export default class NavigationBar extends Component {
                 <Switch>
                     <Segment attached='bottom' inverted>
                         <Route exact path="/categorii"><AllCategories/></Route>
-                        <Route exact path="/produse"><AllProducts/></Route>
+                        <Route exact path="/produse">
+                            <FirebaseContext.Consumer>
+                                {firebase => {
+                                    return (
+                                        <AllProducts firebase={firebase}
+                                        />
+                                    )
+                                }}
+                            </FirebaseContext.Consumer>
+                        </Route>
                         <Route path="/favorite"><Favorites/></Route>
                         <Route path="/cos-cumparaturi"><Cart/></Route>
                         <Route path="/categorii/culturism"><BodybuildingCategory/></Route>

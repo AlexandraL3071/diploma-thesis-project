@@ -1,7 +1,7 @@
 import React from 'react'
-import '../styles/Card.css'
+import '../styles/CategoryCard.css'
 
-class Card extends React.Component {
+export class CategoryCard extends React.Component {
     constructor(props) {
         super(props);
         this.state={category: props.category};
@@ -26,5 +26,3 @@ class Card extends React.Component {
         )
     }
 }
-
-export default Card;

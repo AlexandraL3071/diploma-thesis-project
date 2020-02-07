@@ -2,7 +2,7 @@ import React from 'react'
 import '../../styles/Cart.css'
 import '../../styles/ProductCard.css'
 
-export default class ProductCard extends React.Component {
+export default class CartProductCard extends React.Component {
     render () {
         return (
             <div id="product-card" className="ui card">
