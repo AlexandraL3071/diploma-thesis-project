@@ -1,8 +1,12 @@
-import {ADD_TO_CART} from "../actions/actionsNames";
+import {ADD_TO_CART, FETCH_ALL_PRODUCTS} from "../actions/actionsNames";
 
-export const productsReducers = (state = [], action) => {
-    switch(action.type) {
+export const productsReducer = (state = [], action) => {
+    switch (action.type) {
+        case FETCH_ALL_PRODUCTS:
+            return action.payload;
         case ADD_TO_CART:
-            return [...state, action.payload];
+            return action.payload;
+        default:
+            return state;
     }
-}
+};

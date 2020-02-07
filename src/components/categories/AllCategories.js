@@ -1,14 +1,26 @@
 import React from 'react'
 import Card from "../Card";
-import {Route, Switch} from "react-router";
 import {Link} from "react-router-dom";
-import Bodybuilding_Category from "./Bodybuilding_Category";
-import Athletics_Category from "./Athletics_Category";
-import Swimming_Category from "./Swimming_Category";
+import  { FirebaseContext } from '../Firebase';
 
 class AllCategories extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {products: []};
+        this.getProductsFromFirebase();
+    }
+
+    getProductsFromFirebase = () => {
+        return (
+        <FirebaseContext.Consumer>
+            {firebase => {
+                const firebaseRef = firebase.database().ref("products");
+                firebaseRef.on("value", data => {
+                    this.setState({products: data.val()})
+                })
+            }}
+        </FirebaseContext.Consumer>
+        )
     }
 
     render() {
