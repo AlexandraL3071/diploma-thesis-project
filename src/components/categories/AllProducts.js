@@ -6,16 +6,24 @@ import {connect} from "react-redux";
 import {fetchAllProductsAction} from "../../actions/fetchAllProductsAction";
 
 export class AllProducts extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {products: []}
-    }
-
-    componentWillMount () {
-        const firebaseRef = this.props.firebase.database.ref("products");
+    componentDidMount() {
+        let firebaseRef = this.props.firebase.database.ref("products/fitness");
+        let partialProducts = [];
         firebaseRef.once('value').then(snapshot => {
-            this.props.fetchAllProductsAction(snapshot.val());
+            partialProducts = partialProducts.concat(snapshot.val());
+        });
+
+        firebaseRef = this.props.firebase.database.ref("products/hiking");
+        firebaseRef.once('value').then(snapshot => {
+            partialProducts = partialProducts.concat(snapshot.val());
+        });
+
+        firebaseRef = this.props.firebase.database.ref("products/swimming");
+        firebaseRef.once('value').then(snapshot => {
+            partialProducts = partialProducts.concat(snapshot.val());
+            this.props.fetchAllProductsAction(partialProducts);
         })
+
     }
 
     renderProductsList = () => {
@@ -24,7 +32,7 @@ export class AllProducts extends React.Component {
                 <ProductCard product={product}/>
             ))
         )
-    }
+    };
 
     render() {
         return (
@@ -36,12 +44,9 @@ export class AllProducts extends React.Component {
     }
 }
 
-
-const mapStateToProps = (state) => {
-    return {
+const mapStateToProps = (state) => ({
         products: state.products
-    }
-}
+});
 
 export default connect(
     mapStateToProps,

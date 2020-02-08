@@ -2,32 +2,30 @@ import React from 'react'
 import {Button} from "semantic-ui-react";
 import {Link} from "react-router-dom";
 import ProductCard from "../ProductCard";
-import {fetchSwimmingProductsAction} from "../../actions/fetchSwimmingProductsAction";
+import {fetchFitnessProductsAction} from "../../actions/fetchFitnessProductsAction";
 import {connect} from "react-redux";
 
-export class SwimmingCategory extends React.Component {
-    componentDidMount () {
-        let firebaseRef = this.props.firebase.database.ref("products/swimming");
+export class FitnessCategory extends React.Component {
+    componentDidMount() {
+        let firebaseRef = this.props.firebase.database.ref("products/fitness");
         firebaseRef.once('value').then(snapshot => {
-            this.props.fetchSwimmingProductsAction(snapshot.val());
+            this.props.fetchFitnessProductsAction(snapshot.val());
         });
     }
 
     renderList = () => {
         return (
             <div>
-                {this.props.swimmingProducts.map(product => (
+                {this.props.fitnessProducts.map(product => (
                     <ProductCard product={product}/>
                 ))}
             </div>
         )
     };
 
-    render () {
+    render() {
         return (
             <div>
-                {console.log("the products from swimming file: ")}
-                {console.log(this.props.products)}
                 {this.renderList()}
                 <Link to="/categorii"><Button>Inapoi</Button></Link>
             </div>
@@ -36,10 +34,10 @@ export class SwimmingCategory extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    swimmingProducts: state.swimmingProducts
+    fitnessProducts: state.fitnessProducts
 });
 
 export default connect(
     mapStateToProps,
-    {fetchSwimmingProductsAction})
-(SwimmingCategory)
+    {fetchFitnessProductsAction})
+(FitnessCategory)

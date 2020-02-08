@@ -5,19 +5,19 @@ import AllCategories from "./categories/AllCategories";
 import Favorites from "./Favorites";
 import {Route, Switch} from "react-router";
 import Cart from "./cart/Cart";
-import BodybuildingCategory from "./categories/BodybuildingCategory";
-import AthleticsCategory from "./categories/AthleticsCategory";
+import FitnessCategory from "./categories/FitnessCategory";
+import HikingCategory from "./categories/HikingCategory";
 import SwimmingCategory from "./categories/SwimmingCategory";
 import AllProducts from "./categories/AllProducts";
 import FirebaseContext from "./Firebase/Context";
 
 export default class NavigationBar extends Component {
-    state = {activeItem: 'Categorii'}
+    state = {activeItem: 'Categorii'};
 
-    handleItemClick = (e, {name}) => this.setState({activeItem: name})
+    handleItemClick = (e, {name}) => this.setState({activeItem: name});
 
     render() {
-        const {activeItem} = this.state
+        const {activeItem} = this.state;
 
         return (
             <div>
@@ -46,7 +46,15 @@ export default class NavigationBar extends Component {
 
                 <Switch>
                     <Segment attached='bottom' inverted>
-                        <Route exact path="/categorii"><AllCategories/></Route>
+                        <Route exact path="/categorii">
+                            <FirebaseContext.Consumer>
+                                {firebase => {
+                                    return (
+                                        <AllCategories firebase={firebase}/>
+                                    )
+                                }}
+                            </FirebaseContext.Consumer>
+                        </Route>
                         <Route exact path="/produse">
                             <FirebaseContext.Consumer>
                                 {firebase => {
@@ -59,9 +67,36 @@ export default class NavigationBar extends Component {
                         </Route>
                         <Route path="/favorite"><Favorites/></Route>
                         <Route path="/cos-cumparaturi"><Cart/></Route>
-                        <Route path="/categorii/culturism"><BodybuildingCategory/></Route>
-                        <Route path="/categorii/atletism"><AthleticsCategory/></Route>
-                        <Route path="/categorii/inot"><SwimmingCategory/></Route>
+                        <Route path="/categorii/culturism">
+                            <FirebaseContext.Consumer>
+                                {firebase => {
+                                    return (
+                                        <FitnessCategory firebase={firebase}
+                                        />
+                                    )
+                                }}
+                            </FirebaseContext.Consumer>
+                        </Route>
+                        <Route path="/categorii/alpinism">
+                            <FirebaseContext.Consumer>
+                                {firebase => {
+                                    return (
+                                        <HikingCategory firebase={firebase}
+                                        />
+                                    )
+                                }}
+                            </FirebaseContext.Consumer>
+                        </Route>
+                        <Route path="/categorii/inot">
+                            <FirebaseContext.Consumer>
+                                {firebase => {
+                                    return (
+                                        <SwimmingCategory firebase={firebase}
+                                        />
+                                    )
+                                }}
+                            </FirebaseContext.Consumer>
+                        </Route>
                     </Segment>
                 </Switch>
             </div>

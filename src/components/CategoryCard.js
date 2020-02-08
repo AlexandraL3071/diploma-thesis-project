@@ -9,13 +9,14 @@ export class CategoryCard extends React.Component {
 
     imageName = () => {
         return "../images/" + this.state.category + ".jpg";
-    }
+    };
 
     render() {
         return (
             <div className="ui inverted card">
                 <div className="content">
                     <div className="image" >
+                        {console.log(this.imageName())}
                         <img src={this.imageName} alt="Nothing"/>
                     </div>
                 </div>

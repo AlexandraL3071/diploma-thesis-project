@@ -1,4 +1,7 @@
-import {ADD_TO_CART, FETCH_ALL_PRODUCTS} from "../actions/actionsNames";
+import {
+    ADD_TO_CART,
+    FETCH_ALL_PRODUCTS,
+} from "../actions/actionsNames";
 
 export const productsReducer = (state = [], action) => {
     switch (action.type) {

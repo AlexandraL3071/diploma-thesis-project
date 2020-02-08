@@ -2,13 +2,9 @@ import React from 'react'
 import '../styles/CategoryCard.css'
 
 export default class ProductCard extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     imageName = () => {
         return "../images/" + this.state.category + ".jpg";
-    }
+    };
 
     render() {
         return (
@@ -17,7 +13,7 @@ export default class ProductCard extends React.Component {
                     <img src={this.imageName} alt="Nothing"/>
                 </div>
                 <div className="content">
-                    <a className="header">{this.props.product.name}</a>
+                    <div className="header">{this.props.product.name}</div>
                     <div className="description">
                         {this.props.product.price} RON
                     </div>
