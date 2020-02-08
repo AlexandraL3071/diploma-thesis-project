@@ -16,7 +16,6 @@ export class CategoryCard extends React.Component {
             <div className="ui inverted card">
                 <div className="content">
                     <div className="image" >
-                        {console.log(this.imageName())}
                         <img src={this.imageName} alt="Nothing"/>
                     </div>
                 </div>
