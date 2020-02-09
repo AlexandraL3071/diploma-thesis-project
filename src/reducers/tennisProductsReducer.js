@@ -1,10 +1,10 @@
 import {
-    FETCH_HIKING_PRODUCTS,
+    FETCH_TENNIS_PRODUCTS,
 } from "../actions/actionsNames";
 
-export const hikingProductsReducer = (state = [], action) => {
+export const tennisProductsReducer = (state = [], action) => {
     switch (action.type) {
-        case FETCH_HIKING_PRODUCTS:
+        case FETCH_TENNIS_PRODUCTS:
             return action.payload;
         default:
             return state;

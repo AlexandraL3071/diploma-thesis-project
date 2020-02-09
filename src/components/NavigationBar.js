@@ -6,8 +6,8 @@ import Favorites from "./Favorites";
 import {Route, Switch} from "react-router";
 import Cart from "./cart/Cart";
 import FitnessCategory from "./categories/FitnessCategory";
-import HikingCategory from "./categories/HikingCategory";
-import SwimmingCategory from "./categories/SwimmingCategory";
+import TennisCategory from "./categories/TennisCategory";
+import OthersCategory from "./categories/OthersCategory";
 import AllProducts from "./categories/AllProducts";
 import FirebaseContext from "./Firebase/Context";
 
@@ -67,7 +67,7 @@ export default class NavigationBar extends Component {
                         </Route>
                         <Route path="/favorite"><Favorites/></Route>
                         <Route path="/cos-cumparaturi"><Cart/></Route>
-                        <Route path="/categorii/culturism">
+                        <Route path="/categorii/fitness">
                             <FirebaseContext.Consumer>
                                 {firebase => {
                                     return (
@@ -77,21 +77,21 @@ export default class NavigationBar extends Component {
                                 }}
                             </FirebaseContext.Consumer>
                         </Route>
-                        <Route path="/categorii/alpinism">
+                        <Route path="/categorii/tenis">
                             <FirebaseContext.Consumer>
                                 {firebase => {
                                     return (
-                                        <HikingCategory firebase={firebase}
+                                        <TennisCategory firebase={firebase}
                                         />
                                     )
                                 }}
                             </FirebaseContext.Consumer>
                         </Route>
-                        <Route path="/categorii/inot">
+                        <Route path="/categorii/altele">
                             <FirebaseContext.Consumer>
                                 {firebase => {
                                     return (
-                                        <SwimmingCategory firebase={firebase}
+                                        <OthersCategory firebase={firebase}
                                         />
                                     )
                                 }}

@@ -2,21 +2,21 @@ import React from 'react'
 import {Button} from "semantic-ui-react";
 import {Link} from "react-router-dom";
 import ProductCard from "../ProductCard";
-import {fetchHikingProductsAction} from "../../actions/fetchHikingProductsAction";
+import {fetchOthersProductsAction} from "../../actions/fetchOthersProductsAction";
 import {connect} from "react-redux";
 
-export class HikingCategory extends React.Component {
+export class OthersCategory extends React.Component {
     componentDidMount () {
-        let firebaseRef = this.props.firebase.database.ref("products/hiking");
+        let firebaseRef = this.props.firebase.database.ref("products/others");
         firebaseRef.once('value').then(snapshot => {
-            this.props.fetchHikingProductsAction(snapshot.val());
+            this.props.fetchOthersProductsAction(snapshot.val());
         });
     }
 
     renderList = () => {
         return (
             <div>
-                {this.props.hikingProducts.map(product => (
+                {this.props.othersProducts.map(product => (
                     <ProductCard product={product}/>
                 ))}
             </div>
@@ -34,10 +34,10 @@ export class HikingCategory extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    hikingProducts: state.hikingProducts
+    othersProducts: state.othersProducts
 });
 
 export default connect(
     mapStateToProps,
-    {fetchHikingProductsAction})
-(HikingCategory)
+    {fetchOthersProductsAction})
+(OthersCategory)

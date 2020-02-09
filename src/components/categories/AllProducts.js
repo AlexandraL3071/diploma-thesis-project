@@ -13,12 +13,12 @@ export class AllProducts extends React.Component {
             partialProducts = partialProducts.concat(snapshot.val());
         });
 
-        firebaseRef = this.props.firebase.database.ref("products/hiking");
+        firebaseRef = this.props.firebase.database.ref("products/tennis");
         firebaseRef.once('value').then(snapshot => {
             partialProducts = partialProducts.concat(snapshot.val());
         });
 
-        firebaseRef = this.props.firebase.database.ref("products/swimming");
+        firebaseRef = this.props.firebase.database.ref("products/others");
         firebaseRef.once('value').then(snapshot => {
             partialProducts = partialProducts.concat(snapshot.val());
             this.props.fetchAllProductsAction(partialProducts);

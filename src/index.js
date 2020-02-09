@@ -7,20 +7,20 @@ import {productsReducer} from "./reducers/productsReducer";
 import {combineReducers, createStore} from "redux";
 import Firebase, {FirebaseContext} from './components/Firebase';
 import {fitnessProductsReducer} from "./reducers/fitnessProductsReducer";
-import {hikingProductsReducer} from "./reducers/hikingProductsReducer";
-import {swimmingProductsReducer} from "./reducers/swimmingProductsReducer"
+import {tennisProductsReducer} from "./reducers/tennisProductsReducer";
+import {othersProductsReducer} from "./reducers/othersProductsReducer"
 
 const store = createStore(combineReducers(
     {
         products: productsReducer,
         fitnessProducts: fitnessProductsReducer,
-        hikingProducts: hikingProductsReducer,
-        swimmingProducts: swimmingProductsReducer
-    }));
+        tennisProducts: tennisProductsReducer,
+        othersProducts: othersProductsReducer
+}));
 
 ReactDOM.render(
     <Provider store={store}>
-        <FirebaseContext.Provider value={new Firebase()}>>
+        <FirebaseContext.Provider value={new Firebase()}>
             <App/>
         </FirebaseContext.Provider>
     </Provider>
