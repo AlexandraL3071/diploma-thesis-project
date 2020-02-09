@@ -1,10 +1,6 @@
 import React from 'react'
 import {Link} from "react-router-dom";
 import {CategoryCard} from "../CategoryCard";
-// import {fetchFitnessProductsAction} from "../../actions/fetchFitnessProductsAction";
-// import {fetchTennisProductsAction} from "../../actions/fetchTennisProductsAction";
-// import {fetchOthersProductsAction} from "../../actions/fetchOthersProductsAction";
-// import {connect} from "react-redux";
 
 export default class AllCategories extends React.Component {
     render() {
