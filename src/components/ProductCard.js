@@ -41,7 +41,7 @@ export default function ProductCard(props) {
                         <div id="second-column" className="column">
                             <div>Cantitatea:</div>
                             <div className="ui inverted fluid input">
-                                <input id="quantity" name="quantity" type="number" min="1" value={selectedQuantity} onChange={handleChangeQuantity}/>
+                                <input id="quantity" name="quantity" type="number" min="1" max={props.product.quantity} value={selectedQuantity} onChange={handleChangeQuantity}/>
                             </div>
                         </div>
                     </div>
