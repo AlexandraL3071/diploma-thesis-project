@@ -18,8 +18,8 @@ export default function AllCategories() {
     }
 
     const deleteSearchValue = () => {
-            firebase.ref('products/searchValue').remove();
-        };
+        firebase.ref('products/searchValue').remove();
+    };
 
     return (
         <div>

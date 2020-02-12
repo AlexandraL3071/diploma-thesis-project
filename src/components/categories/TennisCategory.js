@@ -11,7 +11,7 @@ export default function TennisCategory() {
         return (
             <div>
                 {tennisProducts.map(product => (
-                    <ProductCard product={product} type="add" button="ui basic pink button" icon="heart icon" text="Adauga la favorite"/>
+                    <ProductCard product={product} type="add" button="ui basic pink button" icon="heart icon" text="Adauga la favorite" link="/categorii/adaugare-favorite"/>
                 ))}
             </div>
         )

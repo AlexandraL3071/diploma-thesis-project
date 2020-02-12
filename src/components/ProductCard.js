@@ -15,13 +15,23 @@ export default function ProductCard(props) {
         ref.update({'cartKey': cartRef.key});
     };
 
+    const addToFavorites = () => {
+        const favoriteRef = firebase.push('products/favoriteProducts', props.product);
+        props.product.favoriteKey = favoriteRef.key;
+        const ref = firebase.ref('products/favoriteProducts/' + favoriteRef.key);
+        ref.update({'favoriteKey': favoriteRef.key});
+    };
+
+    const removeFromFavorites = () => {
+        const ref = firebase.ref('products/favoriteProducts').child(props.product.favoriteKey).remove();
+        console.log(ref);
+    };
+
     const handleFavoriteProduct = () => {
         if (props.type === "add") {
-            const favoriteRef = firebase.push('products/favoriteProducts', props.product);
-            props.product.favoriteKey = favoriteRef.key;
-            const ref = firebase.ref('products/favoriteProducts/' + favoriteRef.key);
-            ref.update({'favoriteKey': favoriteRef.key});
+            addToFavorites();
         } else {
+            removeFromFavorites();
         }
     };
 
@@ -54,7 +64,7 @@ export default function ProductCard(props) {
                 <div className="ui two buttons">
                     <Link to="/categorii/adaugare-cos"><div className="ui basic blue button" onClick={addToFirebaseCart}><i className="add to cart icon"/>Adauga
                         in cos</div></Link>
-                    <Link to="/categorii/adaugare-favorite"><div className={props.button} onClick={handleFavoriteProduct}><i className={props.icon}/>{props.text}</div></Link>
+                    <Link to={props.link}><div className={props.button} onClick={handleFavoriteProduct}><i className={props.icon}/>{props.text}</div></Link>
                 </div>
             </div>
         </div>

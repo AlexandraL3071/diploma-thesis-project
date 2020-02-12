@@ -14,7 +14,7 @@ export default function Favorites() {
     const favoriteProducts = useSelector(state => state.firebase.data.products.favoriteProducts);
 
     if (!isLoaded(favoriteProducts)) {
-        return <div>Loading favorite products...</div>
+        return <div>There are no favorite products</div>
     }
 
     if (isEmpty(favoriteProducts)) {
@@ -26,7 +26,7 @@ export default function Favorites() {
         return (
             <div>
                 {products.map(product => (
-                    <ProductCard product={product} type="remove" button="ui basic red button" icon="trash alternate outline icon" text="Sterge de la favorite"/>
+                    <ProductCard product={product} type="remove" button="ui basic red button" icon="trash alternate outline icon" text="Sterge de la favorite" link="/favorite"/>
                 ))}
             </div>
         )

@@ -33,11 +33,8 @@ export default function AllProducts() {
 
     const renderList = () => {
         if (searchValue === undefined) {
-            console.log("render all products");
             return renderProductsList(products);
         } else {
-            console.log("render search products");
-            console.log(searchedProducts(getSearchValue()));
             return renderSearchedProducts(searchedProducts(getSearchValue()))
         }
     };
@@ -46,13 +43,13 @@ export default function AllProducts() {
         return (
             <div>
                 {prod.fitness.map(product => (
-                    <ProductCard product={product} type="add" button="ui basic pink button" icon="heart icon" text="Adauga la favorite"/>
+                    <ProductCard product={product} type="add" button="ui basic pink button" icon="heart icon" text="Adauga la favorite" link="/categorii/adaugare-favorite"/>
                 ))}
                 {prod.tennis.map(product => (
-                    <ProductCard product={product} type="add" button="ui basic pink button" icon="heart icon" text="Adauga la favorite"/>
+                    <ProductCard product={product} type="add" button="ui basic pink button" icon="heart icon" text="Adauga la favorite" link="/categorii/adaugare-favorite"/>
                 ))}
                 {prod.others.map(product => (
-                    <ProductCard product={product} type="add" button="ui basic pink button" icon="heart icon" text="Adauga la favorite"/>
+                    <ProductCard product={product} type="add" button="ui basic pink button" icon="heart icon" text="Adauga la favorite" link="/categorii/adaugare-favorite"/>
                 ))}
             </div>
         )
@@ -62,7 +59,7 @@ export default function AllProducts() {
         return (
             <div>
                 {products.map(product => (
-                    <ProductCard product={product}/>
+                    <ProductCard product={product} type="add" button="ui basic pink button" icon="heart icon" text="Adauga la favorite" link="/categorii/adaugare-favorite"/>
                 ))}
             </div>
         )
