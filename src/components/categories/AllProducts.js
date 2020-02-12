@@ -46,13 +46,13 @@ export default function AllProducts() {
         return (
             <div>
                 {prod.fitness.map(product => (
-                    <ProductCard product={product}/>
+                    <ProductCard product={product} type="add" button="ui basic pink button" icon="heart icon" text="Adauga la favorite"/>
                 ))}
                 {prod.tennis.map(product => (
-                    <ProductCard product={product}/>
+                    <ProductCard product={product} type="add" button="ui basic pink button" icon="heart icon" text="Adauga la favorite"/>
                 ))}
                 {prod.others.map(product => (
-                    <ProductCard product={product}/>
+                    <ProductCard product={product} type="add" button="ui basic pink button" icon="heart icon" text="Adauga la favorite"/>
                 ))}
             </div>
         )

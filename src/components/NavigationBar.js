@@ -73,7 +73,16 @@ export default class NavigationBar extends Component {
                                 }}
                             </FirebaseContext.Consumer>
                         </Route>
-                        <Route path="/favorite"><Favorites/></Route>
+                        <Route path="/favorite">
+                            <FirebaseContext.Consumer>
+                                {firebase => {
+                                    return (
+                                        <Favorites firebase={firebase}
+                                        />
+                                    )
+                                }}
+                            </FirebaseContext.Consumer>
+                        </Route>
                         <Route path="/cos-cumparaturi"><Cart/></Route>
                         <Route path="/categorii/fitness">
                             <FirebaseContext.Consumer>

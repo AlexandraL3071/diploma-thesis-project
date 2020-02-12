@@ -11,7 +11,7 @@ export default function FitnessCategory() {
         return (
             <div>
                 {fitnessProducts.map(product => (
-                    <ProductCard product={product}/>
+                    <ProductCard product={product} type="add" button="ui basic pink button" icon="heart icon" text="Adauga la favorite"/>
                 ))}
             </div>
         )
