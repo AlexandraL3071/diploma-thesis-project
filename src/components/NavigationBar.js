@@ -11,6 +11,7 @@ import OthersCategory from "./categories/OthersCategory";
 import AllProducts from "./categories/AllProducts";
 import FirebaseContext from "./Firebase/Context";
 import AddToCart from "./AddToCart";
+import AddToFavorites from "./AddToFavorites";
 
 export default class NavigationBar extends Component {
     // TODO: a menu item which links to AllOrders -
@@ -106,6 +107,7 @@ export default class NavigationBar extends Component {
                         </Route>
 
                         <Route path="/categorii/adaugare-cos" component={AddToCart}/>
+                        <Route path="/categorii/adaugare-favorite" component={AddToFavorites}/>
 
                     </Switch>
                 </Segment>
