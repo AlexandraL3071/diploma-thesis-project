@@ -5,8 +5,6 @@ import React from "react";
 import {useSelector} from "react-redux";
 
 export default function OthersCategory() {
-    // TODO: add to cart and add to favorites buttons
-
     const othersProducts = useSelector(state => state.firebase.data.products.others);
 
     const renderList = () => {

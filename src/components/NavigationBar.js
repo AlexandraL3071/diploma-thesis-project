@@ -10,13 +10,9 @@ import TennisCategory from "./categories/TennisCategory";
 import OthersCategory from "./categories/OthersCategory";
 import AllProducts from "./categories/AllProducts";
 import FirebaseContext from "./Firebase/Context";
+import AddToCart from "./AddToCart";
 
 export default class NavigationBar extends Component {
-    // TODO: there should also be the search bar on the right of the
-    // menu bar and a button of search which links to /produse and passes
-    // products to be displayed via props (an approach viable until
-    // it proves useless)
-
     // TODO: a menu item which links to AllOrders -
     // a component which displays all of the orders placed (from products/orders or orders) and offers the ability to delete them
     // only if they have been placed with less than a number of hours/days before
@@ -108,6 +104,9 @@ export default class NavigationBar extends Component {
                                 }}
                             </FirebaseContext.Consumer>
                         </Route>
+
+                        <Route path="/categorii/adaugare-cos" component={AddToCart}/>
+
                     </Switch>
                 </Segment>
             </div>

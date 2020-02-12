@@ -42,4 +42,15 @@
     color: black;
 }
 
+#first-column {
+    position: relative;
+    max-width: 50%;
+}
+
+#second-column {
+    position: relative;
+    max-width: 50%;
+    float: right;
+}
+
 

@@ -5,8 +5,6 @@ import ProductCard from "../ProductCard";
 import {useSelector} from "react-redux";
 
 export default function TennisCategory() {
-    // TODO: add to cart and add to favorites buttons
-
     const tennisProducts = useSelector(state => state.firebase.data.products.tennis);
 
     const renderList = () => {
