@@ -4,6 +4,17 @@ import CartDetails from "./CartDetails";
 import '../../styles/CategoryCard.css'
 
 export default class Cart extends React.Component {
+    // TODO: there should be a button on each product from cart which removes it from
+    // the cart and from firebase as well
+
+    // TODO: the number of items of a particular product should be modifiable
+
+    // TODO: pass some info about cart products to CartSummary component to
+    // be displayed inside of it
+
+    // TODO: add functionality (a button) to place an order to firebase to orders or
+    // products/order
+
     constructor(props) {
         super(props);
         this.state = {products: []}

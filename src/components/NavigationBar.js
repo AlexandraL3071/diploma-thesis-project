@@ -12,6 +12,15 @@ import AllProducts from "./categories/AllProducts";
 import FirebaseContext from "./Firebase/Context";
 
 export default class NavigationBar extends Component {
+    // TODO: there should also be the search bar on the right of the
+    // menu bar and a button of search which links to /produse and passes
+    // products to be displayed via props (an approach viable until
+    // it proves useless)
+
+    // TODO: a menu item which links to AllOrders -
+    // a component which displays all of the orders placed (from products/orders or orders) and offers the ability to delete them
+    // only if they have been placed with less than a number of hours/days before
+    // the current date
     state = {activeItem: 'Categorii'};
 
     handleItemClick = (e, {name}) => this.setState({activeItem: name});
@@ -44,8 +53,10 @@ export default class NavigationBar extends Component {
                     /></Link>
                 </Menu>
 
-                <Switch>
-                    <Segment attached='bottom' inverted>
+                <div className="ui divider"/>
+
+                <Segment id="segment" attached='bottom' inverted>
+                    <Switch>
                         <Route exact path="/categorii">
                             <FirebaseContext.Consumer>
                                 {firebase => {
@@ -97,8 +108,8 @@ export default class NavigationBar extends Component {
                                 }}
                             </FirebaseContext.Consumer>
                         </Route>
-                    </Segment>
-                </Switch>
+                    </Switch>
+                </Segment>
             </div>
         )
     }

@@ -5,3 +5,7 @@
 #label {
     color: black;
 }
+
+.ui.inverted.card {
+    margin-bottom: 15px;
+}

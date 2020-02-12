@@ -3,6 +3,8 @@ import '../../styles/Cart.css'
 import '../../styles/ProductCard.css'
 
 export default class CartProductCard extends React.Component {
+    // TODO: add delete from cart button which deletes the corresponding product from firebase
+    // and connects to redux store (or implement a refetch for products from firebase
     render () {
         return (
             <div id="product-card" className="ui card">

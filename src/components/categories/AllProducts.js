@@ -3,10 +3,20 @@ import {Button} from "semantic-ui-react";
 import {Link} from "react-router-dom";
 import ProductCard from "../ProductCard";
 import {useSelector} from "react-redux";
-import {isLoaded, isEmpty} from "react-redux-firebase";
+import '../../styles/AllProducts.css'
+import {isLoaded, isEmpty, useFirebaseConnect} from "react-redux-firebase";
 
 export default function AllProducts() {
+
+    // TODO: each item should have an add to cart and add to favorites button
+    // which adds them to firebase to products/cart and products/favorites paths
+    useFirebaseConnect(
+        'products'
+    );
+
     const products = useSelector(state => state.firebase.data.products);
+
+    const searchValue = useSelector(state => state.firebase.data.products.searchValue);
 
     if (!isLoaded(products)) {
         return <div>Loading...</div>
@@ -16,25 +26,77 @@ export default function AllProducts() {
         return <div>Products List Is Empty</div>
     }
 
-    const renderProductsList = () => {
+    const getSearchValue = () => {
+        const arrayValue = Object.values(searchValue);
+        return arrayValue[0].searchValue
+    };
+
+    const renderList = () => {
+        if (searchValue === undefined) {
+            console.log("render all products");
+            return renderProductsList(products);
+        } else {
+            console.log("render search products");
+            console.log(searchedProducts(getSearchValue()));
+            return renderSearchedProducts(searchedProducts(getSearchValue()))
+        }
+    };
+
+    const renderProductsList = (prod) => {
         return (
             <div>
-                {products.fitness.map(product => (
+                {prod.fitness.map(product => (
                     <ProductCard product={product}/>
                 ))}
-                {products.tennis.map(product => (
+                {prod.tennis.map(product => (
                     <ProductCard product={product}/>
                 ))}
-                {products.others.map(product => (
+                {prod.others.map(product => (
                     <ProductCard product={product}/>
                 ))}
             </div>
         )
     };
 
+    const renderSearchedProducts = (products) => {
+        return (
+            <div>
+                {products.map(product => (
+                    <ProductCard product={product}/>
+                ))}
+            </div>
+        )
+    };
+
+    const searchedProducts = (searchValue) => {
+        let searchedProducts = [];
+
+        products.fitness.map(product => {
+            if (product.name === searchValue) {
+                searchedProducts = [...searchedProducts, product];
+            }
+        });
+
+        products.tennis.map(product => {
+            if (product.name === searchValue) {
+                searchedProducts = [...searchedProducts, product];
+            }
+        });
+
+        products.others.map(product => {
+            if (product.name === searchValue) {
+                searchedProducts = [...searchedProducts, product];
+            }
+        });
+
+        return searchedProducts;
+    };
+
     return (
-        <div>
-            {renderProductsList()}
+        <div id="view">
+            <div id="view">
+                {renderList()}
+            </div>
             <Link to="cos-cumparaturi"><Button inverted>Vizualizati cosul de cumparaturi</Button></Link>
         </div>
     )
