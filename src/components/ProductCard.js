@@ -23,8 +23,7 @@ export default function ProductCard(props) {
     };
 
     const removeFromFavorites = () => {
-        const ref = firebase.ref('products/favoriteProducts').child(props.product.favoriteKey).remove();
-        console.log(ref);
+        return firebase.ref('products/favoriteProducts').child(props.product.favoriteKey).remove();
     };
 
     const handleFavoriteProduct = () => {

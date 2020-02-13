@@ -5,9 +5,7 @@ import {useSelector} from "react-redux";
 import {isLoaded, useFirebase, useFirebaseConnect} from "react-redux-firebase";
 
 export default function AllCategories() {
-    useFirebaseConnect(
-        'products'
-    );
+    useFirebaseConnect('products');
 
     const products = useSelector(state => state.firebase.data.products);
 

@@ -4,12 +4,7 @@ import {useSelector} from "react-redux";
 import ProductCard from "./ProductCard";
 
 export default function Favorites() {
-    // TODO: here we should have a button which retrieves the favorites saed to firebase
-    // to products/favorites path and also one which removes a favorite from this list and
-    // from firebase as well
-    useFirebaseConnect(
-        'products'
-    );
+    useFirebaseConnect('products');
 
     const favoriteProducts = useSelector(state => state.firebase.data.products.favoriteProducts);
 
