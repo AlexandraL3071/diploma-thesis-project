@@ -6,8 +6,6 @@ import {useSelector} from "react-redux";
 import {useFirebaseConnect} from "react-redux-firebase";
 
 export default function Cart() {
-    // TODO: the number of items of a particular product should be modifiable
-
     // TODO: pass some info about cart products to CartSummary component to
     // be displayed inside of it
 

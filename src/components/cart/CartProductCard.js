@@ -14,6 +14,11 @@ export default function CartProductCard(props) {
         return props.product.price*props.product.quantity;
     };
 
+    const handleChangeQuantity = (event) => {
+        const ref = firebase.ref('products/cartProducts/' + props.product.cartKey);
+        ref.update({'quantity': event.target.value});
+    };
+
     return (
         <div id="product-card" className="ui card">
             <div className="content">
@@ -22,8 +27,8 @@ export default function CartProductCard(props) {
                         <div>{props.product.name}</div>
                     </div>
                     <div id="quantity-column" className="fluid column">
-                        <div className="ui inverted fluid input"><input id="ID" type="number"
-                                                                        value={props.product.quantity}/></div>
+                        <div className="ui inverted fluid input"><input id="quantity" type="number" min="1"
+                                                                        value={props.product.quantity} onChange={handleChangeQuantity}/></div>
                     </div>
                     <div id="price-column" className="fluid column">
                         <div>{price()} RON</div>
