@@ -20,9 +20,12 @@ export default function Favorites() {
         const products = Object.values(favoriteProducts);
         return (
             <div>
-                {products.map(product => (
-                    <ProductCard product={product} type="remove" button="ui basic red button" icon="trash alternate outline icon" text="Sterge de la favorite" link="/favorite"/>
-                ))}
+                {
+                    products.map(product => (
+                        <ProductCard product={product} type="remove" button="ui basic red button"
+                                     icon="trash alternate outline icon" text="Sterge de la favorite" link="/favorite"/>
+                    ))
+                }
             </div>
         )
     };

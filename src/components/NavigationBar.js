@@ -13,6 +13,7 @@ import FirebaseContext from "./Firebase/Context";
 import AddToCart from "./AddToCart";
 import AddToFavorites from "./AddToFavorites";
 import PlaceOrder from "./PlaceOrder";
+import AllOrders from "./orders/AllOrders";
 
 export default class NavigationBar extends Component {
     // TODO: a menu item which links to AllOrders -
@@ -53,6 +54,11 @@ export default class NavigationBar extends Component {
                         active={activeItem === 'Cosul meu'}
                         onClick={this.handleItemClick}
                     /></Link>
+                    <Link to="/comenzi"><Menu.Item
+                        name='Comenzi plasate'
+                        active={activeItem === 'Comenzi plasate'}
+                        onClick={this.handleItemClick}
+                    /></Link>
                 </Menu>
 
                 <div className="ui divider"/>
@@ -89,6 +95,7 @@ export default class NavigationBar extends Component {
                             </FirebaseContext.Consumer>
                         </Route>
                         <Route exact path="/cos-cumparaturi"><Cart/></Route>
+                        <Route exact path="/comenzi"><AllOrders/></Route>
                         <Route exact path="/categorii/fitness">
                             <FirebaseContext.Consumer>
                                 {firebase => {
@@ -122,7 +129,7 @@ export default class NavigationBar extends Component {
 
                         <Route exact path="/categorii/adaugare-cos" component={AddToCart}/>
                         <Route exact path="/categorii/adaugare-favorite" component={AddToFavorites}/>
-                        <Route exact path="/categorii/plaseaza-comanda" component={PlaceOrder}/>
+                        <Route exact path="/cos-cumparaturi/plaseaza-comanda" component={PlaceOrder}/>
 
                     </Switch>
                 </Segment>
