@@ -26,7 +26,7 @@ export default function Cart() {
         <div className="outer">
             <div className="two column stackable ui grid transition visible">
                 <div id="smaller-column" className="column">
-                    <CartSummary/>
+                    <CartSummary products={products()}/>
                 </div>
                 <div id="larger-column" className="column">
                     <CartDetails products={products()}/>
