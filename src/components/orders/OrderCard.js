@@ -1,5 +1,6 @@
 import React from 'react'
 import {useFirebase} from "react-redux-firebase";
+import {canBeCancelled} from "../../Utils";
 
 export default function OrderCard(props) {
     const firebase = useFirebase();
@@ -28,10 +29,6 @@ export default function OrderCard(props) {
         const date = props.order.orderDate.split("T")[0];
         const auxDate = date.split("-");
         return auxDate[2] + "." + auxDate[1] + "." + auxDate[0];
-    };
-
-    const canBeCancelled = () => {
-        return true
     };
 
     const cancelOrder = () => {
@@ -67,7 +64,7 @@ export default function OrderCard(props) {
                 </div>
             </div>
             {
-                canBeCancelled() === true ? <div className="ui bottom attached button" onClick={cancelOrder}>
+                canBeCancelled(props.order.orderDate) === true ? <div className="ui bottom attached button" onClick={cancelOrder}>
                     <i className="trash alternate outline icon"/>
                     Anuleaza comanda
                 </div> : <div/>
