@@ -7,8 +7,8 @@ export default function AddToFavorites() {
     const actions = () => {
         return (
             <React.Fragment>
-                <Link to="/categorii" className="ui button" id="ok">OK</Link>
-                <Link to="/favorite" className="ui button">Vizualizati produsele favorite</Link>
+                <Link to="/categorii" className="ui secondary button" id="ok">OK</Link>
+                <Link to="/favorite" className="ui secondary button">Vizualizati produsele favorite</Link>
             </React.Fragment>
         )
     };

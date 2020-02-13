@@ -12,12 +12,17 @@ import AllProducts from "./categories/AllProducts";
 import FirebaseContext from "./Firebase/Context";
 import AddToCart from "./AddToCart";
 import AddToFavorites from "./AddToFavorites";
+import PlaceOrder from "./PlaceOrder";
 
 export default class NavigationBar extends Component {
     // TODO: a menu item which links to AllOrders -
     // a component which displays all of the orders placed (from products/orders or orders) and offers the ability to delete them
     // only if they have been placed with less than a number of hours/days before
     // the current date
+
+    // TODO: put the active element on firebase and manage it via react redux firebase
+    // and change it whenever the route is changed
+
     state = {activeItem: 'Categorii'};
 
     handleItemClick = (e, {name}) => this.setState({activeItem: name});
@@ -73,7 +78,7 @@ export default class NavigationBar extends Component {
                                 }}
                             </FirebaseContext.Consumer>
                         </Route>
-                        <Route path="/favorite">
+                        <Route exact path="/favorite">
                             <FirebaseContext.Consumer>
                                 {firebase => {
                                     return (
@@ -83,8 +88,8 @@ export default class NavigationBar extends Component {
                                 }}
                             </FirebaseContext.Consumer>
                         </Route>
-                        <Route path="/cos-cumparaturi"><Cart/></Route>
-                        <Route path="/categorii/fitness">
+                        <Route exact path="/cos-cumparaturi"><Cart/></Route>
+                        <Route exact path="/categorii/fitness">
                             <FirebaseContext.Consumer>
                                 {firebase => {
                                     return (
@@ -94,7 +99,7 @@ export default class NavigationBar extends Component {
                                 }}
                             </FirebaseContext.Consumer>
                         </Route>
-                        <Route path="/categorii/tenis">
+                        <Route exact path="/categorii/tenis">
                             <FirebaseContext.Consumer>
                                 {firebase => {
                                     return (
@@ -104,7 +109,7 @@ export default class NavigationBar extends Component {
                                 }}
                             </FirebaseContext.Consumer>
                         </Route>
-                        <Route path="/categorii/altele">
+                        <Route exact path="/categorii/altele">
                             <FirebaseContext.Consumer>
                                 {firebase => {
                                     return (
@@ -115,8 +120,9 @@ export default class NavigationBar extends Component {
                             </FirebaseContext.Consumer>
                         </Route>
 
-                        <Route path="/categorii/adaugare-cos" component={AddToCart}/>
-                        <Route path="/categorii/adaugare-favorite" component={AddToFavorites}/>
+                        <Route exact path="/categorii/adaugare-cos" component={AddToCart}/>
+                        <Route exact path="/categorii/adaugare-favorite" component={AddToFavorites}/>
+                        <Route exact path="/categorii/plaseaza-comanda" component={PlaceOrder}/>
 
                     </Switch>
                 </Segment>
