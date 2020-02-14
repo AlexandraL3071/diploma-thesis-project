@@ -10,8 +10,8 @@ export const getMonthAsNumber = (month) => {
 };
 
 export const canBeCancelled = (date) => {
-     const currentDate = (new Date()).toString().split(" ");
-     const orderDate = date.split("T")[0].split("-");
+     const currentDate = (new Date()).toString().split(' ');
+     const orderDate = date.split('T')[0].split('-');
      const currentMonth = getMonthAsNumber(currentDate[1]);
 
      if (currentDate[3] > orderDate[0]) {

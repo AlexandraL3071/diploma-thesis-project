@@ -1,9 +1,9 @@
 import React from 'react';
-import {useSelector} from "react-redux";
-import {useFirebaseConnect} from "react-redux-firebase";
-import OrderCard from "./OrderCard";
+import {useSelector} from 'react-redux';
+import {useFirebaseConnect} from 'react-redux-firebase';
+import OrderCard from './OrderCard';
 
-export default function AllOrders(props) {
+export default function AllOrders() {
     let orderNumber = 1;
     useFirebaseConnect('products');
 
@@ -22,6 +22,6 @@ export default function AllOrders(props) {
     };
 
     return (
-        orders === undefined ? <div className="ui hearder">Nu a fost plasata nicio comanda</div> : renderAllOrders()
+        orders === undefined ? <div className='ui hearder'>Nu a fost plasata nicio comanda</div> : renderAllOrders()
     )
 }

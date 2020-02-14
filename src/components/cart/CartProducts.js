@@ -1,6 +1,6 @@
 import React from 'react'
 import '../../styles/Cart.css'
-import CartProductCard from "./CartProductCard";
+import CartProductCard from './CartProductCard';
 
 export default function CartProducts(props) {
 

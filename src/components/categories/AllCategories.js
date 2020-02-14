@@ -1,8 +1,8 @@
 import React from 'react'
-import {Link} from "react-router-dom";
-import {CategoryCard} from "../CategoryCard";
-import {useSelector} from "react-redux";
-import {isLoaded, useFirebase, useFirebaseConnect} from "react-redux-firebase";
+import {Link} from 'react-router-dom';
+import {CategoryCard} from '../CategoryCard';
+import {useSelector} from 'react-redux';
+import {isLoaded, useFirebase, useFirebaseConnect} from 'react-redux-firebase';
 
 export default function AllCategories() {
     useFirebaseConnect('products');
@@ -15,16 +15,17 @@ export default function AllCategories() {
         return <div>Loading...</div>
     }
 
-    const deleteSearchValue = () => {
-        firebase.ref('products/searchValue').remove();
+    const clearSearchValue = () => {
+        const ref = firebase.ref('products');
+        ref.update({'searchValue': ''});
     };
 
     return (
         <div>
-            <Link to="/categorii/fitness"><CategoryCard category="fitness"/></Link>
-            <Link to="/categorii/tenis"><CategoryCard category="tenis"/></Link>
-            <Link to="/categorii/altele"><CategoryCard category="altele"/></Link>
-            {deleteSearchValue()}
+            <Link to='/categorii/fitness'><CategoryCard category='fitness'/></Link>
+            <Link to='/categorii/tenis'><CategoryCard category='tenis'/></Link>
+            <Link to='/categorii/altele'><CategoryCard category='altele'/></Link>
+            {clearSearchValue()}
         </div>
     )
 }

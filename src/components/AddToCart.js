@@ -1,14 +1,14 @@
 import React from 'react'
-import {Link} from "react-router-dom";
-import Modal from "./Modal";
+import {Link} from 'react-router-dom';
+import Modal from './Modal';
 import '../styles/Modal.css'
 
 export default function AddToCart() {
     const actions = () => {
         return (
             <React.Fragment>
-                <Link to="/categorii" className="ui secondary button" id="ok">OK</Link>
-                <Link to="/cos-cumparaturi" className="ui secondary button">Vizualizati cosul de cumparaturi</Link>
+                <Link to='/categorii' className='ui secondary button' id='ok'>OK</Link>
+                <Link to='/cos-cumparaturi' className='ui secondary button'>Vizualizati cosul de cumparaturi</Link>
             </React.Fragment>
         )
     };
@@ -19,7 +19,7 @@ export default function AddToCart() {
 
     return (
         <Modal
-            title="Produs adaugat"
+            title='Produs adaugat'
             content={renderContent()}
             actions={actions()}
         />

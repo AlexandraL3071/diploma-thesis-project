@@ -1,6 +1,6 @@
 import React from 'react'
-import {useFirebase} from "react-redux-firebase";
-import {canBeCancelled} from "../../Utils";
+import {useFirebase} from 'react-redux-firebase';
+import {canBeCancelled} from '../../Utils';
 
 export default function OrderCard(props) {
     const firebase = useFirebase();
@@ -26,9 +26,9 @@ export default function OrderCard(props) {
     };
 
     const orderDate = () => {
-        const date = props.order.orderDate.split("T")[0];
-        const auxDate = date.split("-");
-        return auxDate[2] + "." + auxDate[1] + "." + auxDate[0];
+        const date = props.order.orderDate.split('T')[0];
+        const auxDate = date.split('-');
+        return auxDate[2] + '.' + auxDate[1] + '.' + auxDate[0];
     };
 
     const cancelOrder = () => {
@@ -36,26 +36,26 @@ export default function OrderCard(props) {
     };
 
     return (
-        <div className="ui card">
-            <div className="content">
-                <div className="header">Comanda nr {props.orderNumber}</div>
+        <div className='ui card'>
+            <div className='content'>
+                <div className='header'>Comanda nr {props.orderNumber}</div>
             </div>
-            <div className="content">
-                <h4 className="ui sub header">Detaliile comenzii</h4>
+            <div className='content'>
+                <h4 className='ui sub header'>Detaliile comenzii</h4>
             </div>
-            <div className="event">
-                <div className="content">
-                    <div className="summary">
-                        <div className="description">
-                            <div style={{marginLeft: "10px", color: "black"}}>
-                                Ati comandat un numar de: {totalNumberOfProducts()} {totalNumberOfProducts() === 1 ? "produs" : "produse"}
+            <div className='event'>
+                <div className='content'>
+                    <div className='summary'>
+                        <div className='description'>
+                            <div style={{marginLeft: '10px', color: 'black'}}>
+                                Ati comandat un numar de: {totalNumberOfProducts()} {totalNumberOfProducts() === 1 ? 'produs' : 'produse'}
                             </div>
                             <br/>
-                            <div style={{marginLeft: "10px", color: "black"}}>
+                            <div style={{marginLeft: '10px', color: 'black'}}>
                                 Valoarea totala a comenzii: {totalPrice()} RON
                             </div>
                             <br/>
-                            <div style={{marginLeft: "10px", color: "black"}}>
+                            <div style={{marginLeft: '10px', color: 'black'}}>
                                 Data plasarii comenzii: {orderDate()}
                             </div>
                             <br/>
@@ -64,8 +64,8 @@ export default function OrderCard(props) {
                 </div>
             </div>
             {
-                canBeCancelled(props.order.orderDate) === true ? <div className="ui bottom attached button" onClick={cancelOrder}>
-                    <i className="trash alternate outline icon"/>
+                canBeCancelled(props.order.orderDate) === true ? <div className='ui bottom attached button' onClick={cancelOrder}>
+                    <i className='trash alternate outline icon'/>
                     Anuleaza comanda
                 </div> : <div/>
             }
