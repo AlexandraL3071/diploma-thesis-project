@@ -9,6 +9,7 @@ export default function SearchBar() {
     const [searchName, setSearchName] = useState('');
 
     const firebase = useFirebase();
+
     const writeToFirebase = () => {
         const ref = firebase.ref(PRODUCTS_REF);
         ref.update({'searchValue': searchName.toLowerCase()});

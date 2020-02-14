@@ -1,8 +1,8 @@
 import React from 'react'
 import {isEmpty, isLoaded, useFirebaseConnect} from 'react-redux-firebase';
 import {useSelector} from 'react-redux';
-import ProductCard from './ProductCard';
-import {FAVORITE_LINK, PRODUCTS_REF} from '../utils/linkNames';
+import ProductCard from '../categories/ProductCard';
+import {FAVORITE_LINK, PRODUCTS_REF} from '../../utils/linkNames';
 
 export default function Favorites() {
     useFirebaseConnect(PRODUCTS_REF);

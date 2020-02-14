@@ -2,16 +2,14 @@ import React, {Component} from 'react'
 import {Menu, Segment} from 'semantic-ui-react'
 import {Link} from 'react-router-dom';
 import AllCategories from './categories/AllCategories';
-import Favorites from './Favorites';
+import Favorites from './favorites/Favorites';
 import {Route, Switch} from 'react-router';
 import Cart from './cart/Cart';
 import FitnessCategory from './categories/FitnessCategory';
 import TennisCategory from './categories/TennisCategory';
 import OthersCategory from './categories/OthersCategory';
 import AllProducts from './categories/AllProducts';
-import AddToCart from './AddToCart';
-import AddToFavorites from './AddToFavorites';
-import PlaceOrder from './PlaceOrder';
+import ConfirmationModal from './ConfirmationModal';
 import AllOrders from './orders/AllOrders';
 import {
     ADD_CART_LINK,
@@ -77,9 +75,24 @@ export default class NavigationBar extends Component {
                         <Route exact path={FITNESS_CATEGORY_LINK}><FitnessCategory/></Route>
                         <Route exact path={TENNIS_CATEGORY_LINK}><TennisCategory/></Route>
                         <Route exact path={OTHERS_CATEGORY_LINK}><OthersCategory/></Route>
-                        <Route exact path={ADD_CART_LINK} component={AddToCart}/>
-                        <Route exact path={ADD_FAVORITE_LINK} component={AddToFavorites}/>
-                        <Route exact path={PLACE_ORDER_LINK} component={PlaceOrder}/>
+                        <Route exact path={ADD_CART_LINK}><ConfirmationModal okLink={CATEGORIES_LINK} goLink={CART_LINK}
+                                                                             okText='OK'
+                                                                             buttonText='Vizualizati cosul de cumparaturi'
+                                                                             content='Produsul a fost adaugat in cos!'
+                                                                             title='Produs adaugat'/>
+                        </Route>
+                        <Route exact path={ADD_FAVORITE_LINK}><ConfirmationModal okLink={CATEGORIES_LINK} goLink={FAVORITE_LINK}
+                                                                                 okText='OK'
+                                                                                 buttonText='Vizualizati produsele favorite'
+                                                                                 content='Ati marcat produsul ca fiind favorit!'
+                                                                                 title='Produs favorit'/>
+                        </Route>
+                        <Route exact path={PLACE_ORDER_LINK}><ConfirmationModal okLink={PRODUCTS_LINK} goLink={CART_LINK}
+                                                                                okText='Vezi si alte produse'
+                                                                                buttonText='Inapoi la cosul de cumparaturi'
+                                                                                content='Comanda a fost plasata!'
+                                                                                title='Comanda plasata'/>
+                        </Route>
 
                     </Switch>
                 </Segment>

@@ -1,4 +1,4 @@
-import ProductCard from '../ProductCard';
+import ProductCard from './ProductCard';
 import {Link} from 'react-router-dom';
 import {Button} from 'semantic-ui-react';
 import React from 'react';

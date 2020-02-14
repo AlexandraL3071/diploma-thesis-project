@@ -1,7 +1,7 @@
 import React from 'react'
 import {Button} from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
-import ProductCard from '../ProductCard';
+import ProductCard from './ProductCard';
 import {useSelector} from 'react-redux';
 import {ADD_FAVORITE_LINK, CATEGORIES_LINK} from "../../utils/linkNames";
 

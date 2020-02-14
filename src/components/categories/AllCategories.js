@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
-import {CategoryCard} from '../CategoryCard';
+import {CategoryCard} from './CategoryCard';
 import {useSelector} from 'react-redux';
 import {isLoaded, useFirebase, useFirebaseConnect} from 'react-redux-firebase';
 import {

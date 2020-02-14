@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/CategoryCard.css'
+import '../../styles/CategoryCard.css'
 
 export class CategoryCard extends React.Component {
     constructor(props) {

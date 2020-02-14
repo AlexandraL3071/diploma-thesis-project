@@ -2,25 +2,24 @@ import React from 'react'
 import {Link} from 'react-router-dom';
 import Modal from './Modal';
 import '../styles/Modal.css'
-import {CART_LINK, PRODUCTS_LINK} from "../utils/linkNames";
 
-export default function PlaceOrder() {
+export default function ConfirmationModal(props) {
     const actions = () => {
         return (
             <React.Fragment>
-                <Link to={PRODUCTS_LINK} className='ui secondary button' id='ok'>Vezi si alte produse</Link>
-                <Link to={CART_LINK} className='ui secondary button'>Inapoi la cosul de cumparaturi</Link>
+                <Link to={props.okLink} className='ui secondary button' id='ok'>{props.okText}</Link>
+                <Link to={props.goLink} className='ui secondary button'>{props.buttonText}</Link>
             </React.Fragment>
         )
     };
 
     const renderContent = () => {
-        return 'Comanda a fost plasata!';
+        return props.content;
     };
 
     return (
         <Modal
-            title='Comanda plasata'
+            title={props.title}
             content={renderContent()}
             actions={actions()}
         />

@@ -22,4 +22,30 @@ export const canBeCancelled = (date) => {
          return false;
      }
      return true
- };
+};
+
+export const totalPrice = (products) => {
+    let totalPrice = 0;
+    products.map(product => {
+        if (product.quantity !== undefined && product.price !== undefined) {
+            totalPrice += parseInt(product.price) * parseInt(product.quantity)
+        }
+    });
+    return totalPrice
+};
+
+export const totalNumberOfProducts = (products) => {
+    let totalNumberOfProducts = 0;
+    products.map(product => {
+        if (product.quantity !==  undefined) {
+            totalNumberOfProducts += parseInt(product.quantity)
+        }
+    });
+    return totalNumberOfProducts
+};
+
+export const orderDate = (orderDate) => {
+    const date = orderDate.split('T')[0];
+    const auxDate = date.split('-');
+    return auxDate[2] + '.' + auxDate[1] + '.' + auxDate[0];
+};

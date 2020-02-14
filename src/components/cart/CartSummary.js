@@ -1,24 +1,9 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
 import {PRODUCTS_LINK} from "../../utils/linkNames";
+import {totalNumberOfProducts, totalPrice} from "../../utils/Utils";
 
 export default function CartSummary(props) {
-    const totalNumberOfProducts = () => {
-        let totalNumberOfProducts = 0;
-        props.products.map(product => {
-            totalNumberOfProducts += parseInt(product.quantity)
-        });
-        return totalNumberOfProducts
-    };
-
-    const totalPrice = () => {
-        let totalPrice = 0;
-        props.products.map(product => {
-            totalPrice += parseInt(product.price)*parseInt(product.quantity)
-        });
-        return totalPrice
-    };
-
     return (
         <div className='ui fluid card'>
             <div className='content'>
@@ -32,11 +17,11 @@ export default function CartSummary(props) {
                     <div className='summary'>
                         <div className='description'>
                             <div style={{marginLeft: '10px', color: 'black'}}>
-                                Pana acum aveti: {totalNumberOfProducts()} produse
+                                Pana acum aveti: {totalNumberOfProducts(props.products)} produse
                             </div>
                             <br/>
                             <div style={{marginLeft: '10px', color: 'black'}}>
-                                Pret total: {totalPrice()} RON
+                                Pret total: {totalPrice(props.products)} RON
                             </div>
                             <br/>
                         </div>

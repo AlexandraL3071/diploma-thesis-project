@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import {useFirebase} from 'react-redux-firebase';
-import '../styles/CategoryCard.css'
+import '../../styles/CategoryCard.css'
 import {Link} from 'react-router-dom';
-import {ADD_CART_LINK, CART_PRODUCTS_REF, FAVORITE_PRODUCTS_REF} from "../utils/linkNames";
+import {ADD_CART_LINK, CART_PRODUCTS_REF, FAVORITE_PRODUCTS_REF} from "../../utils/linkNames";
 
 export default function ProductCard(props) {
    const [selectedQuantity, setSelectedQuantity] = useState(1);

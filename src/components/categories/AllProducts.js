@@ -1,7 +1,7 @@
 import React from 'react'
 import {Button} from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
-import ProductCard from '../ProductCard';
+import ProductCard from './ProductCard';
 import {useSelector} from 'react-redux';
 import '../../styles/AllProducts.css'
 import {isLoaded, isEmpty, useFirebaseConnect} from 'react-redux-firebase';
@@ -31,23 +31,7 @@ export default function AllProducts() {
         }
     };
 
-    const renderProductsList = (prod) => {
-        return (
-            <div>
-                {prod.fitness.map(product => (
-                    <ProductCard product={product} type='add' button='ui basic pink button' icon='heart icon' text='Adauga la favorite' link={ADD_FAVORITE_LINK}/>
-                ))}
-                {prod.tennis.map(product => (
-                    <ProductCard product={product} type='add' button='ui basic pink button' icon='heart icon' text='Adauga la favorite' link={ADD_FAVORITE_LINK}/>
-                ))}
-                {prod.others.map(product => (
-                    <ProductCard product={product} type='add' button='ui basic pink button' icon='heart icon' text='Adauga la favorite' link={ADD_FAVORITE_LINK}/>
-                ))}
-            </div>
-        )
-    };
-
-    const renderSearchedProducts = (products) => {
+    const renderProductCards = (products) => {
         return (
             <div>
                 {products.map(product => (
@@ -57,26 +41,40 @@ export default function AllProducts() {
         )
     };
 
+    const renderProductsList = (prod) => {
+        return (
+            <div>
+                {renderProductCards(prod.fitness)}
+                {renderProductCards(prod.tennis)}
+                {renderProductCards(prod.others)}
+            </div>
+        )
+    };
+
+    const renderSearchedProducts = (products) => {
+        return (
+            <div>
+                {renderProductCards(products)}
+            </div>
+        )
+    };
+
+    const searchProductsByName = (products, searchedProducts, searchValue) => {
+        products.map(product => {
+            if (product.name.toLowerCase().includes(searchValue)) {
+                searchedProducts = [...searchedProducts, product];
+            }
+        });
+        return searchedProducts;
+    };
+
     const searchedProducts = (searchValue) => {
         let searchedProducts = [];
 
-        products.fitness.map(product => {
-            if (product.name.toLowerCase().includes(searchValue)) {
-                searchedProducts = [...searchedProducts, product];
-            }
-        });
+        searchedProducts = searchProductsByName(products.fitness, searchedProducts, searchValue);
+        searchedProducts = searchProductsByName(products.tennis, searchedProducts, searchValue);
+        searchedProducts = searchProductsByName(products.others, searchedProducts, searchValue);
 
-        products.tennis.map(product => {
-            if (product.name.toLowerCase().includes(searchValue)) {
-                searchedProducts = [...searchedProducts, product];
-            }
-        });
-
-        products.others.map(product => {
-            if (product.name.toLowerCase().includes(searchValue)) {
-                searchedProducts = [...searchedProducts, product];
-            }
-        });
         return searchedProducts;
     };
 
