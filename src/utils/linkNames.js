@@ -1,8 +1,8 @@
 export const BASENAME_LINK = '/sportsMAG';
 export const CATEGORIES_LINK = '/categorii';
 export const FITNESS_CATEGORY_LINK = '/categorii/fitness';
-export const TENNIS_CATEGORY_LINK = '/categorii/tennis';
-export const OTHERS_CATEGORY_LINK = '/categorii/others';
+export const TENNIS_CATEGORY_LINK = '/categorii/tenis';
+export const OTHERS_CATEGORY_LINK = '/categorii/altele';
 export const PRODUCTS_LINK = '/produse';
 export const FAVORITE_LINK = '/favorite';
 export const ADD_FAVORITE_LINK = '/categorii/adaugare-favorite';

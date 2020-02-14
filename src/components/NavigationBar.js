@@ -23,9 +23,6 @@ import {
 } from "../utils/linkNames";
 
 export default class NavigationBar extends Component {
-    // TODO: put the active element on firebase and manage it via react redux firebase
-    // and change it whenever the route is changed
-
     state = {activeItem: 'Categorii'};
 
     handleItemClick = (e, {name}) => this.setState({activeItem: name});
