@@ -2,12 +2,13 @@ import React from 'react'
 import '../../styles/Cart.css'
 import '../../styles/ProductCard.css'
 import {useFirebase} from 'react-redux-firebase';
+import {CART_PRODUCTS_REF} from "../../utils/linkNames";
 
 export default function CartProductCard(props) {
     const firebase = useFirebase();
 
     const deleteFromCart = () => {
-        return firebase.ref('products/cartProducts').child(props.product.cartKey).remove();
+        return firebase.ref(CART_PRODUCTS_REF).child(props.product.cartKey).remove();
     };
 
     const price = () => {
@@ -15,7 +16,7 @@ export default function CartProductCard(props) {
     };
 
     const handleChangeQuantity = (event) => {
-        const ref = firebase.ref('products/cartProducts/' + props.product.cartKey);
+        const ref = firebase.ref(CART_PRODUCTS_REF + props.product.cartKey);
         ref.update({'quantity': event.target.value});
     };
 

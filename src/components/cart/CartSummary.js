@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
+import {PRODUCTS_LINK} from "../../utils/linkNames";
 
 export default function CartSummary(props) {
     const totalNumberOfProducts = () => {
@@ -42,7 +43,7 @@ export default function CartSummary(props) {
                     </div>
                 </div>
             </div>
-            <Link to='/produse'>
+            <Link to={PRODUCTS_LINK}>
                 <div className='ui bottom attached button'>
                     <i className='add icon'/>
                     Continua cumparaturile

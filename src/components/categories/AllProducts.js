@@ -5,10 +5,11 @@ import ProductCard from '../ProductCard';
 import {useSelector} from 'react-redux';
 import '../../styles/AllProducts.css'
 import {isLoaded, isEmpty, useFirebaseConnect} from 'react-redux-firebase';
+import {ADD_FAVORITE_LINK, CART_LINK, PRODUCTS_REF} from "../../utils/linkNames";
 
 export default function AllProducts() {
 
-    useFirebaseConnect('products');
+    useFirebaseConnect(PRODUCTS_REF);
 
     const products = useSelector(state => state.firebase.data.products);
 
@@ -34,13 +35,13 @@ export default function AllProducts() {
         return (
             <div>
                 {prod.fitness.map(product => (
-                    <ProductCard product={product} type='add' button='ui basic pink button' icon='heart icon' text='Adauga la favorite' link='/categorii/adaugare-favorite'/>
+                    <ProductCard product={product} type='add' button='ui basic pink button' icon='heart icon' text='Adauga la favorite' link={ADD_FAVORITE_LINK}/>
                 ))}
                 {prod.tennis.map(product => (
-                    <ProductCard product={product} type='add' button='ui basic pink button' icon='heart icon' text='Adauga la favorite' link='/categorii/adaugare-favorite'/>
+                    <ProductCard product={product} type='add' button='ui basic pink button' icon='heart icon' text='Adauga la favorite' link={ADD_FAVORITE_LINK}/>
                 ))}
                 {prod.others.map(product => (
-                    <ProductCard product={product} type='add' button='ui basic pink button' icon='heart icon' text='Adauga la favorite' link='/categorii/adaugare-favorite'/>
+                    <ProductCard product={product} type='add' button='ui basic pink button' icon='heart icon' text='Adauga la favorite' link={ADD_FAVORITE_LINK}/>
                 ))}
             </div>
         )
@@ -50,7 +51,7 @@ export default function AllProducts() {
         return (
             <div>
                 {products.map(product => (
-                    <ProductCard product={product} type='add' button='ui basic pink button' icon='heart icon' text='Adauga la favorite' link='/categorii/adaugare-favorite'/>
+                    <ProductCard product={product} type='add' button='ui basic pink button' icon='heart icon' text='Adauga la favorite' link={ADD_FAVORITE_LINK}/>
                 ))}
             </div>
         )
@@ -84,7 +85,7 @@ export default function AllProducts() {
             <div id='view'>
                 {renderList()}
             </div>
-            <Link to='cos-cumparaturi'><Button inverted>Vizualizati cosul de cumparaturi</Button></Link>
+            <Link to={CART_LINK}><Button inverted>Vizualizati cosul de cumparaturi</Button></Link>
         </div>
     )
 }

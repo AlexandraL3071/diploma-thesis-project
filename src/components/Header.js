@@ -1,6 +1,5 @@
 import React from 'react'
 import SearchBar from './SearchBar';
-import FirebaseContext from './Firebase/Context';
 
 class Header extends React.Component {
     render() {
@@ -12,15 +11,7 @@ class Header extends React.Component {
                             <h3 className='ui header'>e-SPORTS-shopping</h3>
                         </div>
                         <div className='four wide column'>
-                            <FirebaseContext.Consumer>
-                                {firebase => {
-                                    return (
-                                        <SearchBar firebase={firebase}
-                                        />
-                                    )
-                                }}
-
-                            </FirebaseContext.Consumer>
+                            <SearchBar/>
                         </div>
                     </div>
                 </div>

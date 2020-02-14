@@ -1,6 +1,7 @@
 import React from 'react'
 import {useFirebase} from 'react-redux-firebase';
-import {canBeCancelled} from '../../Utils';
+import {canBeCancelled} from '../../utils/Utils';
+import {ORDERS_REF} from "../../utils/linkNames";
 
 export default function OrderCard(props) {
     const firebase = useFirebase();
@@ -32,7 +33,7 @@ export default function OrderCard(props) {
     };
 
     const cancelOrder = () => {
-        return firebase.ref('products/orders').child(props.order.orderKey).remove();
+        return firebase.ref(ORDERS_REF).child(props.order.orderKey).remove();
     };
 
     return (

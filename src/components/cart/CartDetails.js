@@ -3,18 +3,19 @@ import CartProducts from './CartProducts';
 import {Link} from 'react-router-dom';
 import '../../styles/CartDetails.css'
 import {useFirebase} from 'react-redux-firebase';
+import {CART_PRODUCTS_REF, CATEGORIES_LINK, ORDERS_REF, PLACE_ORDER_LINK} from "../../utils/linkNames";
 
 export default function CartDetails(props) {
     const firebase = useFirebase();
 
     const addToFirebaseOrders = () => {
         const orderDate = new Date();
-        const orderRef = firebase.push('products/orders', props.products);
+        const orderRef = firebase.push(ORDERS_REF, props.products);
         props.products.orderRef = orderRef;
         props.products.orderDate = orderDate;
-        const ref = firebase.ref('products/orders/' + orderRef.key);
+        const ref = firebase.ref(ORDERS_REF + orderRef.key);
         ref.update({'orderKey': orderRef.key, 'orderDate': orderDate});
-        firebase.ref('products/cartProducts').remove();
+        firebase.ref(CART_PRODUCTS_REF).remove();
     };
 
     return (
@@ -36,10 +37,10 @@ export default function CartDetails(props) {
                 </div>
             </div>
             <div className='content'>
-                <Link to='/cos-cumparaturi/plaseaza-comanda'><button className='ui secondary button' onClick={addToFirebaseOrders}>Plaseaza comanda</button></Link>
+                <Link to={PLACE_ORDER_LINK}><button className='ui secondary button' onClick={addToFirebaseOrders}>Plaseaza comanda</button></Link>
             </div>
             <div className='extra content'>
-                Doriti sa vedeti si alte categorii de produse? Click <Link to='/categorii'><u>aici</u></Link>
+                Doriti sa vedeti si alte categorii de produse? Click <Link to={CATEGORIES_LINK}><u>aici</u></Link>
             </div>
         </div>
     )

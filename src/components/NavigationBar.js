@@ -13,6 +13,16 @@ import AddToCart from './AddToCart';
 import AddToFavorites from './AddToFavorites';
 import PlaceOrder from './PlaceOrder';
 import AllOrders from './orders/AllOrders';
+import {
+    ADD_CART_LINK,
+    ADD_FAVORITE_LINK,
+    CART_LINK,
+    CATEGORIES_LINK, FAVORITE_LINK,
+    FITNESS_CATEGORY_LINK, ORDERS_LINK,
+    OTHERS_CATEGORY_LINK, PLACE_ORDER_LINK,
+    PRODUCTS_LINK,
+    TENNIS_CATEGORY_LINK
+} from "../utils/linkNames";
 
 export default class NavigationBar extends Component {
     // TODO: put the active element on firebase and manage it via react redux firebase
@@ -28,27 +38,27 @@ export default class NavigationBar extends Component {
         return (
             <div>
                 <Menu attached='top' tabular inverted>
-                    <Link to='/categorii'><Menu.Item
+                    <Link to={CATEGORIES_LINK}><Menu.Item
                         name='Categorii'
                         active={activeItem === 'Categorii'}
                         onClick={this.handleItemClick}
                     /></Link>
-                    <Link to='/produse'><Menu.Item
+                    <Link to={PRODUCTS_LINK}><Menu.Item
                         name='Toate produsele'
                         active={activeItem === 'Toate produsele'}
                         onClick={this.handleItemClick}
                     /></Link>
-                    <Link to='/favorite'><Menu.Item
+                    <Link to={FAVORITE_LINK}><Menu.Item
                         name='Favorite'
                         active={activeItem === 'Favorite'}
                         onClick={this.handleItemClick}
                     /></Link>
-                    <Link to='/cos-cumparaturi'><Menu.Item
+                    <Link to={CART_LINK}><Menu.Item
                         name='Cosul meu'
                         active={activeItem === 'Cosul meu'}
                         onClick={this.handleItemClick}
                     /></Link>
-                    <Link to='/comenzi'><Menu.Item
+                    <Link to={ORDERS_LINK}><Menu.Item
                         name='Comenzi plasate'
                         active={activeItem === 'Comenzi plasate'}
                         onClick={this.handleItemClick}
@@ -59,17 +69,17 @@ export default class NavigationBar extends Component {
 
                 <Segment id='segment' attached='bottom' inverted>
                     <Switch>
-                        <Route exact path='/categorii'><AllCategories/></Route>
-                        <Route exact path='/produse'><AllProducts/></Route>
-                        <Route exact path='/favorite'><Favorites/></Route>
-                        <Route exact path='/cos-cumparaturi'><Cart/></Route>
-                        <Route exact path='/comenzi'><AllOrders/></Route>
-                        <Route exact path='/categorii/fitness'><FitnessCategory/></Route>
-                        <Route exact path='/categorii/tenis'><TennisCategory/></Route>
-                        <Route exact path='/categorii/altele'><OthersCategory/></Route>
-                        <Route exact path='/categorii/adaugare-cos' component={AddToCart}/>
-                        <Route exact path='/categorii/adaugare-favorite' component={AddToFavorites}/>
-                        <Route exact path='/cos-cumparaturi/plaseaza-comanda' component={PlaceOrder}/>
+                        <Route exact path={CATEGORIES_LINK}><AllCategories/></Route>
+                        <Route exact path={PRODUCTS_LINK}><AllProducts/></Route>
+                        <Route exact path={FAVORITE_LINK}><Favorites/></Route>
+                        <Route exact path={CART_LINK}><Cart/></Route>
+                        <Route exact path={ORDERS_LINK}><AllOrders/></Route>
+                        <Route exact path={FITNESS_CATEGORY_LINK}><FitnessCategory/></Route>
+                        <Route exact path={TENNIS_CATEGORY_LINK}><TennisCategory/></Route>
+                        <Route exact path={OTHERS_CATEGORY_LINK}><OthersCategory/></Route>
+                        <Route exact path={ADD_CART_LINK} component={AddToCart}/>
+                        <Route exact path={ADD_FAVORITE_LINK} component={AddToFavorites}/>
+                        <Route exact path={PLACE_ORDER_LINK} component={PlaceOrder}/>
 
                     </Switch>
                 </Segment>

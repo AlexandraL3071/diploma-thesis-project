@@ -4,9 +4,10 @@ import CartDetails from './CartDetails';
 import '../../styles/CategoryCard.css'
 import {useSelector} from 'react-redux';
 import {useFirebaseConnect} from 'react-redux-firebase';
+import {PRODUCTS_REF} from "../../utils/linkNames";
 
 export default function Cart() {
-    useFirebaseConnect('products');
+    useFirebaseConnect(PRODUCTS_REF);
 
     const cartProducts = useSelector(state => state.firebase.data.products.cartProducts);
 

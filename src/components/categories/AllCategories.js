@@ -3,9 +3,13 @@ import {Link} from 'react-router-dom';
 import {CategoryCard} from '../CategoryCard';
 import {useSelector} from 'react-redux';
 import {isLoaded, useFirebase, useFirebaseConnect} from 'react-redux-firebase';
+import {
+    PRODUCTS_REF,
+    FITNESS_CATEGORY_LINK, TENNIS_CATEGORY_LINK, OTHERS_CATEGORY_LINK
+} from '../../utils/linkNames';
 
 export default function AllCategories() {
-    useFirebaseConnect('products');
+    useFirebaseConnect(PRODUCTS_REF);
 
     const products = useSelector(state => state.firebase.data.products);
 
@@ -16,15 +20,15 @@ export default function AllCategories() {
     }
 
     const clearSearchValue = () => {
-        const ref = firebase.ref('products');
+        const ref = firebase.ref(PRODUCTS_REF);
         ref.update({'searchValue': ''});
     };
 
     return (
         <div>
-            <Link to='/categorii/fitness'><CategoryCard category='fitness'/></Link>
-            <Link to='/categorii/tenis'><CategoryCard category='tenis'/></Link>
-            <Link to='/categorii/altele'><CategoryCard category='altele'/></Link>
+            <Link to={FITNESS_CATEGORY_LINK}><CategoryCard category='fitness'/></Link>
+            <Link to={TENNIS_CATEGORY_LINK}><CategoryCard category='tenis'/></Link>
+            <Link to={OTHERS_CATEGORY_LINK}><CategoryCard category='altele'/></Link>
             {clearSearchValue()}
         </div>
     )

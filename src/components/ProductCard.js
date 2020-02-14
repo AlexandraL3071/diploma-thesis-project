@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {useFirebase} from 'react-redux-firebase';
 import '../styles/CategoryCard.css'
 import {Link} from 'react-router-dom';
+import {ADD_CART_LINK, CART_PRODUCTS_REF, FAVORITE_PRODUCTS_REF} from "../utils/linkNames";
 
 export default function ProductCard(props) {
    const [selectedQuantity, setSelectedQuantity] = useState(1);
@@ -9,21 +10,21 @@ export default function ProductCard(props) {
 
     const addToFirebaseCart = () => {
         props.product.quantity = selectedQuantity;
-        const cartRef = firebase.push('products/cartProducts', props.product);
+        const cartRef = firebase.push(CART_PRODUCTS_REF, props.product);
         props.product.cartKey = cartRef.key;
-        const ref = firebase.ref('products/cartProducts/' + cartRef.key);
+        const ref = firebase.ref(CART_PRODUCTS_REF + cartRef.key);
         ref.update({'cartKey': cartRef.key});
     };
 
     const addToFavorites = () => {
-        const favoriteRef = firebase.push('products/favoriteProducts', props.product);
+        const favoriteRef = firebase.push(FAVORITE_PRODUCTS_REF, props.product);
         props.product.favoriteKey = favoriteRef.key;
-        const ref = firebase.ref('products/favoriteProducts/' + favoriteRef.key);
+        const ref = firebase.ref(FAVORITE_PRODUCTS_REF + favoriteRef.key);
         ref.update({'favoriteKey': favoriteRef.key});
     };
 
     const removeFromFavorites = () => {
-        return firebase.ref('products/favoriteProducts').child(props.product.favoriteKey).remove();
+        return firebase.ref(FAVORITE_PRODUCTS_REF).child(props.product.favoriteKey).remove();
     };
 
     const handleFavoriteProduct = () => {
@@ -61,7 +62,7 @@ export default function ProductCard(props) {
             </div>
             <div className='extra content'>
                 <div className='ui two buttons'>
-                    <Link to='/categorii/adaugare-cos'><div className='ui basic blue button' onClick={addToFirebaseCart}><i className='add to cart icon'/>Adauga
+                    <Link to={ADD_CART_LINK}><div className='ui basic blue button' onClick={addToFirebaseCart}><i className='add to cart icon'/>Adauga
                         in cos</div></Link>
                     <Link to={props.link}><div className={props.button} onClick={handleFavoriteProduct}><i className={props.icon}/>{props.text}</div></Link>
                 </div>

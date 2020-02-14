@@ -2,10 +2,11 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 import {useFirebaseConnect} from 'react-redux-firebase';
 import OrderCard from './OrderCard';
+import {PRODUCTS_REF} from "../../utils/linkNames";
 
 export default function AllOrders() {
     let orderNumber = 1;
-    useFirebaseConnect('products');
+    useFirebaseConnect(PRODUCTS_REF);
 
     const orders = useSelector(state => state.firebase.data.products.orders);
 
