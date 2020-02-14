@@ -9,7 +9,6 @@ import FitnessCategory from './categories/FitnessCategory';
 import TennisCategory from './categories/TennisCategory';
 import OthersCategory from './categories/OthersCategory';
 import AllProducts from './categories/AllProducts';
-import FirebaseContext from './Firebase/Context';
 import AddToCart from './AddToCart';
 import AddToFavorites from './AddToFavorites';
 import PlaceOrder from './PlaceOrder';
@@ -60,68 +59,14 @@ export default class NavigationBar extends Component {
 
                 <Segment id='segment' attached='bottom' inverted>
                     <Switch>
-                        <Route exact path='/categorii'>
-                            <FirebaseContext.Consumer>
-                                {firebase => {
-                                    return (
-                                        <AllCategories firebase={firebase}/>
-                                    )
-                                }}
-                            </FirebaseContext.Consumer>
-                        </Route>
-                        <Route exact path='/produse'>
-                            <FirebaseContext.Consumer>
-                                {firebase => {
-                                    return (
-                                        <AllProducts firebase={firebase}
-                                        />
-                                    )
-                                }}
-                            </FirebaseContext.Consumer>
-                        </Route>
-                        <Route exact path='/favorite'>
-                            <FirebaseContext.Consumer>
-                                {firebase => {
-                                    return (
-                                        <Favorites firebase={firebase}
-                                        />
-                                    )
-                                }}
-                            </FirebaseContext.Consumer>
-                        </Route>
+                        <Route exact path='/categorii'><AllCategories/></Route>
+                        <Route exact path='/produse'><AllProducts/></Route>
+                        <Route exact path='/favorite'><Favorites/></Route>
                         <Route exact path='/cos-cumparaturi'><Cart/></Route>
                         <Route exact path='/comenzi'><AllOrders/></Route>
-                        <Route exact path='/categorii/fitness'>
-                            <FirebaseContext.Consumer>
-                                {firebase => {
-                                    return (
-                                        <FitnessCategory firebase={firebase}
-                                        />
-                                    )
-                                }}
-                            </FirebaseContext.Consumer>
-                        </Route>
-                        <Route exact path='/categorii/tenis'>
-                            <FirebaseContext.Consumer>
-                                {firebase => {
-                                    return (
-                                        <TennisCategory firebase={firebase}
-                                        />
-                                    )
-                                }}
-                            </FirebaseContext.Consumer>
-                        </Route>
-                        <Route exact path='/categorii/altele'>
-                            <FirebaseContext.Consumer>
-                                {firebase => {
-                                    return (
-                                        <OthersCategory firebase={firebase}
-                                        />
-                                    )
-                                }}
-                            </FirebaseContext.Consumer>
-                        </Route>
-
+                        <Route exact path='/categorii/fitness'><FitnessCategory/></Route>
+                        <Route exact path='/categorii/tenis'><TennisCategory/></Route>
+                        <Route exact path='/categorii/altele'><OthersCategory/></Route>
                         <Route exact path='/categorii/adaugare-cos' component={AddToCart}/>
                         <Route exact path='/categorii/adaugare-favorite' component={AddToFavorites}/>
                         <Route exact path='/cos-cumparaturi/plaseaza-comanda' component={PlaceOrder}/>
