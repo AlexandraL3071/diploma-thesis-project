@@ -60,19 +60,19 @@ export default function AllProducts() {
         let searchedProducts = [];
 
         products.fitness.map(product => {
-            if (product.name === searchValue) {
+            if (product.name.toLowerCase().includes(searchValue)) {
                 searchedProducts = [...searchedProducts, product];
             }
         });
 
         products.tennis.map(product => {
-            if (product.name === searchValue) {
+            if (product.name.toLowerCase().includes(searchValue)) {
                 searchedProducts = [...searchedProducts, product];
             }
         });
 
         products.others.map(product => {
-            if (product.name === searchValue) {
+            if (product.name.toLowerCase().includes(searchValue)) {
                 searchedProducts = [...searchedProducts, product];
             }
         });
