@@ -1,16 +1,17 @@
 import React from 'react'
 import SearchBar from './SearchBar';
+import '../styles/Header.css'
 
 class Header extends React.Component {
     render() {
         return (
             <div>
-                <div id='header-container' className='ui container' style={{marginTop: '20px', marginBottom: '20px'}}>
+                <div id='header-container' className='ui container'>
                     <div className='ui grid'>
-                        <div className='nine wide column'>
-                            <h3 className='ui header'>e-SPORTS-shopping</h3>
+                        <div id='first-column' className='column'>
+                            <h2 className='ui header'>e-SPORTS-shopping</h2>
                         </div>
-                        <div className='four wide column'>
+                        <div id='second-column' className='column'>
                             <SearchBar/>
                         </div>
                     </div>

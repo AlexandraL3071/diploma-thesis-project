@@ -21,7 +21,7 @@ export default function SearchBar() {
     };
 
     return (
-        <div className='ui fluid category search'>
+        <div id='searchBar' className='ui fluid category search'>
             <div className='ui icon input'>
                 <input className='prompt' type='text' placeholder='Cauta produsul...' value={searchName}
                        onChange={handleChangeSearchValue}/>
