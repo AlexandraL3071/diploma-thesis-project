@@ -36,9 +36,16 @@ export default function CartDetails(props) {
                     </div>
                 </div>
             </div>
-            <div className='content'>
-                <Link to={PLACE_ORDER_LINK}><button className='ui secondary button' onClick={addToFirebaseOrders}>Plaseaza comanda</button></Link>
-            </div>
+            {
+                props.products.length > 0 ?
+                    <div className='content'>
+                        <Link to={PLACE_ORDER_LINK}>
+                            <button className='ui secondary button' onClick={addToFirebaseOrders}>Plaseaza comanda
+                            </button>
+                        </Link>
+                    </div>
+                    : ''
+            }
             <div className='extra content'>
                 Doriti sa vedeti si alte categorii de produse? Click <Link to={CATEGORIES_LINK}><u>aici</u></Link>
             </div>
