@@ -1,23 +1,29 @@
 import React, {Component} from 'react'
 import {Menu, Segment} from 'semantic-ui-react'
-import {Link} from "react-router-dom";
-import AllCategories from "./categories/AllCategories";
-import Favorites from "./Favorites";
-import {Route, Switch} from "react-router";
-import Cart from "./cart/Cart";
-import FitnessCategory from "./categories/FitnessCategory";
-import TennisCategory from "./categories/TennisCategory";
-import OthersCategory from "./categories/OthersCategory";
-import AllProducts from "./categories/AllProducts";
-import FirebaseContext from "./Firebase/Context";
-import AddToCart from "./AddToCart";
-import AddToFavorites from "./AddToFavorites";
+import {Link} from 'react-router-dom';
+import AllCategories from './categories/AllCategories';
+import Favorites from './favorites/Favorites';
+import {Route, Switch} from 'react-router';
+import Cart from './cart/Cart';
+import FitnessCategory from './categories/FitnessCategory';
+import TennisCategory from './categories/TennisCategory';
+import OthersCategory from './categories/OthersCategory';
+import AllProducts from './categories/AllProducts';
+import ConfirmationModal from './ConfirmationModal';
+import AllOrders from './orders/AllOrders';
+import {
+    ADD_CART_LINK,
+    ADD_FAVORITE_LINK,
+    CART_LINK,
+    CATEGORIES_LINK, FAVORITE_LINK,
+    FITNESS_CATEGORY_LINK, ORDERS_LINK,
+    OTHERS_CATEGORY_LINK, PLACE_ORDER_LINK,
+    PRODUCTS_LINK,
+    TENNIS_CATEGORY_LINK
+} from "../utils/linkNames";
+import '../styles/Content.css'
 
 export default class NavigationBar extends Component {
-    // TODO: a menu item which links to AllOrders -
-    // a component which displays all of the orders placed (from products/orders or orders) and offers the ability to delete them
-    // only if they have been placed with less than a number of hours/days before
-    // the current date
     state = {activeItem: 'Categorii'};
 
     handleItemClick = (e, {name}) => this.setState({activeItem: name});
@@ -27,97 +33,64 @@ export default class NavigationBar extends Component {
 
         return (
             <div>
-                <Menu attached='top' tabular inverted>
-                    <Link to="/categorii"><Menu.Item
+                <Menu id='container' attached='top' tabular inverted>
+                    <Link to={CATEGORIES_LINK}><Menu.Item
                         name='Categorii'
                         active={activeItem === 'Categorii'}
                         onClick={this.handleItemClick}
                     /></Link>
-                    <Link to="/produse"><Menu.Item
+                    <Link to={PRODUCTS_LINK}><Menu.Item
                         name='Toate produsele'
                         active={activeItem === 'Toate produsele'}
                         onClick={this.handleItemClick}
                     /></Link>
-                    <Link to="/favorite"><Menu.Item
+                    <Link to={FAVORITE_LINK}><Menu.Item
                         name='Favorite'
                         active={activeItem === 'Favorite'}
                         onClick={this.handleItemClick}
                     /></Link>
-                    <Link to="/cos-cumparaturi"><Menu.Item
+                    <Link to={CART_LINK}><Menu.Item
                         name='Cosul meu'
                         active={activeItem === 'Cosul meu'}
                         onClick={this.handleItemClick}
                     /></Link>
+                    <Link to={ORDERS_LINK}><Menu.Item
+                        name='Comenzi plasate'
+                        active={activeItem === 'Comenzi plasate'}
+                        onClick={this.handleItemClick}
+                    /></Link>
                 </Menu>
 
-                <div className="ui divider"/>
+                <div className='ui divider'/>
 
-                <Segment id="segment" attached='bottom' inverted>
+                <Segment id='segment' attached='bottom' inverted>
                     <Switch>
-                        <Route exact path="/categorii">
-                            <FirebaseContext.Consumer>
-                                {firebase => {
-                                    return (
-                                        <AllCategories firebase={firebase}/>
-                                    )
-                                }}
-                            </FirebaseContext.Consumer>
+                        <Route exact path={CATEGORIES_LINK}><AllCategories/></Route>
+                        <Route exact path={PRODUCTS_LINK}><AllProducts/></Route>
+                        <Route exact path={FAVORITE_LINK}><Favorites/></Route>
+                        <Route exact path={CART_LINK}><Cart/></Route>
+                        <Route exact path={ORDERS_LINK}><AllOrders/></Route>
+                        <Route exact path={FITNESS_CATEGORY_LINK}><FitnessCategory/></Route>
+                        <Route exact path={TENNIS_CATEGORY_LINK}><TennisCategory/></Route>
+                        <Route exact path={OTHERS_CATEGORY_LINK}><OthersCategory/></Route>
+                        <Route exact path={ADD_CART_LINK}><ConfirmationModal okLink={CATEGORIES_LINK} goLink={CART_LINK}
+                                                                             okText='OK'
+                                                                             buttonText='Vizualizati cosul de cumparaturi'
+                                                                             content='Produsul a fost adaugat in cos!'
+                                                                             title='Produs adaugat'/>
                         </Route>
-                        <Route exact path="/produse">
-                            <FirebaseContext.Consumer>
-                                {firebase => {
-                                    return (
-                                        <AllProducts firebase={firebase}
-                                        />
-                                    )
-                                }}
-                            </FirebaseContext.Consumer>
+                        <Route exact path={ADD_FAVORITE_LINK}><ConfirmationModal okLink={CATEGORIES_LINK} goLink={FAVORITE_LINK}
+                                                                                 okText='OK'
+                                                                                 buttonText='Vizualizati produsele favorite'
+                                                                                 content='Ati marcat produsul ca fiind favorit!'
+                                                                                 title='Produs favorit'/>
                         </Route>
-                        <Route path="/favorite">
-                            <FirebaseContext.Consumer>
-                                {firebase => {
-                                    return (
-                                        <Favorites firebase={firebase}
-                                        />
-                                    )
-                                }}
-                            </FirebaseContext.Consumer>
+                        <Route exact path={PLACE_ORDER_LINK}><ConfirmationModal okLink={PRODUCTS_LINK} goLink={CART_LINK}
+                                                                                okText='Vezi si alte produse'
+                                                                                buttonText='Inapoi la cosul de cumparaturi'
+                                                                                content='Comanda a fost plasata!'
+                                                                                title='Comanda plasata'/>
                         </Route>
-                        <Route path="/cos-cumparaturi"><Cart/></Route>
-                        <Route path="/categorii/fitness">
-                            <FirebaseContext.Consumer>
-                                {firebase => {
-                                    return (
-                                        <FitnessCategory firebase={firebase}
-                                        />
-                                    )
-                                }}
-                            </FirebaseContext.Consumer>
-                        </Route>
-                        <Route path="/categorii/tenis">
-                            <FirebaseContext.Consumer>
-                                {firebase => {
-                                    return (
-                                        <TennisCategory firebase={firebase}
-                                        />
-                                    )
-                                }}
-                            </FirebaseContext.Consumer>
-                        </Route>
-                        <Route path="/categorii/altele">
-                            <FirebaseContext.Consumer>
-                                {firebase => {
-                                    return (
-                                        <OthersCategory firebase={firebase}
-                                        />
-                                    )
-                                }}
-                            </FirebaseContext.Consumer>
-                        </Route>
-
-                        <Route path="/categorii/adaugare-cos" component={AddToCart}/>
-                        <Route path="/categorii/adaugare-favorite" component={AddToFavorites}/>
-
                     </Switch>
                 </Segment>
             </div>

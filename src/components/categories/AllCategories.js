@@ -1,30 +1,25 @@
 import React from 'react'
-import {Link} from "react-router-dom";
-import {CategoryCard} from "../CategoryCard";
-import {useSelector} from "react-redux";
-import {isLoaded, useFirebase, useFirebaseConnect} from "react-redux-firebase";
+import {Link} from 'react-router-dom';
+import {CategoryCard} from './CategoryCard';
+import {useSelector} from 'react-redux';
+import {isLoaded} from 'react-redux-firebase';
+import {
+    FITNESS_CATEGORY_LINK, TENNIS_CATEGORY_LINK, OTHERS_CATEGORY_LINK
+} from '../../utils/linkNames';
+import '../../styles/Content.css'
 
 export default function AllCategories() {
-    useFirebaseConnect('products');
-
     const products = useSelector(state => state.firebase.data.products);
-
-    const firebase = useFirebase();
 
     if (!isLoaded(products)) {
         return <div>Loading...</div>
     }
 
-    const deleteSearchValue = () => {
-        firebase.ref('products/searchValue').remove();
-    };
-
     return (
-        <div>
-            <Link to="/categorii/fitness"><CategoryCard category="fitness"/></Link>
-            <Link to="/categorii/tenis"><CategoryCard category="tenis"/></Link>
-            <Link to="/categorii/altele"><CategoryCard category="altele"/></Link>
-            {deleteSearchValue()}
+        <div id='container'>
+            <Link to={FITNESS_CATEGORY_LINK}><CategoryCard category='fitness'/></Link>
+            <Link to={TENNIS_CATEGORY_LINK}><CategoryCard category='tennis'/></Link>
+            <Link to={OTHERS_CATEGORY_LINK}><CategoryCard category='others'/></Link>
         </div>
     )
 }

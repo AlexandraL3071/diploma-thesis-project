@@ -6,6 +6,18 @@
     color: black;
 }
 
-.ui.inverted.card {
-    margin-bottom: 15px;
+.ui.card {
+    margin: 10px 10px 15px;
+}
+
+.ui.card:first-child {
+    margin: 10px 10px 15px;
+}
+
+.ui.card:last-child {
+    margin: 10px 10px 15px;
+}
+
+#image {
+    max-width: 100%;
 }

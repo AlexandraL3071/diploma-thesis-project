@@ -1,0 +1,16 @@
+export const BASENAME_LINK = '/sportsMAG';
+export const CATEGORIES_LINK = '/categorii';
+export const FITNESS_CATEGORY_LINK = '/categorii/fitness';
+export const TENNIS_CATEGORY_LINK = '/categorii/tenis';
+export const OTHERS_CATEGORY_LINK = '/categorii/altele';
+export const PRODUCTS_LINK = '/produse';
+export const FAVORITE_LINK = '/favorite';
+export const ADD_FAVORITE_LINK = '/categorii/adaugare-favorite';
+export const ADD_CART_LINK = '/categorii/adaugare-cos';
+export const CART_LINK = '/cos-cumparaturi';
+export const ORDERS_LINK = '/comenzi';
+export const PLACE_ORDER_LINK = '/cos-cumparaturi/plaseaza-comanda';
+export const PRODUCTS_REF = 'products';
+export const ORDERS_REF = 'products/orders/';
+export const CART_PRODUCTS_REF = 'products/cartProducts/';
+export const FAVORITE_PRODUCTS_REF = 'products/favoriteProducts/';

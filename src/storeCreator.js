@@ -1,8 +1,8 @@
-import {combineReducers, createStore} from "redux";
-import {firebaseReducer} from "react-redux-firebase";
-import { firebaseConfig} from "./components/Firebase/Firebase";
-import firebase from "firebase/app";
-import "firebase/database";
+import {combineReducers, createStore} from 'redux';
+import {firebaseReducer} from 'react-redux-firebase';
+import { firebaseConfig} from './components/firebase/Firebase';
+import firebase from 'firebase/app';
+import 'firebase/database';
 
 firebase.initializeApp(firebaseConfig);
 

@@ -1,16 +1,21 @@
-
-.outer {
-    position: relative;
-}
-
-
 #smaller-column {
     position: relative;
-    max-width: 33%;
+    min-width: 25%;
+    max-width: 30%;
 }
 
 #larger-column {
     position: relative;
-    min-width: 66%;
+    min-width: 70%;
     margin-bottom: 10px;
+}
+
+#cart {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.two.column.stackable.ui.grid.transition.visible {
+   width: 100%;
 }

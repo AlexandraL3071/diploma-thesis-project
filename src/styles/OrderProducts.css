@@ -1,4 +1,11 @@
 .ui.card {
-    position: absolute;
-    width: 70%;
+    margin: 10px 10px 15px;
+}
+
+.ui.card:first-child {
+    margin: 10px 10px 15px;
+}
+
+.ui.card:last-child {
+    margin: 10px 10px 15px;
 }
