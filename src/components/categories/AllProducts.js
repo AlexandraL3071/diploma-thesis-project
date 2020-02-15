@@ -34,7 +34,7 @@ export default function AllProducts() {
 
     const renderProductCards = (products) => {
         return (
-            <div>
+            <div id='container'>
                 {products.map(product => (
                     <ProductCard product={product} type='add' button='ui basic pink button' icon='heart icon'
                                  text='Adauga la favorite' link={ADD_FAVORITE_LINK}/>
