@@ -6,6 +6,12 @@
     color: black;
 }
 
-.ui.inverted.card {
+.ui.card {
     margin-bottom: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#image {
+    max-width: 100%;
 }

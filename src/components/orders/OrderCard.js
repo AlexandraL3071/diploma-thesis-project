@@ -2,6 +2,7 @@ import React from 'react'
 import {useFirebase} from 'react-redux-firebase';
 import {canBeCancelled, orderDate, totalNumberOfProducts, totalPrice} from '../../utils/Utils';
 import {ORDERS_REF} from "../../utils/linkNames";
+import '../../styles/OrderProducts.css'
 
 export default function OrderCard(props) {
     const firebase = useFirebase();
@@ -42,7 +43,7 @@ export default function OrderCard(props) {
                 canBeCancelled(props.order.orderDate) === true ? <div className='ui bottom attached button' onClick={cancelOrder}>
                     <i className='trash alternate outline icon'/>
                     Anuleaza comanda
-                </div> : <div/>
+                </div> : <div className='extra content'>Coamnda nu mai poate fi anulata</div>
             }
         </div>
     )

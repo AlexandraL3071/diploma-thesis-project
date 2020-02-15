@@ -21,6 +21,7 @@ import {
     PRODUCTS_LINK,
     TENNIS_CATEGORY_LINK
 } from "../utils/linkNames";
+import '../styles/Content.css'
 
 export default class NavigationBar extends Component {
     state = {activeItem: 'Categorii'};
@@ -32,7 +33,7 @@ export default class NavigationBar extends Component {
 
         return (
             <div>
-                <Menu attached='top' tabular inverted>
+                <Menu id='container' attached='top' tabular inverted>
                     <Link to={CATEGORIES_LINK}><Menu.Item
                         name='Categorii'
                         active={activeItem === 'Categorii'}
@@ -90,7 +91,6 @@ export default class NavigationBar extends Component {
                                                                                 content='Comanda a fost plasata!'
                                                                                 title='Comanda plasata'/>
                         </Route>
-
                     </Switch>
                 </Segment>
             </div>

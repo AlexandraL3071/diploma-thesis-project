@@ -1,0 +1,54 @@
+#product-card {
+    position: relative;
+    min-width: 95%;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+#delete-icon {
+    float: right;
+}
+
+.ui.inverted.fluid.input {
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    text-align: right;
+}
+
+#name-column {
+    position: relative;
+    min-width: 45%;
+    color: black;
+    text-align: left;
+}
+
+#quantity-column {
+    position: relative;
+    max-width: 15%;
+    color: black;
+}
+
+#price-column {
+    position: relative;
+    max-width: 25%;
+    color: black;
+    text-align: center
+}
+
+#delete-column {
+    position: relative;
+    max-width: 15%;
+    color: black;
+}
+
+#first-column {
+    position: relative;
+    max-width: 50%;
+}
+
+#second-column {
+    position: relative;
+    max-width: 50%;
+    float: right;
+}

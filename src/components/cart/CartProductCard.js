@@ -1,6 +1,6 @@
 import React from 'react'
 import '../../styles/Cart.css'
-import '../../styles/ProductCard.css'
+import '../../styles/CartProductCard.css'
 import {useFirebase} from 'react-redux-firebase';
 import {CART_PRODUCTS_REF} from "../../utils/linkNames";
 

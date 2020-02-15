@@ -3,6 +3,7 @@ import {useSelector} from 'react-redux';
 import {useFirebaseConnect} from 'react-redux-firebase';
 import OrderCard from './OrderCard';
 import {PRODUCTS_REF} from "../../utils/linkNames";
+import '../../styles/Content.css'
 
 export default function AllOrders() {
     let orderNumber = 1;
@@ -12,7 +13,7 @@ export default function AllOrders() {
 
     const renderAllOrders = () => {
         return (
-            <div>
+            <div id='container'>
                 {
                     Object.values(orders).map(order => (
                         <OrderCard order={order} orderNumber={orderNumber++}/>

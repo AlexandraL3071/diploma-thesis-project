@@ -1,11 +1,12 @@
 import React from 'react'
 import '../../styles/CategoryCard.css'
-import {useSelector} from "react-redux";;
+import {useSelector} from "react-redux";
 
 export function CategoryCard(props) {
     const fitnessImage = useSelector(state => state.firebase.data.products.fitnessImage);
     const tennisImage = useSelector(state => state.firebase.data.products.tennisImage);
     const othersImage = useSelector(state => state.firebase.data.products.othersImage);
+    const defaultImage = useSelector(state => state.firebase.data.products.defaultImage);
 
     const image = () => {
         switch(props.category) {
@@ -21,10 +22,10 @@ export function CategoryCard(props) {
     };
 
     return (
-        <div className='ui inverted card'>
+        <div className='ui card'>
             <div className='content'>
                 <div className='image'>
-                    <img src={image()}/>
+                    <img id='image' src={image()} alt={defaultImage}/>
                 </div>
             </div>
             <div className='extra content'>

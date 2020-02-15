@@ -6,6 +6,7 @@ import {useSelector} from 'react-redux';
 import '../../styles/AllProducts.css'
 import {isLoaded, isEmpty, useFirebaseConnect} from 'react-redux-firebase';
 import {ADD_FAVORITE_LINK, CART_LINK, PRODUCTS_REF} from "../../utils/linkNames";
+import '../../styles/Content.css'
 
 export default function AllProducts() {
 
@@ -35,7 +36,8 @@ export default function AllProducts() {
         return (
             <div>
                 {products.map(product => (
-                    <ProductCard product={product} type='add' button='ui basic pink button' icon='heart icon' text='Adauga la favorite' link={ADD_FAVORITE_LINK}/>
+                    <ProductCard product={product} type='add' button='ui basic pink button' icon='heart icon'
+                                 text='Adauga la favorite' link={ADD_FAVORITE_LINK}/>
                 ))}
             </div>
         )
@@ -43,10 +45,19 @@ export default function AllProducts() {
 
     const renderProductsList = (prod) => {
         return (
-            <div>
-                {renderProductCards(prod.fitness)}
-                {renderProductCards(prod.tennis)}
-                {renderProductCards(prod.others)}
+            <div id='container'>
+                {prod.fitness.map(product => (
+                    <ProductCard product={product} type='add' button='ui basic pink button' icon='heart icon'
+                                 text='Adauga la favorite' link={ADD_FAVORITE_LINK}/>
+                ))}
+                {prod.tennis.map(product => (
+                    <ProductCard product={product} type='add' button='ui basic pink button' icon='heart icon'
+                                 text='Adauga la favorite' link={ADD_FAVORITE_LINK}/>
+                ))}
+                {prod.others.map(product => (
+                    <ProductCard product={product} type='add' button='ui basic pink button' icon='heart icon'
+                                 text='Adauga la favorite' link={ADD_FAVORITE_LINK}/>
+                ))}
             </div>
         )
     };
@@ -80,10 +91,8 @@ export default function AllProducts() {
 
     return (
         <div id='view'>
-            <div id='view'>
-                {renderList()}
-            </div>
-            <Link to={CART_LINK}><Button inverted>Vizualizati cosul de cumparaturi</Button></Link>
+            {renderList()}
+            <Link to={CART_LINK}><Button id='button' inverted>Vizualizati cosul de cumparaturi</Button></Link>
         </div>
     )
 }

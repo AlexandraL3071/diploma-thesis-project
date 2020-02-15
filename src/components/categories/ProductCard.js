@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import {useFirebase} from 'react-redux-firebase';
 import '../../styles/CategoryCard.css'
 import {Link} from 'react-router-dom';
+import '../../styles/CategoryCard.css'
+import '../../styles/ProductCard.css'
 import {ADD_CART_LINK, CART_PRODUCTS_REF, FAVORITE_PRODUCTS_REF} from "../../utils/linkNames";
 
 export default function ProductCard(props) {
@@ -40,7 +42,7 @@ export default function ProductCard(props) {
     };
 
     return (
-        <div className='ui inverted card'>
+        <div className='ui card'>
             <div className='image'>
                 <img src={props.product.image} alt='Nothing'/>
             </div>
