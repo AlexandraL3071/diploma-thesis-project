@@ -27,6 +27,7 @@
     position: relative;
     max-width: 15%;
     color: black;
+    text-align: left;
 }
 
 #price-column {

@@ -7,9 +7,15 @@
 }
 
 .ui.card {
-    margin-bottom: 15px;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin: 10px 10px 15px;
+}
+
+.ui.card:first-child {
+    margin: 10px 10px 15px;
+}
+
+.ui.card:last-child {
+    margin: 10px 10px 15px;
 }
 
 #image {
