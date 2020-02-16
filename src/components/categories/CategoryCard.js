@@ -25,7 +25,7 @@ export function CategoryCard(props) {
         <div className='ui card'>
             <div className='content'>
                 <div className='image'>
-                    <img id='image' style={{maxHeight: "174.34px"}} src={image()} alt={defaultImage}/>
+                    <img id='image' src={image()} alt={defaultImage}/>
                 </div>
             </div>
             <div className='extra content'>

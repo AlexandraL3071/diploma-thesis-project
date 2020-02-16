@@ -16,6 +16,7 @@ export default function ProductCard(props) {
         props.product.cartKey = cartRef.key;
         const ref = firebase.ref(CART_PRODUCTS_REF + cartRef.key);
         ref.update({'cartKey': cartRef.key});
+        document.documentElement.scrollTop = 0;
     };
 
     const addToFavorites = () => {
@@ -35,6 +36,7 @@ export default function ProductCard(props) {
         } else {
             removeFromFavorites();
         }
+        document.documentElement.scrollTop = 0;
     };
 
     const handleChangeQuantity = (event) => {

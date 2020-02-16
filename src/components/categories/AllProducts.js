@@ -89,10 +89,14 @@ export default function AllProducts() {
         return searchedProducts;
     };
 
+    const scroll = () => {
+        document.documentElement.scrollTop = 0;
+    };
+
     return (
         <div id='view'>
             {renderList()}
-            <Link to={CART_LINK}><Button id='button' inverted>Vizualizati cosul de cumparaturi</Button></Link>
+            <Link to={CART_LINK}><Button id='button' inverted onClick={scroll}>Vizualizati cosul de cumparaturi</Button></Link>
         </div>
     )
 }

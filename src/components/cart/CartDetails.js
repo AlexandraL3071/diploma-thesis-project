@@ -16,6 +16,7 @@ export default function CartDetails(props) {
         const ref = firebase.ref(ORDERS_REF + orderRef.key);
         ref.update({'orderKey': orderRef.key, 'orderDate': orderDate});
         firebase.ref(CART_PRODUCTS_REF).remove();
+        document.documentElement.scrollTop = 0;
     };
 
     return (

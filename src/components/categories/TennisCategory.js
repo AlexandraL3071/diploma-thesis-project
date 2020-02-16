@@ -20,10 +20,14 @@ export default function TennisCategory() {
         )
     };
 
+    const scroll = () => {
+        document.documentElement.scrollTop = 0;
+    };
+
     return (
         <div>
             {renderList()}
-            <Link to={CATEGORIES_LINK}><Button id='button' inverted>Inapoi</Button></Link>
+            <Link to={CATEGORIES_LINK}><Button id='button' inverted onClick={scroll}>Inapoi</Button></Link>
         </div>
     )
 }
