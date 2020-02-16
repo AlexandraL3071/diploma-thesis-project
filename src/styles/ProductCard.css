@@ -46,9 +46,21 @@
     #product-content {
         font-size: small
     }
+
+    .ui.basic.blue.button {
+        height: 54px
+    }
+
+    .ui.basic.pink.button {
+        height: 54px
+    }
+
+    .ui.basic.red.button {
+        height: 54px
+    }
 }
 
-@media (width: 360px) and (min-height: 640px) {
+@media (width: 360px) and (height: 640px) {
     #product-card {
         width: 90%
     }
@@ -64,8 +76,28 @@
     .ui.basic.blue.button {
         height: 55px
     }
+
     .ui.basic.pink.button {
-       height: 55px
+         height: 55px
+     }
+
+    .ui.basic.red.button {
+        height: 55px
+    }
+}
+
+@media (width: 375px) and (height: 812px) {
+
+    .ui.basic.blue.button {
+        height: 54px
+    }
+
+    .ui.basic.pink.button {
+        height: 54px
+    }
+
+    .ui.basic.red.button {
+        height: 54px
     }
 }
 
