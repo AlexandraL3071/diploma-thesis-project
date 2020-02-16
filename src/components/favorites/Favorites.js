@@ -24,7 +24,7 @@ export default function Favorites() {
             <div id='container'>
                 {
                     products.map(product => (
-                        <ProductCard id='favorite-product' product={product} type='remove' button='ui basic red button'
+                        <ProductCard product={product} type='remove' button='ui basic red button'
                                      icon='trash alternate outline icon' text='Sterge din favorite' link={FAVORITE_LINK}/>
                     ))
                 }
