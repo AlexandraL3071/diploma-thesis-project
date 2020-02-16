@@ -18,8 +18,8 @@ export default function AllCategories() {
     return (
         <div id='container'>
             <Link to={FITNESS_CATEGORY_LINK}><CategoryCard category='fitness'/></Link>
-            <Link to={TENNIS_CATEGORY_LINK}><CategoryCard category='tennis'/></Link>
-            <Link to={OTHERS_CATEGORY_LINK}><CategoryCard category='others'/></Link>
+            <Link to={TENNIS_CATEGORY_LINK}><CategoryCard category='tenis'/></Link>
+            <Link to={OTHERS_CATEGORY_LINK}><CategoryCard category='altele'/></Link>
         </div>
     )
 }

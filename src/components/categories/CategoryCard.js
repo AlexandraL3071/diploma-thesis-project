@@ -12,9 +12,9 @@ export function CategoryCard(props) {
         switch(props.category) {
             case 'fitness':
                 return fitnessImage;
-            case 'tennis':
+            case 'tenis':
                 return tennisImage;
-            case 'others':
+            case 'altele':
                 return othersImage;
             default:
                 return ''
@@ -22,13 +22,13 @@ export function CategoryCard(props) {
     };
 
     return (
-        <div className='ui card'>
+        <div id='category-card' className='ui card'>
             <div className='content'>
                 <div className='image'>
                     <img id='image' src={image()} alt={defaultImage}/>
                 </div>
             </div>
-            <div className='extra content'>
+            <div id='extra-content' className='extra content'>
                 <div id='label' className='label'>Echipamente pentru {props.category}</div>
             </div>
         </div>

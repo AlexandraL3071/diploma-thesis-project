@@ -1,0 +1,15 @@
+@media (max-width: 420px) {
+    .ui.card {
+        height: 85%
+    }
+}
+
+@media (max-width: 330px) {
+    .ui.card {
+        height: 75%;
+    }
+}
+
+.ui.card {
+    display: flex;
+}
