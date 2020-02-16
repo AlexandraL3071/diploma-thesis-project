@@ -43,11 +43,11 @@ export default function ProductCard(props) {
     };
 
     return (
-        <div className='ui card'>
+        <div id='product-card' className='ui card'>
             <div className='image'>
-                <img id='image' src={props.product.image} alt='Nothing'/>
+                <img id='product-image' src={props.product.image} alt='Nothing'/>
             </div>
-            <div className='content'>
+            <div id='product-content' className='content'>
                 <div className='header'>{props.product.name}</div>
                 <div className='description'>
                     <div className='two column stackable ui grid'>
@@ -63,7 +63,7 @@ export default function ProductCard(props) {
                     </div>
                 </div>
             </div>
-            <div className='extra content'>
+            <div id='product-extra-content' className='extra content'>
                 <div className='ui two buttons'>
                     <Link to={ADD_CART_LINK}><div className='ui basic blue button' onClick={addToFirebaseCart}><i className='add to cart icon'/>Adauga
                         in cos</div></Link>

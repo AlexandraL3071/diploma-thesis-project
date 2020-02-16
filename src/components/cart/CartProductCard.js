@@ -20,7 +20,7 @@ export default function CartProductCard(props) {
     };
 
     return (
-        <div id='product-card' className='ui card'>
+        <div id='cart-product-card' className='ui card'>
             <div className='content'>
                 <div className='four column stackable ui grid transition visible'>
                     <div id='name-column' className='fluid column'>
