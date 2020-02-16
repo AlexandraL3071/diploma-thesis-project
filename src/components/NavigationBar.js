@@ -22,6 +22,7 @@ import {
     TENNIS_CATEGORY_LINK
 } from "../utils/linkNames";
 import '../styles/Content.css'
+import '../styles/NavigationBar.css'
 
 export default class NavigationBar extends Component {
     state = {activeItem: 'Categorii'};

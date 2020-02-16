@@ -1,7 +1,15 @@
-.ui.attached.tabular.menu {
-    color: #363636
-}
-
 #segment {
     margin-bottom: 10px;
+}
+
+@media (min-width: 400px) {
+    #container {
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 375px) and (min-height: 812px) {
+    #container {
+        font-size: 1.2rem
+    }
 }
