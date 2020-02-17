@@ -71,6 +71,7 @@ export default function AllProducts() {
     };
 
     const searchProductsByName = (products, searchedProducts, searchValue) => {
+        // eslint-disable-next-line array-callback-return
         products.map(product => {
             if (product.name.toLowerCase().includes(searchValue)) {
                 searchedProducts = [...searchedProducts, product];

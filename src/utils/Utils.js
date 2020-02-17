@@ -26,6 +26,7 @@ export const canBeCancelled = (date) => {
 
 export const totalPrice = (products) => {
     let totalPrice = 0;
+    // eslint-disable-next-line array-callback-return
     products.map(product => {
         if (product.quantity !== undefined && product.price !== undefined) {
             totalPrice += parseInt(product.price) * parseInt(product.quantity)
@@ -36,6 +37,7 @@ export const totalPrice = (products) => {
 
 export const totalNumberOfProducts = (products) => {
     let totalNumberOfProducts = 0;
+    // eslint-disable-next-line array-callback-return
     products.map(product => {
         if (product.quantity !==  undefined) {
             totalNumberOfProducts += parseInt(product.quantity)

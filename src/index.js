@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
-import * as serviceWorker from './serviceWorker';
+import * as serviceWorker from './service-worker';
 import {Provider} from 'react-redux';
 import {ReactReduxFirebaseProvider} from 'react-redux-firebase';
 import {reactReduxFirebaseProps, store} from './storeCreator';
@@ -14,4 +14,4 @@ ReactDOM.render(
     </Provider>
     , document.getElementById('root'));
 
-serviceWorker.register();
+serviceWorker.register('/service-worker.js');
