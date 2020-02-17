@@ -6,16 +6,21 @@
     margin-bottom: 20px;
 }
 
-.ui.grid {
+#grid {
     width: 100%;
 }
 
 #first-column {
-    position: relative;
     width: 50%;
 }
 
 #second-column {
-    position: relative;
     width: 50%;
 }
+
+@media (max-width: 330px) {
+    #header-value {
+        font-size: 20px;
+    }
+}
+

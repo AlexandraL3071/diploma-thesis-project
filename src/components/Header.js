@@ -7,9 +7,9 @@ class Header extends React.Component {
         return (
             <div>
                 <div id='header-container' className='ui container'>
-                    <div className='ui grid'>
+                    <div id='grid' className='ui grid'>
                         <div id='first-column' className='column'>
-                            <h2 className='ui header'>e-SPORTS-shopping</h2>
+                            <h2 id='header-value' className='ui header'>e-SPORTS-shopping</h2>
                         </div>
                         <div id='second-column' className='column'>
                             <SearchBar/>

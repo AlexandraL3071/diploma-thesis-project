@@ -22,11 +22,11 @@ export default function SearchBar() {
 
     return (
         <div id='searchBar' className='ui fluid category search'>
-            <div className='ui icon input'>
-                <input className='prompt' type='text' placeholder='Cauta produsul...' value={searchName}
+            <div id='icon-input' className='ui icon input'>
+                <input className='prompt' type='text' placeholder='Cautare...' value={searchName}
                        onChange={handleChangeSearchValue}/>
                 <Link to={PRODUCTS_LINK}>
-                    <div className='ui button' onClick={writeToFirebase}><i className='search icon'/></div>
+                    <div id='search-button' className='ui button' onClick={writeToFirebase}><i className='search icon'/></div>
                 </Link>
             </div>
         </div>
