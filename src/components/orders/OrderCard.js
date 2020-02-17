@@ -12,7 +12,7 @@ export default function OrderCard(props) {
     };
 
     return (
-        <div className='ui card'>
+        <div id='order-card' className='ui card'>
             <div className='content'>
                 <div className='header'>Comanda nr {props.orderNumber}</div>
             </div>
