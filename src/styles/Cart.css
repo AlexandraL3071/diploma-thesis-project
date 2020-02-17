@@ -19,3 +19,126 @@
 .two.column.stackable.ui.grid.transition.visible {
    width: 100%;
 }
+
+@media (max-width: 1000px) and (min-width: 420px) {
+    #smaller-column {
+        position: relative;
+        width: 80%;
+    }
+
+    #larger-column {
+        position: relative;
+        width: 95%;
+    }
+
+   #cart-summary {
+       width: 250px;
+       font-size: 16px
+   }
+
+   #quantity-column {
+       width: 15%
+   }
+}
+
+@media (min-width: 450px) {
+    #quantity-column {
+        width: 15%;
+    }
+}
+
+@media (max-width: 420px) {
+    #cart {
+        display: block;
+        flex-wrap: nowrap;
+        justify-content: start
+    }
+
+    #smaller-column {
+        max-width: 95%;
+        align-self: center
+    }
+
+    #cart-summary {
+        justify-content: center;
+    }
+
+    .two.column.stackable.ui.grid.transition.visible {
+        flex-wrap: nowrap;
+        justify-content: center;
+    }
+
+    #cart-product-card {
+        width: 85%;
+        font-size: 14px;
+    }
+
+    #cart-details {
+        font-size: 15px;
+    }
+
+    .ui.inverted.fluid.input {
+        height: 75%;
+    }
+
+    #quantity-column {
+        width: 20%;
+    }
+
+    #place-order-button {
+        width: 60%;
+        height: 80%;
+        font-size: small
+    }
+}
+
+@media (min-width: 400px) and (max-width: 430px) {
+    #cart-summary {
+        font-size: 15px;
+    }
+
+    #cart-product-card {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 330px) {
+    #cart-product-card {
+        font-size: 13px;
+    }
+
+    #cart-details {
+        font-size: 13px;
+    }
+
+    #quantity {
+        width: 25%;
+    }
+}
+
+@media (width: 360px) {
+    #cart-product-card {
+        font-size: 14px
+    }
+}
+
+@media (width: 411px) and (height: 823px) {
+    #cart-summary {
+        font-size: medium;
+    }
+}
+
+@media (width: 375px) and (height: 812px) {
+    #cart-summary {
+        font-size: medium;
+    }
+
+    #cart-product-card {
+        font-size: medium
+    }
+
+    #cart-details {
+        font-size: medium
+    }
+
+}

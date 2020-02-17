@@ -2,6 +2,7 @@ import React from 'react'
 import CartProducts from './CartProducts';
 import {Link} from 'react-router-dom';
 import '../../styles/CartDetails.css'
+import '../../styles/Cart.css'
 import {useFirebase} from 'react-redux-firebase';
 import {CART_PRODUCTS_REF, CATEGORIES_LINK, ORDERS_REF, PLACE_ORDER_LINK} from "../../utils/linkNames";
 
@@ -20,7 +21,7 @@ export default function CartDetails(props) {
     };
 
     return (
-        <div className='ui fluid card'>
+        <div id='cart-details' className='ui fluid card'>
             <div className='content'>
                 <div className='header'>Produsele tale</div>
             </div>
@@ -41,7 +42,7 @@ export default function CartDetails(props) {
                 props.products.length > 0 ?
                     <div className='content'>
                         <Link to={PLACE_ORDER_LINK}>
-                            <button className='ui secondary button' onClick={addToFirebaseOrders}>Plaseaza comanda
+                            <button id='place-order-button' className='ui secondary button' onClick={addToFirebaseOrders}>Plaseaza comanda
                             </button>
                         </Link>
                     </div>

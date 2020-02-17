@@ -22,13 +22,9 @@ export default function CartProductCard(props) {
     return (
         <div id='cart-product-card' className='ui card'>
             <div className='content'>
-                <div className='four column stackable ui grid transition visible'>
+                <div className='three column stackable ui grid transition visible'>
                     <div id='name-column' className='fluid column'>
                         <div>{props.product.name}</div>
-                    </div>
-                    <div id='quantity-column' className='fluid column'>
-                        <div className='ui inverted fluid input'><input id='quantity' type='number' min='1'
-                                                                        value={props.product.quantity} onChange={handleChangeQuantity}/></div>
                     </div>
                     <div id='price-column' className='fluid column'>
                         <div>{price()} RON</div>
@@ -36,6 +32,10 @@ export default function CartProductCard(props) {
                     <div id='delete-column' className='fluid column'>
                         <i id='delete-icon' className='trash alternate link icon' onClick={deleteFromCart}/>
                     </div>
+                </div>
+                <div id='quantity-column' className='fluid column'>
+                    <div className='ui inverted fluid input'><input id='quantity' type='number' min='1'
+                                                                    value={props.product.quantity} onChange={handleChangeQuantity}/></div>
                 </div>
             </div>
         </div>

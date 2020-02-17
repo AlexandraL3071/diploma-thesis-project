@@ -5,7 +5,7 @@ import {totalNumberOfProducts, totalPrice} from "../../utils/Utils";
 
 export default function CartSummary(props) {
     return (
-        <div className='ui fluid card'>
+        <div id='cart-summary' className='ui fluid card'>
             <div className='content'>
                 <div className='header'>Detalii cos</div>
             </div>
@@ -17,7 +17,7 @@ export default function CartSummary(props) {
                     <div className='summary'>
                         <div className='description'>
                             <div style={{marginLeft: '10px', color: 'black'}}>
-                                Pana acum aveti: {totalNumberOfProducts(props.products)} produse
+                                Pana acum aveti: {totalNumberOfProducts(props.products)} {totalNumberOfProducts(props.products) > 1 ? 'produse' : 'produs'}
                             </div>
                             <br/>
                             <div style={{marginLeft: '10px', color: 'black'}}>
