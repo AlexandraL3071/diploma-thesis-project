@@ -5,7 +5,7 @@ import '../styles/Header.css'
 class Header extends React.Component {
     render() {
         return (
-            <div>
+            <div id='fixed'>
                 <div id='header-container' className='ui container'>
                     <div id='grid' className='ui grid'>
                         <div id='first-column' className='column'>
