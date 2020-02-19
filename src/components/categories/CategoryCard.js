@@ -14,7 +14,7 @@ export function CategoryCard(props) {
                 return fitnessImage;
             case 'tenis':
                 return tennisImage;
-            case 'altele':
+            case 'diverse':
                 return othersImage;
             default:
                 return ''

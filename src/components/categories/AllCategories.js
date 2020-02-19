@@ -19,7 +19,7 @@ export default function AllCategories() {
         <div id='container'>
             <Link to={FITNESS_CATEGORY_LINK}><CategoryCard category='fitness'/></Link>
             <Link to={TENNIS_CATEGORY_LINK}><CategoryCard category='tenis'/></Link>
-            <Link to={OTHERS_CATEGORY_LINK}><CategoryCard category='altele'/></Link>
+            <Link to={OTHERS_CATEGORY_LINK}><CategoryCard category='diverse'/></Link>
         </div>
     )
 }
