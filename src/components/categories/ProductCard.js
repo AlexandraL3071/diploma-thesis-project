@@ -32,10 +32,10 @@ export default function ProductCard(props) {
     const handleFavoriteProduct = () => {
         if (props.type === 'add') {
             addToFavorites();
+            document.documentElement.scrollTop = 0;
         } else {
             removeFromFavorites();
         }
-        document.documentElement.scrollTop = 0;
     };
 
     const handleChangeQuantity = (event) => {

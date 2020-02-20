@@ -17,7 +17,7 @@ export function CategoryCard(props) {
             case 'diverse':
                 return othersImage;
             default:
-                return ''
+                return defaultImage;
         }
     };
 
