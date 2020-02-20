@@ -4,13 +4,11 @@ import {Link} from 'react-router-dom';
 import ProductCard from './ProductCard';
 import {useSelector} from 'react-redux';
 import '../../styles/AllProducts.css'
-import {isLoaded, isEmpty, useFirebaseConnect} from 'react-redux-firebase';
-import {ADD_FAVORITE_LINK, CART_LINK, PRODUCTS_REF} from "../../utils/linkNames";
+import {isLoaded, isEmpty} from 'react-redux-firebase';
+import {ADD_FAVORITE_LINK, CART_LINK} from "../../utils/linkNames";
 import '../../styles/Content.css'
 
 export default function AllProducts() {
-
-    useFirebaseConnect(PRODUCTS_REF);
 
     const products = useSelector(state => state.firebase.data.products);
 

@@ -32,6 +32,18 @@
     #product-extra-content {
         font-size: smaller
     }
+
+    .ui.basic.blue.button {
+        height: 53px
+    }
+
+    .ui.basic.pink.button {
+        height: 53px
+    }
+
+    .ui.basic.red.button {
+        height: 53px
+    }
 }
 
 @media (width: 375px) and (height: 667px) {
