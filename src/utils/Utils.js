@@ -51,3 +51,21 @@ export const orderDate = (orderDate) => {
     const auxDate = date.split('-');
     return auxDate[2] + '.' + auxDate[1] + '.' + auxDate[0];
 };
+
+export const addToArray = (products) => {
+    let array = [];
+    Object.values(products.fitness).map(product => {
+        array.push(product);
+    });
+    Object.values(products.tennis).map(product => {
+        array.push(product);
+    });
+    Object.values(products.others).map(product => {
+        array.push(product);
+    });
+    return array;
+};
+
+export const scroll = () => {
+    document.documentElement.scrollTop = 0;
+};

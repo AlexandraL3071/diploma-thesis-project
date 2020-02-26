@@ -1,26 +1,42 @@
-import React from 'react'
-import {Link} from 'react-router-dom';
-import {CategoryCard} from './CategoryCard';
-import {useSelector} from 'react-redux';
-import {isLoaded} from 'react-redux-firebase';
+import React from 'react';
 import {
-    FITNESS_CATEGORY_LINK, TENNIS_CATEGORY_LINK, OTHERS_CATEGORY_LINK
+    IonButtons,
+    IonContent,
+    IonHeader,
+    IonMenuButton,
+    IonPage,
+    IonRouterLink,
+    IonTitle,
+    IonToolbar
+} from "@ionic/react";
+import CategoryCard from './CategoryCard';
+import {
+    FITNESS_CATEGORY_LINK, TENNIS_CATEGORY_LINK, OTHERS_CATEGORY_LINK, PRODUCTS_REF
 } from '../../utils/linkNames';
-import '../../styles/Content.css'
+import {useFirebaseConnect} from "react-redux-firebase";
 
-export default function AllCategories() {
-    const products = useSelector(state => state.firebase.data.products);
-
-    if (!isLoaded(products)) {
-        return <div>Loading...</div>
-    }
+function AllCategories(props) {
+    useFirebaseConnect(PRODUCTS_REF);
 
     return (
-        <div id='container'>
-            <Link to={FITNESS_CATEGORY_LINK}><CategoryCard category='fitness'/></Link>
-            <Link to={TENNIS_CATEGORY_LINK}><CategoryCard category='tenis'/></Link>
-            <Link to={OTHERS_CATEGORY_LINK}><CategoryCard category='diverse'/></Link>
-        </div>
+        <IonPage>
+            <IonHeader>
+                <IonToolbar>
+                    <IonButtons slot="start">
+                        <IonMenuButton />
+                    </IonButtons>
+                    <IonTitle>Toate categoriile</IonTitle>
+                </IonToolbar>
+            </IonHeader>
+
+            <IonContent>
+                <IonRouterLink href={FITNESS_CATEGORY_LINK}><CategoryCard category='fitness'/></IonRouterLink>
+                <IonRouterLink href={TENNIS_CATEGORY_LINK}><CategoryCard category='tenis'/></IonRouterLink>
+                <IonRouterLink href={OTHERS_CATEGORY_LINK}><CategoryCard category='diverse'/></IonRouterLink>
+            </IonContent>
+        </IonPage>
     )
-}
+};
+
+export default AllCategories;
 

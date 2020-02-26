@@ -1,0 +1,7 @@
+{
+  "name": "licenta-ionic-framework",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

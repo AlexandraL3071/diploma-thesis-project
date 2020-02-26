@@ -1,36 +1,28 @@
 import React from 'react'
+import {IonCard, IonCardContent, IonCardSubtitle} from "@ionic/react";
 import '../../styles/CategoryCard.css'
-import {useSelector} from "react-redux";
 
-export function CategoryCard(props) {
-    const fitnessImage = useSelector(state => state.firebase.data.products.fitnessImage);
-    const tennisImage = useSelector(state => state.firebase.data.products.tennisImage);
-    const othersImage = useSelector(state => state.firebase.data.products.othersImage);
-    const defaultImage = useSelector(state => state.firebase.data.products.defaultImage);
-
+export default function CategoryCard(props) {
     const image = () => {
-        switch(props.category) {
+        switch (props.category) {
             case 'fitness':
-                return fitnessImage;
+                return 'https://www.culturism.ro/_pics/locuri/hp3lqw4lkb.jpg';
             case 'tenis':
-                return tennisImage;
+                return 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTR7GoifBzmoG-nrWUpXSpIlb9AvXRhdvW0d6wp_Do7OD3sshA1';
             case 'diverse':
-                return othersImage;
+                return 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS3JyjFEjABJPPMk237E41SLxJ2uxW6laZXv-LkrKJS7is1jBky';
             default:
-                return defaultImage;
+                return 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRTZjizRLdaRI0IgiqG_7F2SmM7kkA7WDb4vgssWmhozCUFwEnH'
         }
     };
 
     return (
-        <div id='category-card' className='ui card'>
-            <div className='content'>
-                <div className='image'>
-                    <img id='image' src={image()} alt={defaultImage}/>
-                </div>
-            </div>
-            <div id='extra-content' className='extra content'>
-                <div id='label' className='label'>Echipamente pentru {props.category}</div>
-            </div>
-        </div>
+        <IonCard>
+            <IonCardContent>
+                <img id='category-image' src={image()}/>
+                <IonCardSubtitle id='card-subtitle'>Echipamente pentru {props.category}</IonCardSubtitle>
+            </IonCardContent>
+        </IonCard>
     )
-}
+};
+

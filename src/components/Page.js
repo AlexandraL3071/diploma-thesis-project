@@ -1,5 +1,5 @@
 import React from 'react'
-import NavigationBar from './NavigationBar'
+import SideMenu from './SideMenu'
 import {Switch} from 'react-router-dom';
 import {useFirebaseConnect} from "react-redux-firebase";
 import {PRODUCTS_REF} from "../utils/linkNames";
@@ -9,7 +9,7 @@ export default function Page() {
 
     return (
         <Switch>
-            <NavigationBar/>
+            <SideMenu/>
         </Switch>
     )
 }

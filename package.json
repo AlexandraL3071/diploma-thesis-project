@@ -3,9 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@capacitor/android": "^1.5.0",
+    "@capacitor/core": "1.5.0",
+    "@ionic/react": "^5.0.1",
+    "@ionic/react-router": "^5.0.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.19.2",
     "firebase": "^7.8.0",
     "history": "latest",
     "idb": "^5.0.1",
@@ -25,7 +30,8 @@
     "workbox-expiration": "latest",
     "workbox-routing": "latest",
     "workbox-strategies": "latest",
-    "workbox-webpack-plugin": "^5.0.0"
+    "workbox-webpack-plugin": "^5.0.0",
+    "ionicons": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -51,6 +57,7 @@
     ]
   },
   "devDependencies": {
+    "@capacitor/cli": "1.5.0",
     "firebase-admin": "^8.9.2",
     "http-server": "^0.12.1",
     "react-router-dom": "^5.1.2",
