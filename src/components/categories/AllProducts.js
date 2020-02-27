@@ -2,10 +2,11 @@ import React from 'react'
 import ProductCard from './ProductCard';
 import {useSelector} from 'react-redux';
 import '../../styles/AllProducts.css'
-import {ADD_FAVORITE_LINK, CART_LINK, PRODUCTS_REF} from "../../utils/linkNames";
+import {FAVORITE_LINK, PRODUCTS_REF} from "../../utils/linkNames";
 import '../../styles/Content.css'
 import {IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar} from "@ionic/react";
 import {useFirebaseConnect} from "react-redux-firebase";
+import {heartOutline} from "ionicons/icons";
 
 export default function AllProducts() {
     useFirebaseConnect(PRODUCTS_REF);
@@ -15,16 +16,16 @@ export default function AllProducts() {
         return (
             <IonContent className='class'>
                 {products.fitness.map(product => (
-                    <ProductCard product={product} type='add' button='ui basic pink button' icon='heart icon'
-                                 text='Adauga la favorite' link={ADD_FAVORITE_LINK}/>
+                    <ProductCard product={product} type='add'  icon={heartOutline}
+                                 text='Adauga la favorite' link={FAVORITE_LINK}/>
                 ))}
                 {products.tennis.map(product => (
-                    <ProductCard product={product} type='add' button='ui basic pink button' icon='heart icon'
-                                 text='Adauga la favorite' link={ADD_FAVORITE_LINK}/>
+                    <ProductCard product={product} type='add' icon={heartOutline}
+                                 text='Adauga la favorite' link={FAVORITE_LINK}/>
                 ))}
                 {products.others.map(product => (
-                    <ProductCard product={product} type='add' button='ui basic pink button' icon='heart icon'
-                                 text='Adauga la favorite' link={ADD_FAVORITE_LINK}/>
+                    <ProductCard product={product} type='add' icon={heartOutline}
+                                 text='Adauga la favorite' link={FAVORITE_LINK}/>
                 ))}
             </IonContent>
         )

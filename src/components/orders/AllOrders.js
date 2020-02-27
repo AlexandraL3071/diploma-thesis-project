@@ -4,6 +4,8 @@ import {useFirebaseConnect} from 'react-redux-firebase';
 import OrderCard from './OrderCard';
 import {PRODUCTS_REF} from "../../utils/linkNames";
 import '../../styles/Content.css'
+import '../../styles/OrderProducts.css'
+import {IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar} from "@ionic/react";
 
 export default function AllOrders() {
     let orderNumber = 1;
@@ -13,17 +15,28 @@ export default function AllOrders() {
 
     const renderAllOrders = () => {
         return (
-            <div id='container'>
+            <IonContent id='container'>
                 {
                     Object.values(orders).map(order => (
                         <OrderCard order={order} orderNumber={orderNumber++}/>
                     ))
                 }
-            </div>
+            </IonContent>
         )
     };
 
     return (
-        orders === undefined ? <div className='ui hearder'>Nu a fost plasata nicio comanda</div> : renderAllOrders()
+        <IonPage>
+            <IonHeader>
+                <IonToolbar>
+                    <IonButtons slot="start">
+                        <IonMenuButton />
+                    </IonButtons>
+                    <IonTitle>Toate comenzile</IonTitle>
+                </IonToolbar>
+            </IonHeader>
+
+            {orders === undefined ? <IonHeader>Nu a fost plasata nicio comanda</IonHeader> : renderAllOrders()}
+        </IonPage>
     )
 }

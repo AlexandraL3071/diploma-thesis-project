@@ -2,6 +2,8 @@ import React from 'react'
 import '../../styles/CartProductCard.css'
 import {useFirebase} from 'react-redux-firebase';
 import {CART_PRODUCTS_REF} from "../../utils/linkNames";
+import {IonCard, IonCardContent, IonCol, IonGrid, IonIcon, IonItem, IonRow} from "@ionic/react";
+import {trashOutline} from "ionicons/icons";
 
 export default function CartProductCard(props) {
     const firebase = useFirebase();
@@ -10,34 +12,23 @@ export default function CartProductCard(props) {
         return firebase.ref(CART_PRODUCTS_REF).child(props.product.cartKey).remove();
     };
 
-    const price = () => {
-        return props.product.price*props.product.quantity;
-    };
-
-    const handleChangeQuantity = (event) => {
-        const ref = firebase.ref(CART_PRODUCTS_REF + props.product.cartKey);
-        ref.update({'quantity': event.target.value});
-    };
-
     return (
-        <div id='cart-product-card' className='ui card'>
-            <div className='content'>
-                <div className='three column stackable ui grid transition visible'>
-                    <div id='name-column' className='fluid column'>
-                        <div>{props.product.name}</div>
-                    </div>
-                    <div id='price-column' className='fluid column'>
-                        <div>{price()} RON</div>
-                    </div>
-                    <div id='delete-column' className='fluid column'>
-                        <i id='delete-icon' className='trash alternate link icon' onClick={deleteFromCart}/>
-                    </div>
-                </div>
-                <div id='quantity-column' className='fluid column'>
-                    <div className='ui inverted fluid input'><input id='quantity' type='number' min='1'
-                                                                    value={props.product.quantity} onChange={handleChangeQuantity}/></div>
-                </div>
-            </div>
-        </div>
+        <IonCard id='full-width'>
+            <IonCardContent>
+                <IonGrid>
+                    <IonRow>
+                        <IonCol id='first-column'>
+                            <IonItem>{props.product.name}</IonItem>
+                        </IonCol>
+                        <IonCol id='second-column'>
+                            <IonItem>{props.product.price} RON</IonItem>
+                        </IonCol>
+                        <IonCol id='third-column'>
+                            <IonIcon id='icon' icon={trashOutline} onClick={deleteFromCart}/>
+                        </IonCol>
+                    </IonRow>
+                </IonGrid>
+            </IonCardContent>
+        </IonCard>
     )
 }

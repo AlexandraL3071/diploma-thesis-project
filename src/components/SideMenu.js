@@ -24,10 +24,7 @@ import {
     shirtOutline,
     shirtSharp,
 } from 'ionicons/icons';
-import '../styles/SideMenu.css'
-import {useFirebaseConnect} from "react-redux-firebase";
-import {PRODUCTS_REF} from "../utils/linkNames";
-import {useSelector} from "react-redux";
+import '../styles/SideMenu.css';
 
 const appPages = [
     {

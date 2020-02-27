@@ -1,7 +1,6 @@
 import React from 'react'
-import {Link} from 'react-router-dom';
 import '../../styles/ProductCard.css'
-import {ADD_CART_LINK, CART_PRODUCTS_REF, FAVORITE_PRODUCTS_REF} from "../../utils/linkNames";
+import { CART_PRODUCTS_REF, FAVORITE_PRODUCTS_REF} from "../../utils/linkNames";
 import {
     IonButton,
     IonCard,
@@ -11,16 +10,46 @@ import {
     IonHeader, IonIcon,
     IonRow
 } from "@ionic/react";
-import {heartOutline, cartOutline} from 'ionicons/icons'
+import {cartOutline} from 'ionicons/icons'
+import {useFirebase} from "react-redux-firebase";
 
 export default function ProductCard(props) {
+    const firebase = useFirebase();
+
+    const addToFirebaseCart = () => {
+        const cartRef = firebase.push(CART_PRODUCTS_REF, props.product);
+        props.product.cartKey = cartRef.key;
+        const ref = firebase.ref(CART_PRODUCTS_REF + cartRef.key);
+        ref.update({'cartKey': cartRef.key});
+        document.documentElement.scrollTop = 0;
+    };
+
+    const addToFavorites = () => {
+        const favoriteRef = firebase.push(FAVORITE_PRODUCTS_REF, props.product);
+        props.product.favoriteKey = favoriteRef.key;
+        const ref = firebase.ref(FAVORITE_PRODUCTS_REF + favoriteRef.key);
+        ref.update({'favoriteKey': favoriteRef.key});
+    };
+
+    const removeFromFavorites = () => {
+        return firebase.ref(FAVORITE_PRODUCTS_REF).child(props.product.favoriteKey).remove();
+    };
+
+    const handleFavoriteProduct = () => {
+        if (props.type === 'add') {
+            addToFavorites();
+        } else {
+            removeFromFavorites();
+        }
+        document.documentElement.scrollTop = 0;
+    };
     return (
         <IonCard>
             <IonCardContent>
                 <IonGrid>
                     <IonRow>
                         <IonCol>
-                            <img id='product-image' src={props.product.image}/>
+                            <img id='product-image' src={props.product.image} alt='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRTZjizRLdaRI0IgiqG_7F2SmM7kkA7WDb4vgssWmhozCUFwEnH'/>
                         </IonCol>
                         <IonCol>
                             <IonRow>
@@ -34,13 +63,13 @@ export default function ProductCard(props) {
                 </IonGrid>
                 <IonGrid>
                     <IonRow>
-                        <IonButton color='dark' size='small'>
+                        <IonButton color='dark' size='small' onClick={addToFirebaseCart}>
                             <IonIcon slot='start' icon={cartOutline}/>
                             Adaugă în coș
                         </IonButton>
-                        <IonButton color='dark' size='small'>
-                            <IonIcon slot='start' icon={heartOutline}/>
-                            Adaugă la favorite
+                        <IonButton color='dark' size='small' onClick={handleFavoriteProduct}>
+                            <IonIcon slot='start' icon={props.icon}/>
+                            {props.text}
                         </IonButton>
                     </IonRow>
                 </IonGrid>

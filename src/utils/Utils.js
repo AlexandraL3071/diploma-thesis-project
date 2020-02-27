@@ -29,7 +29,7 @@ export const totalPrice = (products) => {
     // eslint-disable-next-line array-callback-return
     products.map(product => {
         if (product.quantity !== undefined && product.price !== undefined) {
-            totalPrice += parseInt(product.price) * parseInt(product.quantity)
+            totalPrice += product.price
         }
     });
     return totalPrice
@@ -54,12 +54,15 @@ export const orderDate = (orderDate) => {
 
 export const addToArray = (products) => {
     let array = [];
+    // eslint-disable-next-line array-callback-return
     Object.values(products.fitness).map(product => {
         array.push(product);
     });
+    // eslint-disable-next-line array-callback-return
     Object.values(products.tennis).map(product => {
         array.push(product);
     });
+    // eslint-disable-next-line array-callback-return
     Object.values(products.others).map(product => {
         array.push(product);
     });

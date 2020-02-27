@@ -15,3 +15,7 @@ ion-content {
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
+
+#text-color {
+    color: white;
+}

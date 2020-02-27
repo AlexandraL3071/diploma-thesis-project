@@ -55,3 +55,12 @@
         font-size: 15px
     }
 }
+
+ion-card-header {
+    font-size: large;
+}
+
+#extra-content {
+    text-align: center;
+    font-size: medium;
+}

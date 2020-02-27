@@ -2,9 +2,19 @@ import React from 'react'
 import CartSummary from './CartSummary';
 import CartDetails from './CartDetails';
 import '../../styles/Cart.css'
+import '../../styles/Content.css'
 import {useSelector} from 'react-redux';
 import {useFirebaseConnect} from 'react-redux-firebase';
 import {PRODUCTS_REF} from "../../utils/linkNames";
+import {
+    IonButtons,
+    IonContent,
+    IonHeader,
+    IonMenuButton,
+    IonPage,
+    IonTitle,
+    IonToolbar
+} from "@ionic/react";
 
 export default function Cart() {
     useFirebaseConnect(PRODUCTS_REF);
@@ -19,15 +29,20 @@ export default function Cart() {
     };
 
     return (
-        <div id='cart'>
-            <div className='two column stackable ui grid transition visible'>
-                <div id='smaller-column' className='column'>
-                    <CartSummary products={products()}/>
-                </div>
-                <div id='larger-column' className='column'>
-                    <CartDetails products={products()}/>
-                </div>
-            </div>
-        </div>
+        <IonPage>
+            <IonHeader>
+                <IonToolbar>
+                    <IonButtons slot="start">
+                        <IonMenuButton/>
+                    </IonButtons>
+                    <IonTitle>Cosul de cumparaturi</IonTitle>
+                </IonToolbar>
+            </IonHeader>
+
+            <IonContent>
+                <CartSummary products={products()}/>
+                <CartDetails products={products()}/>
+            </IonContent>
+        </IonPage>
     )
 }

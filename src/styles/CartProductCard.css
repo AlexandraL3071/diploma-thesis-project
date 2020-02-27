@@ -1,55 +1,80 @@
-#cart-product-card {
-    position: relative;
-    min-width: 95%;
-    margin-left: 10px;
-    margin-bottom: 10px;
-}
+/*#cart-product-card {*/
+/*    position: relative;*/
+/*    min-width: 95%;*/
+/*    margin-left: 10px;*/
+/*    margin-bottom: 10px;*/
+/*}*/
 
-#delete-icon {
-    float: right;
-}
+/*#delete-icon {*/
+/*    float: right;*/
+/*}*/
 
-.ui.inverted.fluid.input {
-    border-style: solid;
-    border-color: black;
-    border-width: 1px;
-    text-align: right;
-}
+/*.ui.inverted.fluid.input {*/
+/*    border-style: solid;*/
+/*    border-color: black;*/
+/*    border-width: 1px;*/
+/*    text-align: right;*/
+/*}*/
 
-#name-column {
-    position: relative;
-    max-width: 50%;
-    color: black;
-    text-align: left;
-}
+/*#name-column {*/
+/*    position: relative;*/
+/*    max-width: 50%;*/
+/*    color: black;*/
+/*    text-align: left;*/
+/*}*/
 
-#quantity-column {
-    position: relative;
-    width: 20%;
-    color: black;
-    text-align: left;
-}
+/*#quantity-column {*/
+/*    position: relative;*/
+/*    width: 20%;*/
+/*    color: black;*/
+/*    text-align: left;*/
+/*}*/
 
-#price-column {
-    position: relative;
-    max-width: 35%;
-    color: black;
-    text-align: center
-}
+/*#price-column {*/
+/*    position: relative;*/
+/*    max-width: 35%;*/
+/*    color: black;*/
+/*    text-align: center*/
+/*}*/
 
-#delete-column {
-    position: relative;
-    max-width: 15%;
-    color: black;
-}
+/*#delete-column {*/
+/*    position: relative;*/
+/*    max-width: 15%;*/
+/*    color: black;*/
+/*}*/
+
+/*#first-column {*/
+/*    position: relative;*/
+/*    max-width: 50%;*/
+/*}*/
+
+/*#second-column {*/
+/*    position: relative;*/
+/*    max-width: 50%;*/
+/*    float: right;*/
+/*}*/
 
 #first-column {
     position: relative;
-    max-width: 50%;
+    width: 40%;
 }
 
 #second-column {
     position: relative;
-    max-width: 50%;
-    float: right;
+    width: 30%;
 }
+
+#third-column {
+    position: relative;
+    width: 25%;
+}
+
+#icon {
+    float: left;
+}
+
+#full-width {
+    position: relative;
+    width: 100%;
+}
+

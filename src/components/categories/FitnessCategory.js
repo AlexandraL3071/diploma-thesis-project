@@ -1,7 +1,7 @@
 import React from 'react'
 import ProductCard from './ProductCard';
 import {useSelector} from 'react-redux';
-import {ADD_FAVORITE_LINK, CATEGORIES_LINK, PRODUCTS_REF} from "../../utils/linkNames";
+import {CATEGORIES_LINK, FAVORITE_LINK} from "../../utils/linkNames";
 import '../../styles/AllProducts.css'
 import '../../styles/Content.css'
 import {
@@ -14,6 +14,7 @@ import {
     IonTitle,
     IonToolbar
 } from "@ionic/react";
+import {heartOutline} from "ionicons/icons";
 
 export default function FitnessCategory() {
     const fitnessProducts = useSelector(state => state.firebase.data.products.fitness);
@@ -22,7 +23,7 @@ export default function FitnessCategory() {
         return (
             <IonContent>
                 {fitnessProducts.map(product => (
-                    <ProductCard product={product} type='add' button='ui basic pink button' icon='heart icon' text='Adauga la favorite' link={ADD_FAVORITE_LINK}/>
+                    <ProductCard product={product} type='add' icon={heartOutline} text='Adauga la favorite' link={FAVORITE_LINK}/>
                 ))}
             </IonContent>
         )
