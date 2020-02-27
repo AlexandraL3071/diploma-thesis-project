@@ -2,7 +2,7 @@ import React from 'react';
 import {
     IonButtons,
     IonContent,
-    IonHeader,
+    IonHeader, IonItem,
     IonMenuButton,
     IonPage,
     IonRouterLink,
@@ -13,26 +13,31 @@ import CategoryCard from './CategoryCard';
 import {
     FITNESS_CATEGORY_LINK, TENNIS_CATEGORY_LINK, OTHERS_CATEGORY_LINK, PRODUCTS_REF
 } from '../../utils/linkNames';
-import {useFirebaseConnect} from "react-redux-firebase";
+import {isLoaded, useFirebaseConnect} from "react-redux-firebase";
+import {useSelector} from "react-redux";
 
 function AllCategories(props) {
-    useFirebaseConnect(PRODUCTS_REF);
+    if (!isLoaded()) {
+        return <IonContent>
+            Loading...
+        </IonContent>
+    }
 
     return (
         <IonPage>
             <IonHeader>
                 <IonToolbar>
                     <IonButtons slot="start">
-                        <IonMenuButton />
+                        <IonMenuButton/>
                     </IonButtons>
                     <IonTitle>Toate categoriile</IonTitle>
                 </IonToolbar>
             </IonHeader>
 
             <IonContent>
-                <IonRouterLink href={FITNESS_CATEGORY_LINK}><CategoryCard category='fitness'/></IonRouterLink>
-                <IonRouterLink href={TENNIS_CATEGORY_LINK}><CategoryCard category='tenis'/></IonRouterLink>
-                <IonRouterLink href={OTHERS_CATEGORY_LINK}><CategoryCard category='diverse'/></IonRouterLink>
+                <IonItem routerLink={FITNESS_CATEGORY_LINK}><CategoryCard category='fitness'/></IonItem>
+                <IonItem routerLink={TENNIS_CATEGORY_LINK}><CategoryCard category='tenis'/></IonItem>
+                <IonItem routerLink={OTHERS_CATEGORY_LINK}><CategoryCard category='diverse'/></IonItem>
             </IonContent>
         </IonPage>
     )

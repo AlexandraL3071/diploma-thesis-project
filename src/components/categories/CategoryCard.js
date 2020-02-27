@@ -17,7 +17,7 @@ export default function CategoryCard(props) {
     };
 
     return (
-        <IonCard>
+        <IonCard id='category-card'>
             <IonCardContent>
                 <img id='category-image' src={image()}/>
                 <IonCardSubtitle id='card-subtitle'>Echipamente pentru {props.category}</IonCardSubtitle>

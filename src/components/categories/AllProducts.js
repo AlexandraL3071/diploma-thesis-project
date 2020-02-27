@@ -2,17 +2,18 @@ import React from 'react'
 import ProductCard from './ProductCard';
 import {useSelector} from 'react-redux';
 import '../../styles/AllProducts.css'
-import {ADD_FAVORITE_LINK, CART_LINK} from "../../utils/linkNames";
+import {ADD_FAVORITE_LINK, CART_LINK, PRODUCTS_REF} from "../../utils/linkNames";
 import '../../styles/Content.css'
 import {IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar} from "@ionic/react";
-import {scroll} from '../../utils/Utils'
+import {useFirebaseConnect} from "react-redux-firebase";
 
 export default function AllProducts() {
+    useFirebaseConnect(PRODUCTS_REF);
     const products = useSelector(state => state.firebase.data.products);
 
     const renderList = (products) => {
         return (
-            <IonContent>
+            <IonContent className='class'>
                 {products.fitness.map(product => (
                     <ProductCard product={product} type='add' button='ui basic pink button' icon='heart icon'
                                  text='Adauga la favorite' link={ADD_FAVORITE_LINK}/>
@@ -30,8 +31,7 @@ export default function AllProducts() {
     };
 
     return (
-        <IonPage>
-            {scroll()}
+        <IonPage id='container'>
             <IonHeader>
                 <IonToolbar>
                     <IonButtons slot="start">

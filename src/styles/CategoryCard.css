@@ -5,6 +5,23 @@ ion-card-subtitle {
 
 #category-image {
     max-width: 90%;
+    max-height: 182px;
     margin-left: 15px;
     margin-right: 15px;
 }
+
+@media (min-width: 500px) {
+    #category-image {
+        max-height: 250px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 430px) {
+    #category-card {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+}
+

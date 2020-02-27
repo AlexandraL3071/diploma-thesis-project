@@ -27,6 +27,7 @@ import {
 import '../styles/SideMenu.css'
 import {useFirebaseConnect} from "react-redux-firebase";
 import {PRODUCTS_REF} from "../utils/linkNames";
+import {useSelector} from "react-redux";
 
 const appPages = [
     {

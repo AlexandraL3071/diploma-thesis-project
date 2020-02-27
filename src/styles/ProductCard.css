@@ -1,4 +1,12 @@
 #image {
     max-height: 174px;
+    align-items: center;
 }
+
+@media (min-width: 500px) {
+    ion-card {
+        width: 45%;
+    }
+}
+
 

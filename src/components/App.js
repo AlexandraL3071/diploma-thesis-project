@@ -30,6 +30,9 @@ import Favorites from "./favorites/Favorites";
 import Cart from "./cart/Cart";
 import AllOrders from "./orders/AllOrders";
 import {scroll} from '../utils/Utils'
+import FitnessCategory from "./categories/FitnessCategory";
+import TennisCategory from "./categories/TennisCategory";
+import OthersCategory from "./categories/OthersCategory";
 
 function App () {
     useFirebaseConnect(PRODUCTS_REF);
@@ -45,6 +48,18 @@ function App () {
                         <Route path="/Categorii" render={(props) => {
                             setSelectedPage("Categorii");
                             return <AllCategories {...props}/>;
+                        }} exact={true} onClick={scroll}/>
+                        <Route path="/Categorii/fitness" render={(props) => {
+                            setSelectedPage("Categorii");
+                            return <FitnessCategory {...props}/>;
+                        }} exact={true} onClick={scroll}/>
+                        <Route path="/Categorii/tenis" render={(props) => {
+                            setSelectedPage("Categorii");
+                            return <TennisCategory {...props}/>;
+                        }} exact={true} onClick={scroll}/>
+                        <Route path="/Categorii/diverse" render={(props) => {
+                            setSelectedPage("Categorii");
+                            return <OthersCategory {...props}/>;
                         }} exact={true} onClick={scroll}/>
                         <Route path="/Produse" render={(props) => {
                             setSelectedPage("Produse");

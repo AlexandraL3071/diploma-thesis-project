@@ -1,4 +1,16 @@
+ion-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
 #container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.class {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
