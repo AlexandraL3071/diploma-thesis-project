@@ -25,3 +25,16 @@ ion-card-subtitle {
     }
 }
 
+#category-card {
+    position: relative;
+    width: 100%;
+}
+
+@media (min-width: 600px) {
+    #half-sized-item {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 50%;
+    }
+}

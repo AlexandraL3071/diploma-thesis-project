@@ -14,6 +14,8 @@ import {
 } from '../../utils/linkNames';
 import {isLoaded} from "react-redux-firebase";
 import {useSelector} from "react-redux";
+import '../../styles/CategoryCard.css'
+import '../../styles/Content.css'
 
 function AllCategories(props) {
     const products = useSelector(state => state.firebase.data.products);
@@ -36,10 +38,10 @@ function AllCategories(props) {
             </IonHeader>
 
             {console.log(products)}
-            <IonContent>
-                <IonItem routerLink={FITNESS_CATEGORY_LINK}><CategoryCard category='fitness'/></IonItem>
-                <IonItem routerLink={TENNIS_CATEGORY_LINK}><CategoryCard category='tenis'/></IonItem>
-                <IonItem routerLink={OTHERS_CATEGORY_LINK}><CategoryCard category='diverse'/></IonItem>
+            <IonContent id='container'>
+                <IonItem id='half-sized-item' routerLink={FITNESS_CATEGORY_LINK}><CategoryCard category='fitness'/></IonItem>
+                <IonItem id='half-sized-item' routerLink={TENNIS_CATEGORY_LINK}><CategoryCard category='tenis'/></IonItem>
+                <IonItem id='half-sized-item' routerLink={OTHERS_CATEGORY_LINK}><CategoryCard category='diverse'/></IonItem>
             </IonContent>
         </IonPage>
     )
