@@ -17,14 +17,26 @@ import {
 import {heartOutline} from "ionicons/icons";
 
 export default function FitnessCategory() {
-    const fitnessProducts = useSelector(state => state.firebase.data.products.fitness);
+    const fitnessProducts = useSelector(state =>
+        state.firebase.data.products && state.firebase.data.products.fitness
+            ? state.firebase.data.products.fitness : []
+    );
+
+    const renderNoProductsMessage = () => {
+        return (
+            <IonContent>
+                Produsele din categoria fitness nu au fost incarcate inca!
+            </IonContent>
+        )
+    };
 
     const renderList = () => {
         return (
             <IonContent>
-                {fitnessProducts.map(product => (
-                    <ProductCard product={product} type='add' icon={heartOutline} text='Adauga la favorite' link={FAVORITE_LINK}/>
-                ))}
+                {fitnessProducts.length > 0 ? fitnessProducts.map(product => (
+                    <ProductCard product={product} type='add' icon={heartOutline} text='Adauga la favorite'
+                                 link={FAVORITE_LINK}/>
+                )) : renderNoProductsMessage()}
             </IonContent>
         )
     };
@@ -34,7 +46,7 @@ export default function FitnessCategory() {
             <IonHeader>
                 <IonToolbar>
                     <IonButtons slot="start">
-                        <IonMenuButton />
+                        <IonMenuButton/>
                     </IonButtons>
                     <IonTitle>Produse din categoria fitness</IonTitle>
                 </IonToolbar>

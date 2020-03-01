@@ -19,10 +19,13 @@ import {
 export default function Cart() {
     useFirebaseConnect(PRODUCTS_REF);
 
-    const cartProducts = useSelector(state => state.firebase.data.products.cartProducts);
+    const cartProducts = useSelector(state =>
+        state.firebase.data.products && state.firebase.data.products.cartProducts
+            ? state.firebase.data.products.cartProducts : []
+    );
 
     const products = () => {
-        if (cartProducts === undefined) {
+        if (cartProducts === undefined || cartProducts === []) {
             return [];
         }
         return Object.values(cartProducts);

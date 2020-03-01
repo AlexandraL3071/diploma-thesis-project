@@ -2,21 +2,65 @@ import React from 'react'
 import ProductCard from './ProductCard';
 import {useSelector} from 'react-redux';
 import '../../styles/AllProducts.css'
-import {FAVORITE_LINK, PRODUCTS_REF} from "../../utils/linkNames";
+import {CATEGORIES_LINK, FAVORITE_LINK, PRODUCTS_REF} from "../../utils/linkNames";
 import '../../styles/Content.css'
-import {IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar} from "@ionic/react";
+import {
+    IonButton,
+    IonButtons,
+    IonContent,
+    IonHeader,
+    IonItem,
+    IonMenuButton,
+    IonPage,
+    IonTitle,
+    IonToolbar
+} from "@ionic/react";
 import {useFirebaseConnect} from "react-redux-firebase";
 import {heartOutline} from "ionicons/icons";
+// import {openDB} from "idb";
 
 export default function AllProducts() {
     useFirebaseConnect(PRODUCTS_REF);
-    const products = useSelector(state => state.firebase.data.products);
+    const products = useSelector(state =>
+        state.firebase.data.products ? state.firebase.data.products : []
+    );
 
-    const renderList = (products) => {
+    // readAllData(st) {
+    //     let db = openDB('products-store', 1);
+    //     return db
+    //         .then(function (db) {
+    //             let tx = db.transaction(st, 'readonly');
+    //             let store = tx.objectStore(st);
+    //             return store.getAll()
+    //         })
+    // }
+    //
+    // dbData() {
+    //     const data3 = this.readAllData('products')
+    //         .then(function (data) {
+    //             const data2 = data;
+    //             return data2
+    //         });
+    // }
+    //     return prod;
+    //     // let db = openDB('products-store', 1);
+    //     // let data = db.then(db => {
+    //     //     let tx = db.transaction('products', 'readwrite');
+    //     //     let request = tx.objectStore('products').getAll();
+    //     //     let resultedData = request.then(dataFromPromise => {
+    //     //         console.log('from promise',dataFromPromise);
+    //     //         return dataFromPromise
+    //     //     });
+    //     //     return resultedData;
+    //     // });
+    //     // return data
+    // };
+
+    const renderProducts = (products) => {
         return (
-            <IonContent className='class'>
+            <IonContent>
                 {products.fitness.map(product => (
-                    <ProductCard product={product} type='add'  icon={heartOutline}
+                    <ProductCard product={product} type='add' icon={heartOutline}
                                  text='Adauga la favorite' link={FAVORITE_LINK}/>
                 ))}
                 {products.tennis.map(product => (
@@ -26,7 +70,24 @@ export default function AllProducts() {
                 {products.others.map(product => (
                     <ProductCard product={product} type='add' icon={heartOutline}
                                  text='Adauga la favorite' link={FAVORITE_LINK}/>
-                ))}
+                ))}}
+            </IonContent>
+        )
+    };
+
+    const renderNoProductsMessage = () => {
+        return (
+            <IonContent>
+                Produsele nu sunt disponibile pentru vizualizare inca! Pentru redirectionare apasati aici
+                <IonItem routerLink={CATEGORIES_LINK}><IonButton color='dark'>toate categoriile</IonButton></IonItem>
+            </IonContent>
+        )
+    };
+
+    const renderList = (products) => {
+        return (
+            <IonContent className='class'>
+                {products.length === 0 ? renderNoProductsMessage() : renderProducts(products)}
             </IonContent>
         )
     };
@@ -36,12 +97,13 @@ export default function AllProducts() {
             <IonHeader>
                 <IonToolbar>
                     <IonButtons slot="start">
-                        <IonMenuButton />
+                        <IonMenuButton/>
                     </IonButtons>
                     <IonTitle>Toate produsele</IonTitle>
                 </IonToolbar>
             </IonHeader>
 
+            {/*{this.renderList()}*/}
             {renderList(products)}
         </IonPage>
     )

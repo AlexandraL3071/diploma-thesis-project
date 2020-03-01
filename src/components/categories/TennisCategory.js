@@ -18,14 +18,24 @@ import {
 import {heartOutline} from "ionicons/icons";
 
 export default function TennisCategory() {
-    const tennisProducts = useSelector(state => state.firebase.data.products.tennis);
+    const tennisProducts = useSelector(state =>
+        state.firebase.data.products && state.firebase.data.products.tennis
+            ? state.firebase.data.products.tennis : []
+    );
+    const renderNoProductsMessage = () => {
+        return (
+            <IonContent>
+                Produsele din categoria tenis nu au fost incarcate inca!</IonContent>
+        )
+    };
 
     const renderList = () => {
         return (
             <IonContent>
-                {tennisProducts.map(product => (
-                    <ProductCard product={product} type='add' icon={heartOutline} text='Adauga la favorite' link={FAVORITE_LINK}/>
-                ))}
+                {tennisProducts.length > 0 ? tennisProducts.map(product => (
+                    <ProductCard product={product} type='add' icon={heartOutline} text='Adauga la favorite'
+                                 link={FAVORITE_LINK}/>
+                )) : renderNoProductsMessage()}
             </IonContent>
         )
     };
@@ -35,7 +45,7 @@ export default function TennisCategory() {
             <IonHeader>
                 <IonToolbar>
                     <IonButtons slot="start">
-                        <IonMenuButton />
+                        <IonMenuButton/>
                     </IonButtons>
                     <IonTitle>Produse din categoria tenis</IonTitle>
                 </IonToolbar>

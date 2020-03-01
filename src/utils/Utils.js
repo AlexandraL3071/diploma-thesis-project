@@ -29,7 +29,7 @@ export const totalPrice = (products) => {
     // eslint-disable-next-line array-callback-return
     products.map(product => {
         if (product.quantity !== undefined && product.price !== undefined) {
-            totalPrice += product.price
+            totalPrice += parseInt(product.price);
         }
     });
     return totalPrice
@@ -40,7 +40,7 @@ export const totalNumberOfProducts = (products) => {
     // eslint-disable-next-line array-callback-return
     products.map(product => {
         if (product.quantity !==  undefined) {
-            totalNumberOfProducts += parseInt(product.quantity)
+            totalNumberOfProducts += 1
         }
     });
     return totalNumberOfProducts

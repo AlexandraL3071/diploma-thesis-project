@@ -1,7 +1,7 @@
 import ProductCard from './ProductCard';
 import React from 'react';
 import {useSelector} from 'react-redux';
-import { CATEGORIES_LINK, FAVORITE_LINK} from "../../utils/linkNames";
+import {CATEGORIES_LINK, FAVORITE_LINK} from "../../utils/linkNames";
 import '../../styles/AllProducts.css'
 import '../../styles/Content.css'
 import {
@@ -18,14 +18,26 @@ import {
 import {heartOutline} from "ionicons/icons";
 
 export default function OthersCategory() {
-    const othersProducts = useSelector(state => state.firebase.data.products.others);
+    const othersProducts = useSelector(state =>
+        state.firebase.data.products && state.firebase.data.products.others
+            ? state.firebase.data.products.others : []
+    );
+
+    const renderNoProductsMessage = () => {
+        return (
+            <IonContent>
+                Produsele din diverse categorii nu au fost incarcate inca!
+            </IonContent>
+        )
+    };
 
     const renderList = () => {
         return (
             <IonContent id='container'>
-                {othersProducts.map(product => (
-                    <ProductCard product={product} type='add' icon={heartOutline} text='Adauga la favorite' link={FAVORITE_LINK}/>
-                ))}
+                {othersProducts.length > 0 ? othersProducts.map(product => (
+                    <ProductCard product={product} type='add' icon={heartOutline} text='Adauga la favorite'
+                                 link={FAVORITE_LINK}/>
+                )) : renderNoProductsMessage()}
             </IonContent>
         )
     };
@@ -35,7 +47,7 @@ export default function OthersCategory() {
             <IonHeader>
                 <IonToolbar>
                     <IonButtons slot="start">
-                        <IonMenuButton />
+                        <IonMenuButton/>
                     </IonButtons>
                     <IonTitle>Produse din diverse categorii</IonTitle>
                 </IonToolbar>

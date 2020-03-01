@@ -1,5 +1,5 @@
 import React from 'react'
-import {totalNumberOfProducts} from "../../utils/Utils";
+import {totalPrice} from "../../utils/Utils";
 import {
     IonCard,
     IonCardContent,
@@ -21,11 +21,11 @@ export default function CartSummary(props) {
             <IonCardContent>
                 <IonItem style={{marginLeft: '10px', color: 'white'}}>
                     Pana acum
-                    aveti: {props.products.length} {totalNumberOfProducts(props.products) > 1 ? 'produse' : 'produs'}
+                    aveti: {props.products.length} {props.products.length > 1 ? 'produse' : 'produs'}
                 </IonItem>
                 <br/>
                 <IonItem style={{marginLeft: '10px', color: 'white'}}>
-                    Pret total: {totalNumberOfProducts(props.products)} RON
+                    Pret total: {totalPrice(props.products)} RON
                 </IonItem>
                 <br/>
             </IonCardContent>

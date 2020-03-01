@@ -6,6 +6,7 @@ import {IonCard, IonCardContent, IonCol, IonGrid, IonIcon, IonItem, IonRow} from
 import {trashOutline} from "ionicons/icons";
 
 export default function CartProductCard(props) {
+
     const firebase = useFirebase();
 
     const deleteFromCart = () => {
