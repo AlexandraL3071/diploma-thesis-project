@@ -7,6 +7,7 @@ import {
     IonCardTitle,
     IonItem,
 } from "@ionic/react";
+import '../../styles/Cart.css'
 
 
 export default function CartSummary(props) {
@@ -19,12 +20,12 @@ export default function CartSummary(props) {
                 <IonCardTitle>Sumar</IonCardTitle>
             </IonCardContent>
             <IonCardContent>
-                <IonItem style={{marginLeft: '10px', color: 'white'}}>
+                <IonItem id='cart-label'>
                     Pana acum
                     aveti: {props.products.length} {props.products.length > 1 ? 'produse' : 'produs'}
                 </IonItem>
                 <br/>
-                <IonItem style={{marginLeft: '10px', color: 'white'}}>
+                <IonItem id='cart-label'>
                     Pret total: {totalPrice(props.products)} RON
                 </IonItem>
                 <br/>

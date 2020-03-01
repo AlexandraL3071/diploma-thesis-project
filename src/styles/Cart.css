@@ -17,6 +17,10 @@
     color: white;
 }
 
+#cart-label {
+    margin-left: 10px;
+}
+
 .two.column.stackable.ui.grid.transition.visible {
    width: 100%;
 }

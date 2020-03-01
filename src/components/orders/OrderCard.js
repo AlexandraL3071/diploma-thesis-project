@@ -30,16 +30,16 @@ export default function OrderCard(props) {
                 <IonCardTitle>Detaliile comenzii</IonCardTitle>
             </IonCardContent>
             <IonCardContent className='content'>
-                <IonItem id='item' style={{marginLeft: '10px', color: 'white'}}>
+                <IonItem>
                     Ati comandat un numar
                     de: {totalNumberOfProducts(Object.values(props.order))} {totalNumberOfProducts(Object.values(props.order)) === 1 ? 'produs' : 'produse'}
                 </IonItem>
                 <br/>
-                <IonItem id='item' style={{marginLeft: '10px', color: 'white'}}>
+                <IonItem>
                     Valoarea totala a comenzii: {totalPrice(Object.values(props.order))} RON
                 </IonItem>
                 <br/>
-                <IonItem id='item' style={{marginLeft: '10px', color: 'white'}}>
+                <IonItem>
                     Data plasarii comenzii: {orderDate(props.order.orderDate)}
                 </IonItem>
                 <br/>
