@@ -10,7 +10,7 @@ import {useFirebaseConnect} from "react-redux-firebase";
 export default function Favorites() {
     useFirebaseConnect(PRODUCTS_REF);
     const favoriteProducts = useSelector(state =>
-        state.firebase.data.products !==  undefined ? state.firebase.data.products.favoriteProducts : []
+        state.firebase.data.products ? state.firebase.data.products.favoriteProducts : []
     );
 
     const renderList = () => {
