@@ -25,7 +25,7 @@ export default function CartProductCard(props) {
                             <IonItem>{props.product.price} RON</IonItem>
                         </IonCol>
                         <IonCol id='third-column'>
-                            <IonIcon id='icon' icon={trashOutline} onClick={deleteFromCart}/>
+                            <IonIcon id='icon' icon={trashOutline} title='Sterge din cos' onClick={deleteFromCart}/>
                         </IonCol>
                     </IonRow>
                 </IonGrid>
