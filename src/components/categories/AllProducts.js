@@ -17,47 +17,71 @@ import {useFirebaseConnect} from "react-redux-firebase";
 import {openDB} from "idb";
 import {getArrayFromSpecificIndex} from "../../utils/Utils";
 import ProductsPage from "../ProductsPage";
+import {useSelector} from "react-redux";
 
 export default function AllProducts() {
     useFirebaseConnect(PRODUCTS_REF);
     const [pageNumber, setPageNumber] = useState(0);
-    const [products, setProducts] = useState([]);
+    const [productsOffline, setProductsOffline] = useState([]);
+
+    const productsOnline = useSelector(state => {
+        let aux = [];
+        if (state.firebase.data.products) {
+            console.log("on online, from firebase");
+            aux = aux.concat(state.firebase.data.products.fitness);
+            aux = aux.concat(state.firebase.data.products.tennis);
+            aux = aux.concat(state.firebase.data.products.others);
+        }
+        return aux;
+    });
 
     useEffect(() => {
-        let db = openDB('products-store', 1);
-        db.then(function (db) {
-                    let tx = db.transaction('products', 'readonly');
-                    let request = tx.objectStore('products').getAll();
-                    request.then(data => {
-                        let aux = data[0].value.fitness;
-                        aux = aux.concat(data[0].value.tennis);
-                        aux = aux.concat(data[0].value.others);
-                        setProducts(aux);
-                    })
+        if (!window.navigator.onLine) {
+            let db = openDB('products-store', 1);
+            db.then(function (db) {
+                let tx = db.transaction('products', 'readonly');
+                let request = tx.objectStore('products').getAll();
+                request.then(data => {
+                    let aux = data[0].value.fitness;
+                    aux = aux.concat(data[0].value.tennis);
+                    aux = aux.concat(data[0].value.others);
+                    setProductsOffline(aux);
                 })
-    },[products]);
+            });
+            console.log("on offline, from indexedDB: ", productsOffline)
+        }
+    }, [productsOffline]);
 
     const callbackFunction = (pageNumber) => {
         setPageNumber(pageNumber);
     };
 
     const maxPages = () => {
-      return ((products.length)/5 + 1) | 0;
+        if (window.navigator.onLine) {
+            return ((productsOnline.length) / 5 + 1) | 0;
+        }
+        return ((productsOffline.length) / 5 + 1) | 0;
+
     };
 
     const generateSecondIndex = () => {
-        const leftOnLastPage = products.length - (maxPages() - 1)*5;
+        const leftOnLastPage = window.navigator.onLine ? productsOnline.length - (maxPages() - 1) * 5 : productsOffline.length - (maxPages() - 1) * 5;
         if (pageNumber === maxPages() - 1) {
-            return pageNumber*5 + leftOnLastPage;
+            return pageNumber * 5 + leftOnLastPage;
         }
-        return pageNumber*5 + 5;
+        return pageNumber * 5 + 5;
     };
 
     const prod = () => {
-        return getArrayFromSpecificIndex(products, pageNumber*5, generateSecondIndex());
+        if (window.navigator.onLine) {
+            return getArrayFromSpecificIndex(productsOnline, pageNumber * 5, generateSecondIndex());
+        }
+        return getArrayFromSpecificIndex(productsOffline, pageNumber * 5, generateSecondIndex());
+
     };
 
     const renderProducts = () => {
+        const products = window.navigator.onLine ? productsOnline : productsOffline;
         return (
             <IonContent>
                 <ProductsPage length={products.length} products={prod()} parentCallback={(e) => callbackFunction(e)}/>
@@ -75,9 +99,10 @@ export default function AllProducts() {
     };
 
     const renderList = () => {
+        const products = window.navigator.onLine ? productsOnline : productsOffline;
         return (
             <IonContent className='class'>
-                {products.length !== 0 ? renderProducts() : renderNoProductsMessage()}
+                {products !== undefined ? renderProducts() : renderNoProductsMessage()}
             </IonContent>
         )
     };
