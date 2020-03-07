@@ -72,3 +72,11 @@ export const addToArray = (products) => {
 export const scroll = () => {
     document.documentElement.scrollTop = 0;
 };
+
+export const getArrayFromSpecificIndex = (array, i, j) => {
+    let newArray = [];
+    for(let k = i; k < j; k++) {
+        newArray.push(array[k])
+    }
+    return newArray;
+};

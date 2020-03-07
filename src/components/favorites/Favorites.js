@@ -24,6 +24,7 @@ export default function Favorites() {
             <IonContent>
                 {
                     products.map(product => (
+
                         <ProductCard product={product} type='remove'
                                      icon={trashOutline} text='Sterge din favorite' link={FAVORITE_LINK}/>
                     ))
