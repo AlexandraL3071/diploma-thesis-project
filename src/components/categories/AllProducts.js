@@ -27,7 +27,6 @@ export default function AllProducts() {
     const productsOnline = useSelector(state => {
         let aux = [];
         if (state.firebase.data.products) {
-            console.log("on online, from firebase");
             aux = aux.concat(state.firebase.data.products.fitness);
             aux = aux.concat(state.firebase.data.products.tennis);
             aux = aux.concat(state.firebase.data.products.others);
@@ -42,13 +41,9 @@ export default function AllProducts() {
                 let tx = db.transaction('products', 'readonly');
                 let request = tx.objectStore('products').getAll();
                 request.then(data => {
-                    let aux = data[0].value.fitness;
-                    aux = aux.concat(data[0].value.tennis);
-                    aux = aux.concat(data[0].value.others);
-                    setProductsOffline(aux);
+                    setProductsOffline(data[0].value);
                 })
             });
-            console.log("on offline, from indexedDB: ", productsOffline)
         }
     }, [productsOffline]);
 

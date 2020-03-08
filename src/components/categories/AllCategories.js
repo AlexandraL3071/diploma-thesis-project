@@ -18,8 +18,17 @@ import '../../styles/CategoryCard.css'
 import '../../styles/Content.css'
 import {openDB} from "idb";
 
-function AllCategories(props) {
-    const products = useSelector(state => state.firebase.data.products);
+function AllCategories() {
+
+    const products = useSelector(state => {
+        let aux = [];
+        if (state.firebase.data.products) {
+            aux = aux.concat(state.firebase.data.products.fitness);
+            aux = aux.concat(state.firebase.data.products.tennis);
+            aux = aux.concat(state.firebase.data.products.others);
+        }
+        return aux.slice(0, 5);
+    });
 
     if (!isLoaded()) {
         return (<IonPage>
@@ -39,18 +48,20 @@ function AllCategories(props) {
     }
 
     const saveToIndexedDB = () => {
-        let db = openDB('products-store', 1, {
-                upgrade(db) {
-                    db.createObjectStore('products', {keyPath: 'id', autoIncrement: true});
-                }
-            },
-        );
-        db.then(db => {
-            let tx = db.transaction('products', 'readwrite');
-            tx.store.clear();
-            tx.store.add({value: products, key: 1});
-            return tx.complete
-        })
+        if (window.navigator.onLine) {
+            let db = openDB('products-store', 1, {
+                    upgrade(db) {
+                        db.createObjectStore('products', {keyPath: 'id', autoIncrement: true});
+                    }
+                },
+            );
+            db.then(db => {
+                let tx = db.transaction('products', 'readwrite');
+                tx.store.clear();
+                tx.store.add({value: products, key: 1});
+                return tx.complete
+            })
+        }
     };
 
     return (
