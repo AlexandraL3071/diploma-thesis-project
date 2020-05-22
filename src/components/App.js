@@ -21,7 +21,7 @@ import AllProducts from "./categories/AllProducts";
 import Favorites from "./favorites/Favorites";
 import Cart from "./cart/Cart";
 import AllOrders from "./orders/AllOrders";
-import {scroll} from '../utils/Utils'
+import {scroll} from '../utils/utils'
 import FitnessCategory from "./categories/FitnessCategory";
 import TennisCategory from "./categories/TennisCategory";
 import OthersCategory from "./categories/OthersCategory";

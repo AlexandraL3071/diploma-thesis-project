@@ -1,6 +1,6 @@
 import React from 'react'
 import {useFirebase} from 'react-redux-firebase';
-import {canBeCancelled, orderDate, totalNumberOfProducts, totalPrice} from '../../utils/Utils';
+import {canBeCancelled, orderDate, totalNumberOfProducts, totalPrice} from '../../utils/utils';
 import {ORDERS_REF} from "../../utils/linkNames";
 import '../../styles/OrderProducts.css'
 import {

@@ -1,5 +1,5 @@
 import React from 'react'
-import {totalPrice} from "../../utils/Utils";
+import {totalPrice} from "../../utils/utils";
 import {
     IonCard,
     IonCardContent,

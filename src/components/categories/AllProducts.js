@@ -15,7 +15,7 @@ import {
 } from "@ionic/react";
 import {useFirebaseConnect} from "react-redux-firebase";
 import {openDB} from "idb";
-import {getArrayFromSpecificIndex} from "../../utils/Utils";
+import {getArrayFromSpecificIndex} from "../../utils/utils";
 import ProductsPage from "../ProductsPage";
 import {useSelector} from "react-redux";
 

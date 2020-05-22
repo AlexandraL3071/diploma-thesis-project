@@ -1,6 +1,6 @@
 import {combineReducers, createStore} from 'redux';
 import {firebaseReducer} from 'react-redux-firebase';
-import { firebaseConfig} from './components/firebase/Firebase';
+import { firebaseConfig} from './firebase';
 import firebase from 'firebase/app';
 import 'firebase/database';
 
