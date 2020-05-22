@@ -59,11 +59,11 @@ function App () {
                             return <AllProducts {...props} onClick={scroll}/>;
                         }} exact={true}/>
                         <Route path="/Favorite" render={(props) => {
-                            setSelectedPage("Favorite");
+                            setSelectedPage("Produse favorite");
                             return <Favorites {...props}/>;
                         }} exact={true}/>
                         <Route path="/Cos de cumparaturi" render={(props) => {
-                            setSelectedPage("Cos de cumparaturi");
+                            setSelectedPage("Cosul de cumparaturi");
                             return <Cart {...props}/>;
                         }} exact={true}/>
                         <Route path="/Comenzi" render={(props) => {

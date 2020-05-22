@@ -4,14 +4,14 @@ import { firebaseConfig} from './components/firebase/Firebase';
 import firebase from 'firebase/app';
 import 'firebase/database';
 
-firebase.initializeApp(firebaseConfig);
-
 const rootReducer = combineReducers({
     firebase: firebaseReducer
 });
 
 const initialState = {};
 export const store = createStore(rootReducer, initialState);
+
+firebase.initializeApp(firebaseConfig);
 
 export const reactReduxFirebaseProps = {
     firebase,

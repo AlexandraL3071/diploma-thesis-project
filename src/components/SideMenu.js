@@ -28,7 +28,7 @@ import '../styles/SideMenu.css';
 
 const appPages = [
     {
-        title: 'Toate categoriile',
+        title: 'Categorii',
         url: '/Categorii',
         iosIcon: homeOutline,
         mdIcon: homeSharp
