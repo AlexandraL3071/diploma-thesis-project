@@ -1,0 +1,28 @@
+.paging-button {
+    height: auto;
+    width: auto;
+    position: relative;
+    align-self: center;
+}
+
+#full-width {
+    height: 10%;
+    align-items: center;
+}
+
+#page-label {
+    text-align: center;
+}
+
+#page-item {
+    margin-right: 15px;
+    position: relative;
+    width: 30%;
+    float: right;
+}
+
+@media (max-width: 500px){
+    #page-item {
+        width: 50%
+    }
+}

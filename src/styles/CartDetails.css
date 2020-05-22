@@ -1,3 +1,11 @@
 .ui.secondary.button {
    float: right;
 }
+
+#popover {
+   align-self: center;
+}
+
+div.popover-content.sc-ion-popover-md {
+   width: auto;
+}

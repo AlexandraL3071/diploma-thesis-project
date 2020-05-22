@@ -55,11 +55,11 @@ export default function ProductCard(props) {
             return (
                 <IonItem routerLink={CART_LINK}>
                     <IonContent>
-                        <IonHeader>Produsul a fost adaugat in cosul de cumparaturi!</IonHeader>
-                        <IonButton id='centered-button' color='dark' onClick={() => setShowPopover(false)}>Vizualizati cosul de cumparaturi</IonButton>
+                        {window.navigator.onLine ? <IonHeader>Produsul a fost adaugat in cos!</IonHeader> :
+                        <IonHeader>Sunteti in modul offline! Produsul va fi adaugat in cos cand reveniti online</IonHeader>}
+                        {window.navigator.onLine ? <IonButton id='centered-button' color='dark' onClick={() => setShowPopover(false)}>Vizualizati cosul de cumparaturi</IonButton> : ''}
                     </IonContent>
                 </IonItem>
-
             )
         } else {
             return (
@@ -103,7 +103,7 @@ export default function ProductCard(props) {
                             <IonIcon slot='start' icon={props.icon}/>
                             {props.text}
                         </IonButton>
-                        <IonPopover id='popover' isOpen={showPopover} onDidDismiss={e => setShowPopover(false)}>
+                        <IonPopover id='popover' isOpen={showPopover} onDidDismiss={() => setShowPopover(false)}>
                             {renderNextLink()}
                         </IonPopover>
                     </IonRow>

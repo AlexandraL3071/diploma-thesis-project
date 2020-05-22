@@ -1,22 +1,28 @@
-import React from 'react'
+import React, {useState} from 'react'
 import CartProducts from './CartProducts';
 import '../../styles/CartDetails.css'
 import '../../styles/Cart.css'
 import {useFirebase} from 'react-redux-firebase';
-import {CART_PRODUCTS_REF, CATEGORIES_LINK, ORDERS_REF} from "../../utils/linkNames";
+import {
+    CART_PRODUCTS_REF,
+    CATEGORIES_LINK,
+    ORDERS_LINK,
+    ORDERS_REF
+} from "../../utils/linkNames";
 import {
     IonButton,
     IonCard,
     IonCardContent,
     IonCardHeader,
     IonCardSubtitle,
-    IonCardTitle,
-    IonItemDivider,
+    IonCardTitle, IonContent, IonHeader, IonItem,
+    IonItemDivider, IonPopover,
     IonRouterLink
 } from "@ionic/react";
 
 export default function CartDetails(props) {
     const firebase = useFirebase();
+    const [showPopover, setShowPopover] = useState(false);
 
     const addToFirebaseOrders = () => {
         const orderDate = new Date();
@@ -27,6 +33,22 @@ export default function CartDetails(props) {
         ref.update({'orderKey': orderRef.key, 'orderDate': orderDate});
         firebase.ref(CART_PRODUCTS_REF).remove();
         document.documentElement.scrollTop = 0;
+        setShowPopover(true);
+    };
+
+    const renderNextLink = () => {
+        return (
+            <IonItem routerLink={ORDERS_LINK}>
+                <IonContent>
+                    {window.navigator.onLine ? <IonHeader>Comanda a fost plasata!</IonHeader> :
+                        <IonHeader>Sunteti in modul offline! Comanda va fi plasata cand reveniti
+                            online</IonHeader>}
+                    {window.navigator.onLine ?
+                        <IonButton id='centered-button' color='dark' onClick={() => setShowPopover(false)}>Vizualizati
+                            toate comenzile</IonButton> : ''}
+                </IonContent>
+            </IonItem>
+        )
     };
 
     return (
@@ -47,6 +69,9 @@ export default function CartDetails(props) {
                     </IonCardContent>
                     : ''
             }
+            <IonPopover id='popover' isOpen={showPopover} onDidDismiss={() => setShowPopover(false)}>
+                {renderNextLink()}
+            </IonPopover>
             <IonItemDivider/>
             <IonCardContent>
                 <IonCardSubtitle>

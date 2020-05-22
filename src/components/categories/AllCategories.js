@@ -75,7 +75,6 @@ function AllCategories() {
                 </IonToolbar>
             </IonHeader>
 
-            {console.log(products)}
             <IonContent id='container'>
                 <IonItem id='half-sized-item' routerLink={FITNESS_CATEGORY_LINK}><CategoryCard
                     category='fitness'/></IonItem>
