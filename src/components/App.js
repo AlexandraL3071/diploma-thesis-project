@@ -1,9 +1,9 @@
 import SideMenu from './SideMenu';
 import AllCategories from './categories/AllCategories';
-import React, { useState } from 'react';
-import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
-import { Route } from 'react-router-dom';
+import React from 'react';
+import {IonApp, IonRouterOutlet, IonSplitPane} from '@ionic/react';
+import {IonReactRouter} from '@ionic/react-router';
+import {Route} from 'react-router-dom';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -28,12 +28,11 @@ import AllProducts from "./categories/AllProducts";
 import Favorites from "./favorites/Favorites";
 import Cart from "./cart/Cart";
 import AllOrders from "./orders/AllOrders";
-import {scroll} from '../utils/utils'
 import {useSelector} from "react-redux";
 import {Redirect} from "react-router";
 import CategoryProducts from "./categories/CategoryProducts";
 
-function App () {
+function App() {
     useFirebaseConnect(PRODUCTS_REF);
 
     const allProducts = useSelector(state => {
@@ -49,7 +48,7 @@ function App () {
     const fitnessProducts = useSelector(state => {
         let aux = [];
         if (state.firebase.data.products) {
-           aux = state.firebase.data.products.fitness;
+            aux = state.firebase.data.products.fitness;
         }
         return aux;
     });
@@ -83,58 +82,24 @@ function App () {
         state.firebase.data.products ? state.firebase.data.products.orders : []
     );
 
-    const [selectedPage, setSelectedPage] = useState('');
-
     return (
         <IonApp>
             <IonReactRouter>
                 <IonSplitPane contentId="main">
-                    <SideMenu selectedPage={selectedPage} />
+                    <SideMenu/>
                     <IonRouterOutlet id="main">
                         <Route exact path="/"><Redirect to="/Categorii"/></Route>
-                        <Route path={CATEGORIES_LINK} render={(props) => {
-                            props.products = allProducts;
-                            setSelectedPage("Categorii");
-                            return <AllCategories {...props}/>;
-                        }} exact={true} onClick={scroll}/>
-                        <Route path={FITNESS_CATEGORY_LINK} render={(props) => {
-                            props.products = fitnessProducts;
-                            props.category = "fitness";
-                            setSelectedPage("Categorii");
-                            return <CategoryProducts {...props}/>;
-                        }} exact={true} onClick={scroll}/>
-                        <Route path={TENNIS_CATEGORY_LINK} render={(props) => {
-                            props.products = tennisProducts;
-                            props.category = "tenis";
-                            setSelectedPage("Categorii");
-                            return <CategoryProducts {...props}/>;
-                        }} exact={true} onClick={scroll}/>
-                        <Route path={OTHERS_CATEGORY_LINK} render={(props) => {
-                            props.products = othersProducts;
-                            props.category = "diverse";
-                            setSelectedPage("Categorii");
-                            return <CategoryProducts {...props}/>;
-                        }} exact={true} onClick={scroll}/>
-                        <Route path={PRODUCTS_LINK} render={(props) => {
-                            props.products = allProducts;
-                            setSelectedPage("Produse");
-                            return <AllProducts {...props} onClick={scroll}/>;
-                        }} exact={true}/>
-                        <Route path={FAVORITE_LINK} render={(props) => {
-                            props.products = favoriteProducts;
-                            setSelectedPage("Produse favorite");
-                            return <Favorites {...props}/>;
-                        }} exact={true}/>
-                        <Route path={CART_LINK} render={(props) => {
-                            props.products = cartProducts;
-                            setSelectedPage("Cosul de cumparaturi");
-                            return <Cart {...props}/>;
-                        }} exact={true}/>
-                        <Route path={ORDERS_LINK} render={(props) => {
-                            props.orders = orders;
-                            setSelectedPage("Comenzi");
-                            return <AllOrders {...props}/>;
-                        }} exact={true}/>
+                        <Route exact path={CATEGORIES_LINK}><AllCategories products={allProducts}/></Route>
+                        <Route exact path={FITNESS_CATEGORY_LINK}><CategoryProducts products={fitnessProducts}
+                                                                                    category={"fitness"}/></Route>
+                        <Route exact path={TENNIS_CATEGORY_LINK}><CategoryProducts products={tennisProducts}
+                                                                                   category={"tenis"}/></Route>
+                        <Route exact path={OTHERS_CATEGORY_LINK}><CategoryProducts products={othersProducts}
+                                                                                   category={"diverse"}/></Route>
+                        <Route exact path={PRODUCTS_LINK}><AllProducts products={allProducts}/></Route>
+                        <Route exact path={FAVORITE_LINK}><Favorites products={favoriteProducts}/></Route>
+                        <Route exact path={CART_LINK}><Cart products={cartProducts}/></Route>
+                        <Route exact path={ORDERS_LINK}><AllOrders orders={orders}/></Route>
                     </IonRouterOutlet>
                 </IonSplitPane>
             </IonReactRouter>
