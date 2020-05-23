@@ -3,9 +3,6 @@ import CartSummary from './CartSummary';
 import CartDetails from './CartDetails';
 import '../../styles/Cart.css'
 import '../../styles/Content.css'
-import {useSelector} from 'react-redux';
-import {useFirebaseConnect} from 'react-redux-firebase';
-import {PRODUCTS_REF} from "../../utils/linkNames";
 import {
     IonButtons,
     IonContent,
@@ -16,19 +13,13 @@ import {
     IonToolbar
 } from "@ionic/react";
 
-export default function Cart() {
-    useFirebaseConnect(PRODUCTS_REF);
-
-    const cartProducts = useSelector(state =>
-        state.firebase.data.products && state.firebase.data.products.cartProducts
-            ? state.firebase.data.products.cartProducts : []
-    );
+export default function Cart(props) {
 
     const products = () => {
-        if (cartProducts === undefined || cartProducts === []) {
+        if (props.products === undefined || props.products === []) {
             return [];
         }
-        return Object.values(cartProducts);
+        return Object.values(props.products);
     };
 
     return (

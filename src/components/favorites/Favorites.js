@@ -1,25 +1,20 @@
 import React from 'react'
-import {useSelector} from 'react-redux';
 import ProductCard from '../categories/ProductCard';
-import {FAVORITE_LINK, PRODUCTS_REF} from '../../utils/linkNames';
+import {FAVORITE_LINK} from '../../utils/linkNames';
 import '../../styles/Content.css'
 import {IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar} from "@ionic/react";
 import {trashOutline} from "ionicons/icons";
-import {useFirebaseConnect} from "react-redux-firebase";
 
-export default function Favorites() {
-    useFirebaseConnect(PRODUCTS_REF);
-    const favoriteProducts = useSelector(state =>
-        state.firebase.data.products ? state.firebase.data.products.favoriteProducts : []
-    );
-
+export default function Favorites(props) {
     const renderList = () => {
-        if (favoriteProducts === undefined) {
+        if (props.products === undefined) {
             return <IonContent><IonHeader>Nu ati marcat niciun produs ca fiind favorit!</IonHeader></IonContent>
-        } else if (favoriteProducts.length === 0) {
+        } else if (props.products.length === 0) {
             return <IonContent><IonHeader>Momentan nu au fost incarcate produsele favorite!</IonHeader></IonContent>
         }
-        const products = Object.values(favoriteProducts);
+
+        const products = Object.values(props.products);
+
         return (
             <IonContent>
                 {

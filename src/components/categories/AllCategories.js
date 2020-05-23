@@ -13,22 +13,11 @@ import {
     FITNESS_CATEGORY_LINK, TENNIS_CATEGORY_LINK, OTHERS_CATEGORY_LINK
 } from '../../utils/linkNames';
 import {isLoaded} from "react-redux-firebase";
-import {useSelector} from "react-redux";
 import '../../styles/CategoryCard.css'
 import '../../styles/Content.css'
 import {openDB} from "idb";
 
-function AllCategories() {
-
-    const products = useSelector(state => {
-        let aux = [];
-        if (state.firebase.data.products) {
-            aux = aux.concat(state.firebase.data.products.fitness);
-            aux = aux.concat(state.firebase.data.products.tennis);
-            aux = aux.concat(state.firebase.data.products.others);
-        }
-        return aux.slice(0, 5);
-    });
+function AllCategories(props) {
 
     if (!isLoaded()) {
         return (<IonPage>
@@ -58,7 +47,7 @@ function AllCategories() {
             db.then(db => {
                 let tx = db.transaction('products', 'readwrite');
                 tx.store.clear();
-                tx.store.add({value: products, key: 1});
+                tx.store.add({value: props.products.slice(0, 5), key: 1});
                 return tx.complete
             })
         }

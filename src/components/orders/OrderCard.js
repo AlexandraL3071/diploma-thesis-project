@@ -50,8 +50,8 @@ export default function OrderCard(props) {
                         <IonButton color='dark' onClick={cancelOrder}>
                             <IonIcon className={trashOutline}/>
                             Anuleaza comanda
-                        </IonButton></IonCardContent> :
-                    <IonCardContent id='extra-content'>Comanda nu mai poate fi anulata</IonCardContent>
+                        </IonButton></IonCardContent>
+                    : <IonCardContent id='extra-content'>Comanda nu mai poate fi anulata</IonCardContent>
             }
         </IonCard>
     )

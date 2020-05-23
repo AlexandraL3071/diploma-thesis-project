@@ -17,22 +17,12 @@ import {useFirebaseConnect} from "react-redux-firebase";
 import {openDB} from "idb";
 import {getArrayFromSpecificIndex} from "../../utils/utils";
 import ProductsPage from "../ProductsPage";
-import {useSelector} from "react-redux";
 
-export default function AllProducts() {
+export default function AllProducts(props) {
+
     useFirebaseConnect(PRODUCTS_REF);
     const [pageNumber, setPageNumber] = useState(0);
     const [productsOffline, setProductsOffline] = useState([]);
-
-    const productsOnline = useSelector(state => {
-        let aux = [];
-        if (state.firebase.data.products) {
-            aux = aux.concat(state.firebase.data.products.fitness);
-            aux = aux.concat(state.firebase.data.products.tennis);
-            aux = aux.concat(state.firebase.data.products.others);
-        }
-        return aux;
-    });
 
     useEffect(() => {
         if (!window.navigator.onLine) {
@@ -53,14 +43,14 @@ export default function AllProducts() {
 
     const maxPages = () => {
         if (window.navigator.onLine) {
-            return ((productsOnline.length) / 5 + 1) | 0;
+            return ((props.products.length) / 5 + 1) | 0;
         }
         return ((productsOffline.length) / 5 + 1) | 0;
 
     };
 
     const generateSecondIndex = () => {
-        const leftOnLastPage = window.navigator.onLine ? productsOnline.length - (maxPages() - 1) * 5 : productsOffline.length - (maxPages() - 1) * 5;
+        const leftOnLastPage = window.navigator.onLine ? props.products.length - (maxPages() - 1) * 5 : props.products.length - (maxPages() - 1) * 5;
         if (pageNumber === maxPages() - 1) {
             return pageNumber * 5 + leftOnLastPage;
         }
@@ -69,14 +59,14 @@ export default function AllProducts() {
 
     const prod = () => {
         if (window.navigator.onLine) {
-            return getArrayFromSpecificIndex(productsOnline, pageNumber * 5, generateSecondIndex());
+            return getArrayFromSpecificIndex(props.products, pageNumber * 5, generateSecondIndex());
         }
         return getArrayFromSpecificIndex(productsOffline, pageNumber * 5, generateSecondIndex());
 
     };
 
     const renderProducts = () => {
-        const products = window.navigator.onLine ? productsOnline : productsOffline;
+        const products = window.navigator.onLine ? props.products : productsOffline;
         return (
             <IonContent>
                 <ProductsPage length={products.length} products={prod()} parentCallback={(e) => callbackFunction(e)}/>
@@ -94,7 +84,7 @@ export default function AllProducts() {
     };
 
     const renderList = () => {
-        const products = window.navigator.onLine ? productsOnline : productsOffline;
+        const products = window.navigator.onLine ? props.products : productsOffline;
         return (
             <IonContent className='class'>
                 {products !== undefined ? renderProducts() : renderNoProductsMessage()}

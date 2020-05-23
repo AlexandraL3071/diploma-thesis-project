@@ -1,4 +1,3 @@
-export const BASENAME_LINK = '/sportsMAG';
 export const CATEGORIES_LINK = '/Categorii';
 export const FITNESS_CATEGORY_LINK = '/Categorii/fitness';
 export const TENNIS_CATEGORY_LINK = '/Categorii/tenis';
