@@ -17,6 +17,7 @@ export default function ProductCard(props) {
     const firebase = useFirebase();
     const [showPopover, setShowPopover] = useState(false);
     const [nextLink, setNextLink] = useState("");
+    const [whereToAdd, setWhereToAdd] = useState("");
 
     const addToFirebaseCart = () => {
         const cartRef = firebase.push(CART_PRODUCTS_REF, props.product);
@@ -25,7 +26,8 @@ export default function ProductCard(props) {
         ref.update({'cartKey': cartRef.key});
         document.documentElement.scrollTop = 0;
         setShowPopover(true);
-        setNextLink('cart');
+        setNextLink(CART_LINK);
+        setWhereToAdd("in cos");
     };
 
     const addToFavorites = () => {
@@ -34,7 +36,8 @@ export default function ProductCard(props) {
         const ref = firebase.ref(FAVORITE_PRODUCTS_REF + favoriteRef.key);
         ref.update({'favoriteKey': favoriteRef.key});
         setShowPopover(true);
-        setNextLink('favorites')
+        setNextLink(FAVORITE_LINK);
+        setWhereToAdd("la favorite");
     };
 
     const removeFromFavorites = () => {
@@ -51,27 +54,20 @@ export default function ProductCard(props) {
     };
 
     const renderNextLink = () => {
-        if (nextLink === 'cart') {
-            return (
-                <IonItem routerLink={CART_LINK}>
-                    <IonContent>
-                        {window.navigator.onLine ? <IonHeader>Produsul a fost adaugat in cos!</IonHeader> :
-                        <IonHeader>Sunteti in modul offline! Produsul va fi adaugat in cos cand reveniti online</IonHeader>}
-                        {window.navigator.onLine ? <IonButton id='centered-button' color='dark' onClick={() => setShowPopover(false)}>Vizualizati cosul de cumparaturi</IonButton> : ''}
-                    </IonContent>
-                </IonItem>
-            )
-        } else {
-            return (
-                <IonItem routerLink={FAVORITE_LINK}>
-                    <IonContent>
-                        <IonHeader>Produsul a fost marcat ca favorit!</IonHeader>
-                        <IonButton color='dark' onClick={() => setShowPopover(false)}>Vizualizati produsele favorite</IonButton>
-                    </IonContent>
-                </IonItem>
+        return (
+            <IonItem routerLink={nextLink}>
+                <IonContent>
+                    {window.navigator.onLine ? <IonHeader>Produsul a fost adaugat {whereToAdd}!</IonHeader> :
+                        <IonHeader>Sunteti in modul offline! Produsul va fi adaugat {whereToAdd} cand reveniti
+                            online</IonHeader>}
 
-            )
-        }
+                    {window.navigator.onLine ?
+                        <IonButton id='centered-button' color='dark' onClick={() => setShowPopover(false)}>Vizualizati
+                            cosul de cumparaturi</IonButton> : ''}
+                </IonContent>
+            </IonItem>
+        )
+
     };
 
     return (

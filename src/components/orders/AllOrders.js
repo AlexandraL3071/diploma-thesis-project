@@ -1,34 +1,21 @@
 import React from 'react';
 import OrderCard from './OrderCard';
-import {CATEGORIES_LINK} from "../../utils/linkNames";
 import '../../styles/Content.css'
 import '../../styles/OrderProducts.css'
 import {
-    IonButton,
     IonButtons,
     IonContent,
     IonHeader,
-    IonItem,
     IonMenuButton,
     IonPage,
     IonTitle,
     IonToolbar
 } from "@ionic/react";
+import {renderOfflineMessage} from "../../utils/utils";
 
 export default function AllOrders(props) {
-    let orderNumber = 1;
 
-    const renderNoOrdersAvailableMessage = () => {
-        return (
-            <IonContent>
-                <IonHeader>
-                    Comenzile nu sunt disponibile pentru vizualizare inca! Pentru redirectionare apasati aici
-                    <IonItem routerLink={CATEGORIES_LINK}><IonButton color='dark'>toate
-                        categoriile</IonButton></IonItem>
-                </IonHeader>
-            </IonContent>
-        )
-    };
+    let orderNumber = 1;
 
     const renderAllOrders = () => {
         return (
@@ -42,6 +29,16 @@ export default function AllOrders(props) {
         )
     };
 
+    const renderList = () => {
+        if (window.navigator.onLine) {
+            if (props.orders === []) {
+                return <IonHeader>Nu a fost plasata nicio comanda</IonHeader>
+            }
+            return renderAllOrders();
+        }
+        return renderOfflineMessage("Sunteti in modul offline! Nu puteti vizualiza comenzile plasate.");
+    };
+
     return (
         <IonPage>
             <IonHeader>
@@ -53,9 +50,7 @@ export default function AllOrders(props) {
                 </IonToolbar>
             </IonHeader>
 
-            {props.orders === undefined ?
-                <IonHeader>Nu a fost plasata nicio comanda</IonHeader>
-                : props.orders.length === 0 ? renderNoOrdersAvailableMessage() : renderAllOrders()}
+            {renderList()}
         </IonPage>
     )
 }

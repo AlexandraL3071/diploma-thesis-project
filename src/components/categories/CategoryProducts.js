@@ -14,25 +14,32 @@ import {
     IonToolbar
 } from "@ionic/react";
 import {heartOutline} from "ionicons/icons";
+import {renderOfflineMessage} from "../../utils/utils";
 
 export default function CategoryProducts(props) {
-    const renderNoProductsMessage = () => {
+
+    const renderCategoryProducts = () => {
         return (
             <IonContent>
-                Produsele din categoria {props.category} nu au fost incarcate inca!
+                {
+                    props.products.map(product => (
+                        <ProductCard product={product} type='add' icon={heartOutline} text='Adauga la favorite'
+                                     link={FAVORITE_LINK}/>
+                    ))
+                }
             </IonContent>
         )
     };
 
+
     const renderList = () => {
-        return (
-            <IonContent>
-                {props.products.length > 0 ? props.products.map(product => (
-                    <ProductCard product={product} type='add' icon={heartOutline} text='Adauga la favorite'
-                                 link={FAVORITE_LINK}/>
-                )) : renderNoProductsMessage()}
-            </IonContent>
-        )
+        if (window.navigator.onLine) {
+            if (props.products === []) {
+                return <IonHeader>Nu exista produse disponibie in categoria {props.category}!</IonHeader>
+            }
+            return renderCategoryProducts();
+        }
+        return renderOfflineMessage("Sunteti in modul offline! Nu puteti vizualiza produse dintr-o categorie anume")
     };
 
     return (

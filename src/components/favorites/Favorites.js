@@ -4,15 +4,11 @@ import {FAVORITE_LINK} from '../../utils/linkNames';
 import '../../styles/Content.css'
 import {IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar} from "@ionic/react";
 import {trashOutline} from "ionicons/icons";
+import {renderOfflineMessage} from "../../utils/utils";
 
 export default function Favorites(props) {
-    const renderList = () => {
-        if (props.products === undefined) {
-            return <IonContent><IonHeader>Nu ati marcat niciun produs ca fiind favorit!</IonHeader></IonContent>
-        } else if (props.products.length === 0) {
-            return <IonContent><IonHeader>Momentan nu au fost incarcate produsele favorite!</IonHeader></IonContent>
-        }
 
+    const renderFavoriteProducts = () => {
         const products = Object.values(props.products);
 
         return (
@@ -28,12 +24,24 @@ export default function Favorites(props) {
         )
     };
 
+    const renderList = () => {
+        if (window.navigator.onLine) {
+            if (props.products === undefined) {
+                return <IonContent><IonHeader>Nu ati marcat niciun produs ca fiind favorit!</IonHeader></IonContent>;
+            }
+
+            return renderFavoriteProducts();
+        }
+
+        return renderOfflineMessage("Sunteti in modul offline! Nu puteti vizualiza produsele favorite");
+    };
+
     return (
         <IonPage>
             <IonHeader>
                 <IonToolbar>
                     <IonButtons slot="start">
-                        <IonMenuButton />
+                        <IonMenuButton/>
                     </IonButtons>
                     <IonTitle>Favorite</IonTitle>
                 </IonToolbar>
