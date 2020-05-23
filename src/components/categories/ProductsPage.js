@@ -6,13 +6,18 @@ import {FAVORITE_LINK} from "../../utils/linkNames";
 import PagingComponent from "../PagingComponent";
 
 export default function ProductsPage(props) {
+
     return (
         <IonContent>
             {props.products.map(product => (
                 <ProductCard product={product} type='add' icon={heartOutline}
                              text='Adauga la favorite' link={FAVORITE_LINK}/>
             ))}
-            {props.products.length === 0 ? <IonHeader>Sunteti in modul offline! Restul produselor vor fi afisate cand reveniti online.</IonHeader> : ''}
+
+            {!window.navigator.onLine && props.products.length === 0 ?
+                <IonHeader>Sunteti in modul offline! Restul produselor vor fi afisate cand reveniti
+                    online.</IonHeader> : ''}
+
             <PagingComponent length={props.length} parentCallback={props.parentCallback}/>
         </IonContent>
     )

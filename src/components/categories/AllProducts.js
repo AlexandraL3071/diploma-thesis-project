@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import '../../styles/AllProducts.css'
-import {CATEGORIES_LINK, PRODUCTS_REF} from "../../utils/linkNames";
+import {CATEGORIES_LINK} from "../../utils/linkNames";
 import '../../styles/Content.css'
 import {
     IonButton,
@@ -13,14 +13,12 @@ import {
     IonTitle,
     IonToolbar
 } from "@ionic/react";
-import {useFirebaseConnect} from "react-redux-firebase";
 import {openDB} from "idb";
 import {getArrayFromSpecificIndex} from "../../utils/utils";
 import ProductsPage from "./ProductsPage";
 
 export default function AllProducts(props) {
 
-    useFirebaseConnect(PRODUCTS_REF);
     const [pageNumber, setPageNumber] = useState(0);
     const [productsOffline, setProductsOffline] = useState([]);
 
@@ -41,35 +39,31 @@ export default function AllProducts(props) {
         setPageNumber(pageNumber);
     };
 
-    const maxPages = () => {
-        if (window.navigator.onLine) {
-            return ((props.products.length) / 5 + 1) | 0;
-        }
-        return ((productsOffline.length) / 5 + 1) | 0;
-
+    const maxPages = (products) => {
+        return ((products.length) / 5 + 1) | 0;
     };
 
-    const generateSecondIndex = () => {
-        const leftOnLastPage = window.navigator.onLine ? props.products.length - (maxPages() - 1) * 5 : props.products.length - (maxPages() - 1) * 5;
-        if (pageNumber === maxPages() - 1) {
+    const generateSecondIndex = (products) => {
+        const noPages = maxPages(products);
+
+        const leftOnLastPage = products.length - (noPages - 1) * 5;
+
+        if (pageNumber === noPages - 1) {
             return pageNumber * 5 + leftOnLastPage;
         }
         return pageNumber * 5 + 5;
     };
 
-    const prod = () => {
-        if (window.navigator.onLine) {
-            return getArrayFromSpecificIndex(props.products, pageNumber * 5, generateSecondIndex());
-        }
-        return getArrayFromSpecificIndex(productsOffline, pageNumber * 5, generateSecondIndex());
-
+    const prod = (products) => {
+        return getArrayFromSpecificIndex(products, pageNumber * 5, generateSecondIndex(products));
     };
 
     const renderProducts = () => {
         const products = window.navigator.onLine ? props.products : productsOffline;
+
         return (
             <IonContent>
-                <ProductsPage length={products.length} products={prod()} parentCallback={(e) => callbackFunction(e)}/>
+                <ProductsPage length={products.length} products={prod(products)} parentCallback={(e) => callbackFunction(e)}/>
             </IonContent>
         )
     };
