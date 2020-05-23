@@ -12,29 +12,11 @@ import CategoryCard from './CategoryCard';
 import {
     FITNESS_CATEGORY_LINK, TENNIS_CATEGORY_LINK, OTHERS_CATEGORY_LINK
 } from '../../utils/linkNames';
-import {isLoaded} from "react-redux-firebase";
 import '../../styles/CategoryCard.css'
 import '../../styles/Content.css'
 import {openDB} from "idb";
 
 function AllCategories(props) {
-
-    if (!isLoaded()) {
-        return (<IonPage>
-            <IonHeader>
-                <IonToolbar>
-                    <IonButtons slot="start">
-                        <IonMenuButton/>
-                    </IonButtons>
-                    <IonTitle>Toate categoriile</IonTitle>
-                </IonToolbar>
-            </IonHeader>
-
-            <IonContent>
-                Loading...
-            </IonContent>
-        </IonPage>)
-    }
 
     const saveToIndexedDB = () => {
         if (window.navigator.onLine) {
