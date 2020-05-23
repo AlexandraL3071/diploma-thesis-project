@@ -16,7 +16,7 @@ import {
 import {useFirebaseConnect} from "react-redux-firebase";
 import {openDB} from "idb";
 import {getArrayFromSpecificIndex} from "../../utils/utils";
-import ProductsPage from "../ProductsPage";
+import ProductsPage from "./ProductsPage";
 
 export default function AllProducts(props) {
 

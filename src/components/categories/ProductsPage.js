@@ -1,9 +1,9 @@
 import React from 'react';
 import {IonContent, IonHeader} from "@ionic/react";
-import ProductCard from "./categories/ProductCard";
+import ProductCard from "./ProductCard";
 import {heartOutline} from "ionicons/icons";
-import {FAVORITE_LINK} from "../utils/linkNames";
-import PagingComponent from "./PagingComponent";
+import {FAVORITE_LINK} from "../../utils/linkNames";
+import PagingComponent from "../PagingComponent";
 
 export default function ProductsPage(props) {
     return (
