@@ -3,6 +3,7 @@ import {IonCard, IonCardContent, IonCardSubtitle} from "@ionic/react";
 import '../../styles/CategoryCard.css'
 
 export default function CategoryCard(props) {
+
     const image = () => {
         switch (props.category) {
             case 'fitness':
@@ -19,7 +20,8 @@ export default function CategoryCard(props) {
     return (
         <IonCard id='category-card'>
             <IonCardContent>
-                <img id='category-image' src={image()} alt='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRTZjizRLdaRI0IgiqG_7F2SmM7kkA7WDb4vgssWmhozCUFwEnH'/>
+                <img id='category-image' src={image()}
+                     alt='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRTZjizRLdaRI0IgiqG_7F2SmM7kkA7WDb4vgssWmhozCUFwEnH'/>
                 <IonCardSubtitle id='card-subtitle'>Echipamente pentru {props.category}</IonCardSubtitle>
             </IonCardContent>
         </IonCard>

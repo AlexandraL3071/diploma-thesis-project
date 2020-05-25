@@ -14,7 +14,9 @@ import {cartOutline} from 'ionicons/icons'
 import {useFirebase} from "react-redux-firebase";
 
 export default function ProductCard(props) {
+
     const firebase = useFirebase();
+
     const [showPopover, setShowPopover] = useState(false);
     const [nextLink, setNextLink] = useState("");
     const [whereToAdd, setWhereToAdd] = useState("");
@@ -50,7 +52,6 @@ export default function ProductCard(props) {
         } else {
             removeFromFavorites();
         }
-        document.documentElement.scrollTop = 0;
     };
 
     const renderNextLink = () => {
@@ -63,7 +64,7 @@ export default function ProductCard(props) {
 
                     {window.navigator.onLine ?
                         <IonButton id='centered-button' color='dark' onClick={() => setShowPopover(false)}>Vizualizati
-                            cosul de cumparaturi</IonButton> : ''}
+                            produsele</IonButton> : ''}
                 </IonContent>
             </IonItem>
         )

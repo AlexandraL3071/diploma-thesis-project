@@ -15,6 +15,7 @@ import {
 import {trashOutline} from "ionicons/icons";
 
 export default function OrderCard(props) {
+
     const firebase = useFirebase();
 
     const cancelOrder = () => {

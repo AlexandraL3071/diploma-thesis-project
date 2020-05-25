@@ -1,6 +1,5 @@
 import React from 'react'
 import ProductCard from '../categories/ProductCard';
-import {FAVORITE_LINK} from '../../utils/linkNames';
 import '../../styles/Content.css'
 import {IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar} from "@ionic/react";
 import {trashOutline} from "ionicons/icons";
@@ -17,7 +16,7 @@ export default function Favorites(props) {
                     products.map(product => (
 
                         <ProductCard product={product} type='remove'
-                                     icon={trashOutline} text='Sterge din favorite' link={FAVORITE_LINK}/>
+                                     icon={trashOutline} text='Sterge din favorite'/>
                     ))
                 }
             </IonContent>

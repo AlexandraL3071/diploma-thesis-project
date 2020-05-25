@@ -2,7 +2,6 @@ import React from 'react';
 import {IonContent, IonHeader} from "@ionic/react";
 import ProductCard from "./ProductCard";
 import {heartOutline} from "ionicons/icons";
-import {FAVORITE_LINK} from "../../utils/linkNames";
 import PagingComponent from "../PagingComponent";
 
 export default function ProductsPage(props) {
@@ -11,7 +10,7 @@ export default function ProductsPage(props) {
         <IonContent>
             {props.products.map(product => (
                 <ProductCard product={product} type='add' icon={heartOutline}
-                             text='Adauga la favorite' link={FAVORITE_LINK}/>
+                             text='Adauga la favorite'/>
             ))}
 
             {!window.navigator.onLine && props.products.length === 0 ?

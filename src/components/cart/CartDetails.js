@@ -21,6 +21,7 @@ import {
 } from "@ionic/react";
 
 export default function CartDetails(props) {
+
     const firebase = useFirebase();
     const [showPopover, setShowPopover] = useState(false);
 

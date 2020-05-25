@@ -1,13 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import '../../styles/AllProducts.css'
-import {CATEGORIES_LINK} from "../../utils/linkNames";
 import '../../styles/Content.css'
 import {
-    IonButton,
     IonButtons,
     IonContent,
     IonHeader,
-    IonItem,
     IonMenuButton,
     IonPage,
     IonTitle,
@@ -58,30 +55,21 @@ export default function AllProducts(props) {
         return getArrayFromSpecificIndex(products, pageNumber * 5, generateSecondIndex(products));
     };
 
-    const renderProducts = () => {
-        const products = window.navigator.onLine ? props.products : productsOffline;
-
+    const renderProducts = (products) => {
         return (
             <IonContent>
-                <ProductsPage length={products.length} products={prod(products)} parentCallback={(e) => callbackFunction(e)}/>
-            </IonContent>
-        )
-    };
-
-    const renderNoProductsMessage = () => {
-        return (
-            <IonContent>
-                Produsele nu sunt disponibile pentru vizualizare inca! Pentru redirectionare apasati aici
-                <IonItem routerLink={CATEGORIES_LINK}><IonButton color='dark'>toate categoriile</IonButton></IonItem>
+                <ProductsPage length={products.length} products={prod(products)}
+                              parentCallback={(e) => callbackFunction(e)}/>
             </IonContent>
         )
     };
 
     const renderList = () => {
         const products = window.navigator.onLine ? props.products : productsOffline;
+
         return (
             <IonContent className='class'>
-                {products !== undefined ? renderProducts() : renderNoProductsMessage()}
+                {renderProducts(products)}
             </IonContent>
         )
     };

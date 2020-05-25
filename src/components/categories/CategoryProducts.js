@@ -1,6 +1,6 @@
 import React from 'react'
 import ProductCard from './ProductCard';
-import {CATEGORIES_LINK, FAVORITE_LINK} from "../../utils/linkNames";
+import {CATEGORIES_LINK} from "../../utils/linkNames";
 import '../../styles/AllProducts.css'
 import '../../styles/Content.css'
 import {
@@ -23,19 +23,17 @@ export default function CategoryProducts(props) {
             <IonContent>
                 {
                     props.products.map(product => (
-                        <ProductCard product={product} type='add' icon={heartOutline} text='Adauga la favorite'
-                                     link={FAVORITE_LINK}/>
+                        <ProductCard product={product} type='add' icon={heartOutline} text='Adauga la favorite'/>
                     ))
                 }
             </IonContent>
         )
     };
 
-
     const renderList = () => {
         if (window.navigator.onLine) {
             if (props.products === []) {
-                return <IonHeader>Nu exista produse disponibie in categoria {props.category}!</IonHeader>
+                return <IonHeader>Nu exista produse disponibile in categoria {props.category}!</IonHeader>
             }
             return renderCategoryProducts();
         }

@@ -1,3 +1,5 @@
+import React from 'react';
+import {withRouter} from 'react-router-dom';
 import {
     IonContent,
     IonIcon,
@@ -9,8 +11,6 @@ import {
     IonMenuToggle,
     IonNote,
 } from '@ionic/react';
-import React from 'react';
-import {withRouter} from 'react-router-dom';
 import {
     bodySharp,
     cardOutline,
@@ -60,6 +60,7 @@ const appPages = [
 ];
 
 function Menu(props) {
+
     return (
         <IonMenu contentId="main" type="overlay">
             <IonContent>

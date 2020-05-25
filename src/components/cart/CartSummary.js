@@ -11,6 +11,7 @@ import '../../styles/Cart.css'
 
 
 export default function CartSummary(props) {
+
     return (
         <IonCard>
             <IonCardContent>
