@@ -4,7 +4,7 @@ import {IonContent, IonHeader} from "@ionic/react";
 export const getMonthAsNumber = (month) => {
     const months = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
         'Oct', 'Nov', 'Dec'];
-    for (let i = 0; i < month.length; i++) {
+    for (let i = 0; i < months.length; i++) {
         if (months[i] === month) {
             return i;
         }
